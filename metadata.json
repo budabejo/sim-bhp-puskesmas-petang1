@@ -1,0 +1,6 @@
+{
+  "name": "SIM-BHP Puskesmas ",
+  "description": "Sistem Informasi Manajemen Persediaan Barang Habis Pakai (BHP) berbasis Web dengan Notifikasi WhatsApp Stok Minimum Di UPTD Puskesmas Petang I",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
