@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
+<head>
+<meta charset="utf-8">
+<title>PROPOSAL SKRIPSI - SIM-BHP PUSKESMAS PETANG I</title>
+<!--[if gte mso 9]>
+<xml>
+<w:WordDocument>
+<w:View>Print</w:View>
+<w:Zoom>100</w:Zoom>
+<w:DoNotOptimizeForBrowser/>
+</w:WordDocument>
+</xml>
+<![endif]-->
+<style>
+  @page {
+    size: 21.0cm 29.7cm; /* A4 */
+    margin: 4.0cm 3.0cm 3.0cm 4.0cm; /* Standar Skripsi: Kiri 4cm, Atas 4cm, Bawah 3cm, Kanan 3cm */
+    mso-page-orientation: portrait;
+  }
+  body {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 12pt;
+    line-height: 1.5;
+    color: #000000;
+    text-align: justify;
+  }
+  h1 {
+    font-size: 14pt;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    margin-top: 24pt;
+    margin-bottom: 12pt;
+    page-break-before: always;
+  }
+  h2 {
+    font-size: 12pt;
+    font-weight: bold;
+    margin-top: 14pt;
+    margin-bottom: 6pt;
+  }
+  h3 {
+    font-size: 12pt;
+    font-weight: bold;
+    margin-top: 10pt;
+    margin-bottom: 4pt;
+  }
+  p {
+    margin-top: 0;
+    margin-bottom: 6pt;
+    text-indent: 1.25cm;
+  }
+  p.no-indent {
+    text-indent: 0;
+  }
+  p.center {
+    text-align: center;
+    text-indent: 0;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10pt;
+    margin-bottom: 10pt;
+    font-size: 11pt;
+  }
+  table, th, td {
+    border: 1px solid #000000;
+  }
+  th {
+    background-color: #f2f2f2;
+    padding: 6pt;
+    text-align: center;
+    font-weight: bold;
+  }
+  td {
+    padding: 5pt 6pt;
+    vertical-align: top;
+  }
+  .page-break {
+    page-break-before: always;
+  }
+  .table-clean, .table-clean th, .table-clean td {
+    border: none;
+    padding: 4pt;
+  }
+</style>
+</head>
+<body>
+
+<!-- HALAMAN JUDUL -->
+<p class="center" style="font-size: 14pt; font-weight: bold; margin-top: 2cm; line-height: 1.3;">
+  RANCANG BANGUN SISTEM INFORMASI MANAJEMEN BARANG HABIS PAKAI (SIM-BHP) DENGAN INTEGRASI BARCODE SCANNER DAN WHATSAPP GATEWAY BERBASIS WEB PADA UPTD PUSKESMAS PETANG I KABUPATEN BADUNG
+</p>
+
+<p class="center" style="font-size: 13pt; font-weight: bold; margin-top: 3cm; letter-spacing: 2px;">
+  PROPOSAL SKRIPSI
+</p>
+
+<p class="center" style="margin-top: 4cm; font-size: 12pt;">
+  <strong>OLEH :</strong><br><br>
+  <strong>I KETUT BUDA ANTARA</strong><br>
+  <strong>NIM : [Isi NIM Anda]</strong>
+</p>
+
+<p class="center" style="margin-top: 5cm; font-size: 12pt; font-weight: bold; line-height: 1.4;">
+  PROGRAM STUDI SISTEM INFORMASI<br>
+  FAKULTAS SAINS DAN TEKNOLOGI<br>
+  UNIVERSITAS TABANAN<br>
+  2026
+</p>
+
+<div class="page-break"></div>
+
+<!-- HALAMAN PERSETUJUAN -->
+<p class="center" style="font-size: 13pt; font-weight: bold; margin-bottom: 24pt;">
+  HALAMAN PERSETUJUAN PEMBIMBING
+</p>
+
+<table class="table-clean" style="margin-bottom: 30pt;">
+  <tr>
+    <td style="width: 25%;">Judul Skripsi</td>
+    <td style="width: 3%;">:</td>
+    <td style="font-weight: bold;">Rancang Bangun Sistem Informasi Manajemen Barang Habis Pakai (SIM-BHP) Dengan Integrasi Barcode Scanner dan WhatsApp Gateway Berbasis Web Pada UPTD Puskesmas Petang I Kabupaten Badung</td>
+  </tr>
+  <tr>
+    <td>Nama</td>
+    <td>:</td>
+    <td><strong>I Ketut Buda Antara</strong></td>
+  </tr>
+  <tr>
+    <td>NIM</td>
+    <td>:</td>
+    <td>[Isi NIM Anda]</td>
+  </tr>
+  <tr>
+    <td>Program Studi</td>
+    <td>:</td>
+    <td>Sistem Informasi</td>
+  </tr>
+</table>
+
+<p class="no-indent" style="margin-bottom: 18pt;">Disetujui Oleh :</p>
+
+<table class="table-clean" style="text-align: center;">
+  <tr>
+    <td style="width: 50%;">Pembimbing I</td>
+    <td style="width: 50%;">Pembimbing II</td>
+  </tr>
+  <tr>
+    <td style="height: 2.5cm;"></td>
+    <td style="height: 2.5cm;"></td>
+  </tr>
+  <tr>
+    <td><u><strong>I Putu Dody Suarnatha, S.Kom., M.Kom</strong></u><br>NIDN. .....................................</td>
+    <td><u><strong>I Wayan Ady Juliantara, S.E., M.Kom</strong></u><br>NIDN. .....................................</td>
+  </tr>
+</table>
+
+<br><br>
+<p class="center" style="margin-bottom: 10pt;">Mengetahui,<br>Ketua Program Studi Sistem Informasi</p>
+<p class="center" style="margin-top: 2.2cm;">
+  <u><strong>I Made Agus Widiana Putra, S.Kom., M.Kom</strong></u><br>
+  NIDN. 0801089001
+</p>
+
+<div class="page-break"></div>
+
+<!-- KATA PENGANTAR -->
+<p class="center" style="font-size: 13pt; font-weight: bold; margin-bottom: 18pt;">
+  KATA PENGANTAR
+</p>
+
+<p>
+  Puji syukur senantiasa penulis panjatkan kehadapan Ida Sang Hyang Widhi Wasa / Tuhan Yang Maha Esa, karena atas asung kerta wara nugraha-Nya penulis dapat menyelesaikan Proposal Skripsi ini dengan judul <strong>“Rancang Bangun Sistem Informasi Manajemen Barang Habis Pakai (SIM-BHP) Dengan Integrasi Barcode Scanner dan WhatsApp Gateway Berbasis Web Pada UPTD Puskesmas Petang I Kabupaten Badung”</strong>.
+</p>
+
+<p>
+  Penulis menyadari bahwa dalam menyelesaikan Proposal Skripsi ini banyak bimbingan, arahan, dan inspirasi yang penulis terima dari berbagai pihak. Untuk itu, melalui kesempatan yang baik ini penulis menyampaikan rasa terima kasih setulus-tulusnya kepada yang terhormat:
+</p>
+
+<ol style="margin-left: 1.25cm; margin-bottom: 12pt;">
+  <li>Bapak Dr. Ir. I Nengah Karnata, M.Si., selaku Rektor Universitas Tabanan.</li>
+  <li>Bapak I Nyoman Ariana Guna, S.E., M.Agb., selaku Dekan Fakultas Sains dan Teknologi Universitas Tabanan.</li>
+  <li>Ibu Dra. Ni L Pt. Budiari, M.MA., selaku Wakil Dekan Fakultas Sains dan Teknologi Universitas Tabanan.</li>
+  <li>Bapak I Made Agus Widiana Putra, S.Kom., M.Kom., selaku Ketua Program Studi Sistem Informasi Universitas Tabanan.</li>
+  <li>Bapak Wayan Eka Ariawan, S.Kom., M.Kom., selaku Sekretaris Program Studi Sistem Informasi Universitas Tabanan.</li>
+  <li>Bapak I Putu Dody Suarnatha, S.Kom., M.Kom., selaku Dosen Pembimbing I yang telah meluangkan waktu serta sabar memberikan bimbingan dan koreksi berharga kepada penulis.</li>
+  <li>Bapak I Wayan Ady Juliantara, S.E., M.Kom., selaku Dosen Pembimbing II yang telah banyak memberikan masukan teknis dan metodologi.</li>
+  <li>Bapak dr. I Ketut Dwipayana, M.Kes., selaku Kepala UPTD Puskesmas Petang I yang telah memberikan izin penelitian, data, serta dukungan penuh selama pelaksanaan studi lapangan.</li>
+  <li>Rekan-rekan staf pengelola dan tenaga medis UPTD Puskesmas Petang I Kabupaten Badung atas kerja sama yang baik.</li>
+  <li>Keluarga tercinta, khususnya kedua orang tua atas segala doa, ketulusan cinta kasih, dan pengorbanan yang tak ternilai dari awal perkuliahan hingga penyusunan laporan ini.</li>
+  <li>Rekan-rekan mahasiswa/i Program Studi Sistem Informasi Angkatan 2022 atas rasa kebersamaan dan dukungannya.</li>
+</ol>
+
+<p>
+  Semoga budi baik dari semua pihak yang telah membantu menyelesaikan proposal ini mendapat imbalan yang setimpal dari Tuhan Yang Maha Esa. Dengan terselesaikannya Proposal Skripsi ini, penulis sangat menghargai masukan konstruktif dari semua pihak demi penyempurnaan karya ini.
+</p>
+
+<br>
+<table class="table-clean" style="width: 100%;">
+  <tr>
+    <td style="width: 60%;"></td>
+    <td style="width: 40%; text-align: center;">
+      Tabanan, September 2026<br><br><br><br>
+      <strong>Penulis</strong>
+    </td>
+  </tr>
+</table>
+
+<div class="page-break"></div>
+
+<!-- DAFTAR ISI -->
+<p class="center" style="font-size: 13pt; font-weight: bold; margin-bottom: 18pt;">
+  DAFTAR ISI
+</p>
+
+<table class="table-clean" style="width: 100%; line-height: 1.6;">
+  <tr><td>HALAMAN PERSETUJUAN PEMBIMBING</td><td style="text-align: right;">i</td></tr>
+  <tr><td>KATA PENGANTAR</td><td style="text-align: right;">ii</td></tr>
+  <tr><td>DAFTAR ISI</td><td style="text-align: right;">iv</td></tr>
+  <tr><td>DAFTAR TABEL</td><td style="text-align: right;">v</td></tr>
+  <tr><td>DAFTAR GAMBAR</td><td style="text-align: right;">vi</td></tr>
+  <tr><td>DAFTAR LAMPIRAN</td><td style="text-align: right;">vii</td></tr>
+  <tr><td style="font-weight: bold;">BAB I PENDAHULUAN</td><td style="text-align: right; font-weight: bold;">1</td></tr>
+  <tr><td style="padding-left: 20pt;">1.1 Latar Belakang Penelitian</td><td style="text-align: right;">1</td></tr>
+  <tr><td style="padding-left: 20pt;">1.2 Rumusan Masalah</td><td style="text-align: right;">4</td></tr>
+  <tr><td style="padding-left: 20pt;">1.3 Batasan Masalah</td><td style="text-align: right;">4</td></tr>
+  <tr><td style="padding-left: 20pt;">1.4 Tujuan Penelitian</td><td style="text-align: right;">5</td></tr>
+  <tr><td style="padding-left: 20pt;">1.5 Manfaat Penelitian</td><td style="text-align: right;">5</td></tr>
+  <tr><td style="padding-left: 40pt;">1.5.1 Manfaat Teoritis</td><td style="text-align: right;">5</td></tr>
+  <tr><td style="padding-left: 40pt;">1.5.2 Manfaat Praktis</td><td style="text-align: right;">6</td></tr>
+  <tr><td style="font-weight: bold;">BAB II TINJAUAN PUSTAKA</td><td style="text-align: right; font-weight: bold;">7</td></tr>
+  <tr><td style="padding-left: 20pt;">2.1 Kajian Teori</td><td style="text-align: right;">7</td></tr>
+  <tr><td style="padding-left: 40pt;">2.1.1 Rancang Bangun</td><td style="text-align: right;">7</td></tr>
+  <tr><td style="padding-left: 40pt;">2.1.2 Pengertian Sistem</td><td style="text-align: right;">7</td></tr>
+  <tr><td style="padding-left: 40pt;">2.1.3 Pengertian Informasi</td><td style="text-align: right;">8</td></tr>
+  <tr><td style="padding-left: 40pt;">2.1.4 Sistem Informasi</td><td style="text-align: right;">8</td></tr>
+  <tr><td style="padding-left: 40pt;">2.1.5 Manajemen Persediaan dan Stok Barang Habis Pakai (BHP)</td><td style="text-align: right;">9</td></tr>
+  <tr><td style="padding-left: 40pt;">2.1.6 Konsep Ambang Batas Minimum (Safety Stock)</td><td style="text-align: right;">10</td></tr>
+  <tr><td style="padding-left: 40pt;">2.1.7 Teknologi Barcode Optik (Code 128)</td><td style="text-align: right;">10</td></tr>
+  <tr><td style="padding-left: 40pt;">2.1.8 WhatsApp Gateway API</td><td style="text-align: right;">11</td></tr>
+  <tr><td style="padding-left: 40pt;">2.1.9 Website dan Single Page Application (SPA)</td><td style="text-align: right;">12</td></tr>
+  <tr><td style="padding-left: 40pt;">2.1.10 Basis Data Relasional dan MySQL</td><td style="text-align: right;">12</td></tr>
+  <tr><td style="padding-left: 40pt;">2.1.11 Data Flow Diagram (DFD)</td><td style="text-align: right;">13</td></tr>
+  <tr><td style="padding-left: 40pt;">2.1.12 Entity Relationship Diagram (ERD)</td><td style="text-align: right;">15</td></tr>
+  <tr><td style="padding-left: 40pt;">2.1.13 Black-Box Testing</td><td style="text-align: right;">16</td></tr>
+  <tr><td style="padding-left: 40pt;">2.1.14 Profil dan Sejarah Singkat UPTD Puskesmas Petang I</td><td style="text-align: right;">16</td></tr>
+  <tr><td style="padding-left: 20pt;">2.2 Penelitian Terdahulu</td><td style="text-align: right;">18</td></tr>
+  <tr><td style="padding-left: 20pt;">2.3 Kerangka Pemikiran Penelitian</td><td style="text-align: right;">22</td></tr>
+  <tr><td style="font-weight: bold;">BAB III METODOLOGI PENELITIAN</td><td style="text-align: right; font-weight: bold;">24</td></tr>
+  <tr><td style="padding-left: 20pt;">3.1 Tempat dan Waktu Penelitian</td><td style="text-align: right;">24</td></tr>
+  <tr><td style="padding-left: 20pt;">3.2 Teknik Pengumpulan Data</td><td style="text-align: right;">24</td></tr>
+  <tr><td style="padding-left: 40pt;">3.2.1 Metode Observasi dan Wawancara</td><td style="text-align: right;">24</td></tr>
+  <tr><td style="padding-left: 40pt;">3.2.2 Dokumentasi</td><td style="text-align: right;">25</td></tr>
+  <tr><td style="padding-left: 40pt;">3.2.3 Studi Pustaka</td><td style="text-align: right;">25</td></tr>
+  <tr><td style="padding-left: 20pt;">3.3 Metode Pengembangan Perangkat Lunak</td><td style="text-align: right;">25</td></tr>
+  <tr><td style="padding-left: 40pt;">3.3.1 Metode Waterfall</td><td style="text-align: right;">26</td></tr>
+  <tr><td style="padding-left: 40pt;">3.3.2 Diagram Konteks</td><td style="text-align: right;">28</td></tr>
+  <tr><td style="padding-left: 40pt;">3.3.3 Data Flow Diagram (DFD) Level 0</td><td style="text-align: right;">30</td></tr>
+  <tr><td style="padding-left: 40pt;">3.3.4 Perancangan DFD Level 1 Proses Login</td><td style="text-align: right;">32</td></tr>
+  <tr><td style="padding-left: 40pt;">3.3.5 Perancangan DFD Level 1 Proses Master BHP & Barcode</td><td style="text-align: right;">33</td></tr>
+  <tr><td style="padding-left: 40pt;">3.3.6 Perancangan DFD Level 1 Proses Penerimaan BHP</td><td style="text-align: right;">34</td></tr>
+  <tr><td style="padding-left: 40pt;">3.3.7 Perancangan DFD Level 1 Proses Scan Barcode Pengeluaran</td><td style="text-align: right;">35</td></tr>
+  <tr><td style="padding-left: 40pt;">3.3.8 Perancangan DFD Level 1 Proses WhatsApp Alert</td><td style="text-align: right;">36</td></tr>
+  <tr><td style="padding-left: 40pt;">3.3.9 Perancangan DFD Level 1 Proses Kartu Stok & Laporan Mutasi</td><td style="text-align: right;">37</td></tr>
+  <tr><td style="padding-left: 40pt;">3.3.10 Perancangan DFD Level 1 Proses Pengaturan Sistem</td><td style="text-align: right;">38</td></tr>
+  <tr><td style="padding-left: 40pt;">3.3.11 Entity Relationship Diagram (ERD)</td><td style="text-align: right;">39</td></tr>
+  <tr><td style="padding-left: 40pt;">3.3.12 Hasil Perancangan Antarmuka Sistem</td><td style="text-align: right;">40</td></tr>
+  <tr><td style="font-weight: bold;">DAFTAR PUSTAKA</td><td style="text-align: right; font-weight: bold;">46</td></tr>
+  <tr><td style="font-weight: bold;">LAMPIRAN</td><td style="text-align: right; font-weight: bold;">49</td></tr>
+</table>
+
+<div class="page-break"></div>
+
+<!-- BAB I -->
+<h1>BAB I<br>PENDAHULUAN</h1>
+
+<h2>1.1 Latar Belakang Penelitian</h2>
+<p>
+  UPTD Puskesmas Petang I merupakan salah satu fasilitas pelayanan kesehatan tingkat pertama (FKTP) di bawah naungan Dinas Kesehatan Pemerintah Kabupaten Badung yang beralamat di Jalan Jahuripan-Petang, Desa Petang, Kecamatan Petang, Kabupaten Badung. Sebagai fasilitas kesehatan tingkat pertama yang mengampu wilayah Badung bagian utara, UPTD Puskesmas Petang I bertanggung jawab menyelenggarakan Upaya Kesehatan Masyarakat (UKM) dan Upaya Kesehatan Perseorangan (UKP) dengan membawahi jaringan pelayanan yang terdiri dari Poli Umum, Poli Gigi, Poli KIA/KB, Instalasi Gawat Darurat (UGD 24 Jam), Ruang Persalinan, Laboratorium, Farmasi, serta Puskesmas Pembantu (Pustu Pelaga, Pustu Belok Sidan, Pustu Pangsan, dan lainnya).
+</p>
+
+<p>
+  Kelancaran operasional pelayanan kesehatan medis maupun administratif di UPTD Puskesmas Petang I sangat ditentukan oleh ketersediaan Barang Habis Pakai (BHP). Kategori persediaan BHP ini meliputi Bahan Medis Habis Pakai (BMHP) seperti spuit injeksi, kassa steril, handscoon (sarung tangan lateks), infus set, abocath, kateter, reagen kimia laboratorium, obat-obatan esensial, hingga perlengkapan Alat Tulis Kantor (ATK) dan bahan pembersih. Seluruh pengadaan persediaan tersebut dibiayai melalui anggaran Badan Layanan Umum Daerah (BLUD) dan APBD Kabupaten Badung yang wajib dipertanggungjawabkan secara akuntabel dan transparan kepada Badan Pengelola Keuangan dan Aset Daerah (BPKAD) serta Dinas Kesehatan.
+</p>
+
+<p>
+  Namun, berdasarkan hasil observasi dan wawancara langsung yang dilakukan di ruang logistik dan tata usaha UPTD Puskesmas Petang I, ditemukan sejumlah kendala operasional yang krusial:
+</p>
+
+<ol style="margin-left: 1.25cm; margin-bottom: 10pt;">
+  <li><strong>Pencatatan Manual yang Berulang dan Rentan Selisih Stok:</strong> Proses amprahan pengeluaran barang ke poli/ruangan pelayanan selama ini masih dilakukan secara manual dengan menulis di buku ekspedisi. Petugas logistik harus menyalin kembali data tersebut ke lembaran Kartu Persediaan fisik satu per satu. Hal ini sering memicu kelalaian pencatatan saat pelayanan sedang padat, terjadinya duplikasi data, dan ketidaksesuaian (*discrepancy*) antara saldo kartu stok dengan fisik barang di rak penyimpanan.</li>
+  <li><strong>Ketiadaan Peringatan Dini Stok Minimum (Stock-Out Risk):</strong> Pengurus barang maupun pimpinan sering kali baru menyadari suatu barang medis habis saat dokter atau perawat di ruang UGD meminta barang tersebut secara mendesak. Kondisi kekosongan barang (*stock-out*) pada bahan medis kritis sangat berisiko mengganggu keselamatan pasien dan mutu layanan kesehatan darurat.</li>
+  <li><strong>Lambatnya Proses Pencarian dan Verifikasi Barang:</strong> Petugas harus mencari data barang, lokasi rak, dan nomor faktur secara manual di tumpukan dokumen kertas, yang memakan waktu lama saat permintaan barang mendesak datang dari ruangan tindakan.</li>
+  <li><strong>Penyusunan Laporan Mutasi Triwulan yang Rumit:</strong> Setiap akhir triwulan dan semester, pengurus barang pembantu BHP harus merekap ribuan transaksi masuk dan keluar secara manual untuk menyusun lembaran Laporan Mutasi Barang dan Kartu Stok. Proses kompilasi ini membutuhkan waktu berhari-hari karena format laporan harus disesuaikan secara ketat dengan standarisasi kop surat kedinasan Pemkab Badung dan tanda tangan pengesahan pimpinan.</li>
+</ol>
+
+<p>
+  Seiring dengan perkembangan teknologi informasi modern, penerapan aplikasi web dengan pendekatan *Single Page Application* (SPA), integrasi pembaca kode optik barcode menggunakan sensor kamera smartphone (*camera-based barcode scanner*), serta otomatisasi pengiriman pesan peringatan melalui *WhatsApp Gateway API* menjadi solusi yang sangat efektif. Melalui sistem ini, petugas dapat memindai barcode kemasan barang langsung menggunakan kamera ponsel tanpa memerlukan alat scanner terpisah, saldo stok fisik dan kartu stok langsung terpotong secara otomatis dalam hitungan detik, serta notifikasi darurat langsung dikirimkan ke WhatsApp pengurus dan Kepala Puskesmas saat stok menyentuh batas minimum (&le; 5 unit).
+</p>
+
+<p>
+  Berdasarkan permasalahan dan peluang inovasi di atas, penulis tertarik melakukan penelitian skripsi dengan judul: <strong>“Rancang Bangun Sistem Informasi Manajemen Barang Habis Pakai (SIM-BHP) Dengan Integrasi Barcode Scanner dan WhatsApp Gateway Berbasis Web Pada UPTD Puskesmas Petang I Kabupaten Badung”</strong>.
+</p>
+
+<h2>1.2 Rumusan Masalah</h2>
+<p class="no-indent">Rumusan masalah dalam penelitian ini dirumuskan sebagai berikut:</p>
+<ol style="margin-left: 1.25cm;">
+  <li>Bagaimana merancang dan membangun Sistem Informasi Manajemen Barang Habis Pakai (SIM-BHP) berbasis web pada UPTD Puskesmas Petang I Kabupaten Badung?</li>
+  <li>Bagaimana mengintegrasikan fitur *Barcode Scanner* kamera smartphone untuk memotong stok fisik dan memperbarui Kartu Stok Barang secara otomatis dan *real-time*?</li>
+  <li>Bagaimana mengimplementasikan sistem *early warning alert* berbasis WhatsApp Gateway yang mengirimkan notifikasi stok kritis (&le; 5 unit) secara otomatis ke nomor pimpinan dan pengurus barang?</li>
+  <li>Bagaimana menghasilkan dokumen cetak KARTU STOK BARANG dan Laporan Rekapitulasi Mutasi Triwulan yang sah sesuai standar kedinasan Pemerintah Kabupaten Badung?</li>
+</ol>
+
+<h2>1.3 Batasan Masalah</h2>
+<p class="no-indent">Adapun batasan masalah dalam penelitian ini adalah sebagai berikut:</p>
+<ol style="margin-left: 1.25cm;">
+  <li>Sistem informasi berfokus pada pengelolaan persediaan Barang Habis Pakai (BHP), mencakup kategori Medis/BMHP, Obat & Vaksin, Laboratorium, Alat Tulis Kantor (ATK), dan Kebersihan di UPTD Puskesmas Petang I.</li>
+  <li>Sistem berbasis web responsif yang dapat diakses melalui peramban (*browser*) komputer desktop maupun smartphone petugas.</li>
+  <li>Hak akses pengguna dibatasi menjadi 2 tingkatan resmi: **Administrator** (Pengurus Barang Pembantu BHP) dan **Pegawai** (Petugas Logistik Gudang).</li>
+  <li>Pemindaian barcode memanfaatkan sensor kamera belakang smartphone dan scanner USB standar (Code 128 / QR Code).</li>
+  <li>Integrasi WhatsApp Gateway disiapkan untuk dapat meneruskan notifikasi stok kritis ke maksimal 5 nomor WhatsApp terdaftar.</li>
+  <li>Format kop laporan resmi disesuaikan dengan standar Pemkab Badung berlogo ganda (Logo Pemda Badung dan Logo Puskesmas) dengan pengesahan Kepala UPTD Puskesmas Petang I (dr. I Ketut Dwipayana, M.Kes.) dan Pengurus Barang Pembantu BHP (I Ketut Buda Antara).</li>
+</ol>
+
+<h2>1.4 Tujuan Penelitian</h2>
+<p class="no-indent">Tujuan yang ingin dicapai dalam penelitian ini adalah:</p>
+<ol style="margin-left: 1.25cm;">
+  <li>Menghasilkan Sistem Informasi Manajemen Barang Habis Pakai (SIM-BHP) berbasis web yang tertib administrasi, cepat, dan transparan pada UPTD Puskesmas Petang I.</li>
+  <li>Mengotomatiskan pemotongan stok master barang dan pembaruan mutasi saldo pada Kartu Stok secara instan melalui pemindaian barcode kamera ponsel.</li>
+  <li>Mencegah risiko terjadinya kekosongan obat dan bahan medis darurat (*zero stock-out*) melalui sistem notifikasi otomatis WhatsApp stok minimum (&le; 5 unit).</li>
+  <li>Menghasilkan format cetak **KARTU STOK BARANG** dan Laporan Rekapitulasi Mutasi Triwulan yang presisi dan memenuhi kaidah tata naskah dinas Pemkab Badung.</li>
+</ol>
+
+<h2>1.5 Manfaat Penelitian</h2>
+<h3>1.5.1 Manfaat Teoritis</h3>
+<ol style="margin-left: 1.25cm;">
+  <li>Memberikan kontribusi ilmiah dalam penerapan integrasi teknologi peramban web (*browser camera optical scan*) dan *instant messaging gateway* pada rantai pasok fasilitas kesehatan primer.</li>
+  <li>Menjadi referensi akademik bagi penelitian sistem informasi persediaan berbasis akuntansi sektor publik.</li>
+  <li>Mendukung pembuktian efektivitas siklus pengembangan perangkat lunak model *Waterfall* pada instansi pemerintah daerah.</li>
+</ol>
+
+<h3>1.5.2 Manfaat Praktis</h3>
+<ol style="margin-left: 1.25cm;">
+  <li><strong>Bagi Petugas Logistik dan Pengurus Barang:</strong> Menghilangkan beban tulis manual berulang di buku ekspedisi dan memastikan saldo fisik barang di gudang selalu akurat 100%.</li>
+  <li><strong>Bagi Pimpinan (Kepala Puskesmas):</strong> Mempermudah monitoring dan deteksi dini barang habis via WhatsApp serta mempercepat pengesahan Laporan Mutasi Triwulan.</li>
+  <li><strong>Bagi Pasien / Masyarakat:</strong> Menjamin ketersediaan obat dan alat medis darurat di UGD dan Poli tanpa risiko penundaan tindakan akibat barang habis.</li>
+</ol>
+
+<div class="page-break"></div>
+
+<!-- BAB II -->
+<h1>BAB II<br>TINJAUAN PUSTAKA</h1>
+
+<h2>2.1 Kajian Teori</h2>
+
+<h3>2.1.1 Rancang Bangun</h3>
+<p>
+  Rancang bangun merupakan gabungan dari dua proses yang berurutan, yaitu perancangan (*design*) dan pembangunan (*construction*). Perancangan adalah kegiatan memetakan kebutuhan sistem ke dalam arsitektur konseptual, model data, dan tata letak antarmuka pengguna. Sedangkan pembangunan adalah tahap menerjemahkan desain tersebut ke dalam bentuk kode program perangkat lunak yang operasional dan dapat diuji secara fungsional (Sitanggang, 2022).
+</p>
+
+<h3>2.1.2 Pengertian Sistem</h3>
+<p>
+  Sistem merupakan sekumpulan elemen, komponen, atau prosedur yang saling terhubung, berinteraksi, dan beroperasi bersama-sama untuk memproses masukan (*input*) menjadi keluaran (*output*) guna mencapai sasaran tertentu yang telah ditetapkan (Effendy, 2023).
+</p>
+
+<h3>2.1.3 Pengertian Informasi</h3>
+<p>
+  Informasi adalah data mentah yang telah dikumpulkan, diolah, dan diorganisasikan ke dalam bentuk yang bermakna dan memiliki nilai guna bagi penggunanya dalam pengambilan keputusan (Wulandari, 2021). Kualitas informasi ditentukan oleh tiga pilar utama: akurat (*accurate*), tepat waktu (*timeliness*), dan relevan (*relevance*).
+</p>
+
+<h3>2.1.4 Sistem Informasi</h3>
+<p>
+  Sistem informasi adalah keterpaduan antara perangkat keras (*hardware*), perangkat lunak (*software*), infrastruktur jaringan komunikasi, basis data (*database*), prosedur kerja, dan manusia (*brainware*) yang bertugas mengumpulkan, menyimpan, dan mengolah data operasional organisasi menjadi laporan manajerial (Afifah, 2023).
+</p>
+
+<h3>2.1.5 Manajemen Persediaan dan Stok Barang Habis Pakai (BHP)</h3>
+<p>
+  Manajemen persediaan persediaan adalah serangkaian kebijakan pengendalian untuk menentukan tingkat persediaan yang harus dijaga. Metode pencatatan persediaan yang digunakan pada SIM-BHP ini adalah **Metode Perpetual**, di mana setiap kali terjadi transaksi penerimaan atau pengeluaran barang, saldo akhir stok langsung diperbarui secara kontinu dan seketika (*real-time*):
+</p>
+<p class="center" style="font-weight: bold;">
+  Saldo Stok Akhir = Stok Awal + Total Penerimaan - Total Pengeluaran
+</p>
+
+<h3>2.1.6 Konsep Ambang Batas Minimum (Safety Stock)</h3>
+<p>
+  Ambang batas aman (*minimum stock level*) adalah batas kuantitas terendah persediaan yang wajib dipertahankan di gudang untuk mengantisipasi lonjakan pemakaian tak terduga (*emergency*) atau keterlambatan pengiriman dari rekanan. Pada UPTD Puskesmas Petang I, ambang batas minimum ditetapkan sebesar &le; 5 unit/kemasan barang. Jika saldo menyentuh angka ini, sistem otomatis memicu status **Kritis** dan mengaktifkan notifikasi peringatan.
+</p>
+
+<h3>2.1.7 Teknologi Barcode Optik (Code 128)</h3>
+<p>
+  Barcode adalah representasi data visual optik berupa garis vertikal tebal dan tipis yang dapat dibaca oleh sensor pemindai. Format Code 128 digunakan karena memiliki kerapatan karakter alfanumerik yang tinggi. Dengan pustaka `Html5Qrcode`, kamera smartphone dapat langsung membaca kode batang fisik pada kemasan BHP tanpa alat tambahan.
+</p>
+
+<h3>2.1.8 WhatsApp Gateway API</h3>
+<p>
+  WhatsApp Gateway adalah antarmuka pemrograman aplikasi yang memungkinkan pengiriman pesan otomatis melalui jaringan WhatsApp. Melalui integrasi protokol URL scheme (`https://wa.me/`), SIM-BHP dapat mengirimkan rincian pesan darurat (nama barang, kode barcode, sisa stok, lokasi rak, ruangan peminta) ke kontak dinas pimpinan dan pengurus barang.
+</p>
+
+<h3>2.1.9 Website dan Single Page Application (SPA)</h3>
+<p>
+  Sistem dibangun berbasis web dengan konsep *Single Page Application* (SPA) menggunakan pustaka **React.js** dan bahasa pemrograman **TypeScript**. SPA memungkinkan interaksi pengguna berjalan sangat cepat dan mulus tanpa perlu memuat ulang seluruh halaman peramban (*seamless experience*), serta ditata dengan kerangka kerja **Tailwind CSS** yang responsif di segala ukuran layar perangkat.
+</p>
+
+<h3>2.1.10 Basis Data Relasional dan MySQL</h3>
+<p>
+  Basis data relasional menyimpan data ke dalam tabel-tabel terstruktur dua dimensi yang saling berhubungan melalui kunci utama (*Primary Key*) dan kunci asing (*Foreign Key*) (Haryanto, 2024). Sistem ini menggunakan database engine **MySQL** yang kompatibel dengan server lokal (XAMPP) maupun web hosting cPanel Niagahoster.
+</p>
+
+<h3>2.1.11 Data Flow Diagram (DFD)</h3>
+<p>
+  Data Flow Diagram (DFD) adalah diagram alir yang memodelkan proses komputasi, aliran data, entitas luar, dan penyimpanan data dalam sistem. Simbol standar yang digunakan disajikan pada Tabel 2.1.
+</p>
+
+<p class="center" style="font-weight: bold; margin-bottom: 4pt;">Tabel 2.1 Simbol Data Flow Diagram (DFD)</p>
+<table>
+  <tr>
+    <th style="width: 25%;">Simbol Notasi</th>
+    <th style="width: 25%;">Nama Komponen</th>
+    <th style="width: 50%;">Deskripsi Fungsional</th>
+  </tr>
+  <tr>
+    <td class="center" style="font-size: 16pt;">&#9633;</td>
+    <td><strong>External Entity</strong></td>
+    <td>Entitas di luar sistem yang bertindak sebagai sumber data atau tujuan informasi.</td>
+  </tr>
+  <tr>
+    <td class="center" style="font-size: 16pt;">&#9711;</td>
+    <td><strong>Process</strong></td>
+    <td>Aktivitas yang memproses data input menjadi informasi output.</td>
+  </tr>
+  <tr>
+    <td class="center" style="font-size: 14pt;">= = =</td>
+    <td><strong>Data Store</strong></td>
+    <td>Tempat penyimpanan berkas data permanen dalam basis data.</td>
+  </tr>
+  <tr>
+    <td class="center" style="font-size: 16pt;">&rarr;</td>
+    <td><strong>Data Flow</strong></td>
+    <td>Menunjukkan arah perpindahan aliran data antar komponen.</td>
+  </tr>
+</table>
+
+<h3>2.1.12 Entity Relationship Diagram (ERD)</h3>
+<p>
+  Entity Relationship Diagram (ERD) memodelkan relasi konseptual antar entitas basis data (Tabel 2.2).
+</p>
+
+<p class="center" style="font-weight: bold; margin-bottom: 4pt;">Tabel 2.2 Simbol Entity Relationship Diagram (ERD)</p>
+<table>
+  <tr>
+    <th style="width: 25%;">Simbol Notasi</th>
+    <th style="width: 25%;">Nama Notasi</th>
+    <th style="width: 50%;">Deskripsi Fungsi</th>
+  </tr>
+  <tr>
+    <td class="center">Persegi Panjang</td>
+    <td><strong>Entity</strong></td>
+    <td>Objek data fisik/konseptual yang disimpan informasinya.</td>
+  </tr>
+  <tr>
+    <td class="center">Elips</td>
+    <td><strong>Attribute</strong></td>
+    <td>Properti atau karakteristik data dari suatu entitas.</td>
+  </tr>
+  <tr>
+    <td class="center">Belah Ketupat</td>
+    <td><strong>Relationship</strong></td>
+    <td>Hubungan relasional yang mengaitkan antar entitas.</td>
+  </tr>
+  <tr>
+    <td class="center">Garis Lurus</td>
+    <td><strong>Link Connection</strong></td>
+    <td>Penghubung derajat kardinalitas (1:1, 1:N, N:M).</td>
+  </tr>
+</table>
+
+<h3>2.1.13 Black-Box Testing</h3>
+<p>
+  *Black-Box Testing* adalah metode pengujian fungsionalitas perangkat lunak yang mengevaluasi input dan output sistem tanpa perlu melihat struktur kode internal program (Febrian, 2021).
+</p>
+
+<h3>2.1.14 Profil dan Sejarah Singkat UPTD Puskesmas Petang I</h3>
+<p>
+  UPTD Puskesmas Petang I beralamat di Jl. Jahuripan-Petang, Desa Petang, Kecamatan Petang, Kabupaten Badung, Bali. Puskesmas ini menyelenggarakan layanan kesehatan rawat jalan, rawat darurat (UGD 24 Jam), persalinan, laboratorium, serta membawahi sejumlah pos kesehatan desa dan pustu di Badung Utara.
+</p>
+
+<p>
+  Struktur kepemimpinan dan penanggung jawab persediaan di UPTD Puskesmas Petang I dipimpin oleh <strong>dr. I Ketut Dwipayana, M.Kes.</strong> selaku Kepala UPTD Puskesmas (NIP. 19783112 200712 1 004) dan didampingi oleh <strong>I Ketut Buda Antara</strong> selaku Pengurus Barang Pembantu BHP (NIP. 19930920 201802 1 003).
+</p>
+
+<h2>2.2 Penelitian Terdahulu</h2>
+<p class="no-indent">Perbandingan penelitian terdahulu yang relevan dirangkum dalam Tabel 2.3:</p>
+
+<p class="center" style="font-weight: bold; margin-bottom: 4pt;">Tabel 2.3 Perbandingan Penelitian Terdahulu</p>
+<table>
+  <tr>
+    <th style="width: 15%;">Indikator</th>
+    <th style="width: 20%;">Penelitian I (Maulana dkk., 2023)</th>
+    <th style="width: 20%;">Penelitian II (Wahyudi dkk., 2021)</th>
+    <th style="width: 20%;">Penelitian III (Wijaya & Devitra, 2023)</th>
+    <th style="width: 25%;">Penelitian yang Dilakukan (Penulis, 2026)</th>
+  </tr>
+  <tr>
+    <td><strong>Peneliti</strong></td>
+    <td>Ilham Maulana, Novita Br Ginting, Eko Hadi Purwanto</td>
+    <td>Haikal Wahyudi, Zaeniah, Salman</td>
+    <td>Hendry Wijaya, Joni Devitra</td>
+    <td><strong>I Ketut Buda Antara</strong></td>
+  </tr>
+  <tr>
+    <td><strong>Topik</strong></td>
+    <td>Sistem Informasi Pengelolaan Stok Barang Busana Muslim</td>
+    <td>Sistem Informasi Pengelolaan Stok Obat Apotek Karya Husada</td>
+    <td>Sistem Informasi Manajemen Stok PT Sumber Rejeki Tirta</td>
+    <td><strong>Rancang Bangun SIM-BHP Barcode Scanner & WhatsApp Gateway</strong></td>
+  </tr>
+  <tr>
+    <td><strong>Objek</strong></td>
+    <td>PT. Alwahijab</td>
+    <td>Apotek Karya Husada</td>
+    <td>PT Sumber Rejeki Tirta</td>
+    <td><strong>UPTD Puskesmas Petang I Badung</strong></td>
+  </tr>
+  <tr>
+    <td><strong>Metode</strong></td>
+    <td>Waterfall</td>
+    <td>Waterfall</td>
+    <td>Waterfall</td>
+    <td><strong>Waterfall (SDLC Terstruktur)</strong></td>
+  </tr>
+  <tr>
+    <td><strong>Hasil</strong></td>
+    <td>Pengelolaan barang masuk, keluar, dan laporan stok pakaian.</td>
+    <td>Pencatatan resep obat dan notifikasi kadaluarsa.</td>
+    <td>Manajemen siklus hidup galon air minum.</td>
+    <td><strong>Sistem otomasi stok BHP, potong stok instan via Scan Barcode Kamera HP, notifikasi WA stok minimum ke 5 nomor pejabat, dan cetak Kartu Stok resmi Pemkab Badung.</strong></td>
+  </tr>
+  <tr>
+    <td><strong>Persamaan</strong></td>
+    <td colspan="4" class="center">Berbasis Web Application, menggunakan database relasional, dan bertujuan mengoptimalkan efisiensi persediaan barang.</td>
+  </tr>
+  <tr>
+    <td><strong>Perbedaan</strong></td>
+    <td>Fokus pada barang busana dan penjualan konsumen.</td>
+    <td>Fokus pada apotek swasta komersial.</td>
+    <td>Fokus pada peminjaman dan siklus galon.</td>
+    <td><strong>Fokus pada BHP medis instansi pemerintah (BLUD), integrasi barcode scanner kamera smartphone, WhatsApp gateway 5 nomor, dan standarisasi kop laporan Pemkab Badung.</strong></td>
+  </tr>
+</table>
+
+<h2>2.3 Kerangka Pemikiran Penelitian</h2>
+<p>
+  Pengembangan SIM-BHP berangkat dari masalah pencatatan manual amprahan di buku ekspedisi, risiko selisih stok fisik, tidak adanya sistem peringatan dini ketika bahan medis darurat habis, dan sulitnya menyusun laporan mutasi triwulan. Dengan mengadopsi model pengembangan perangkat lunak Waterfall, arsitektur React-TypeScript, pembaca optik barcode kamera smartphone, serta WhatsApp Gateway API ke 5 nomor pejabat dinas, dihasilkan aplikasi SIM-BHP yang tertib administrasi, presisi, dan siap digunakan secara operasional.
+</p>
+
+<div class="page-break"></div>
+
+<!-- BAB III -->
+<h1>BAB III<br>METODOLOGI PENELITIAN</h1>
+
+<h2>3.1 Tempat dan Waktu Penelitian</h2>
+<p>
+  Penelitian ini dilaksanakan pada Gudang Logistik dan Tata Usaha UPTD Puskesmas Petang I, beralamat di Jalan Jahuripan-Petang, Desa Petang, Kecamatan Petang, Kabupaten Badung, Bali. Pengumpulan data lapangan dan pengembangan sistem dilaksanakan mulai bulan Mei 2026 hingga September 2026.
+</p>
+
+<h2>3.2 Teknik Pengumpulan Data</h2>
+<h3>3.2.1 Metode Observasi dan Wawancara</h3>
+<p>
+  Observasi dilakukan terhadap alur fisik penerimaan barang dari distributor, penataan di rak gudang, dan permintaan amprahan dari unit/ruangan pelayanan (UGD, Poli Umum, Laboratorium, Pustu). Wawancara mendalam dilakukan bersama staf logistik dan Kepala UPTD Puskesmas mengenai kendala pembukuan manual dan kebutuhan sistem informasi yang diharapkan.
+</p>
+
+<h3>3.2.2 Dokumentasi</h3>
+<p>
+  Pengumpulan data sekunder berupa berkas dokumen arsip: Buku Register Penerimaan Barang, Buku Ekspedisi Pengeluaran, Kartu Persediaan BHP fisik, serta format formulir Laporan Mutasi Triwulan standar Dinas Kesehatan Pemkab Badung.
+</p>
+
+<h3>3.2.3 Studi Pustaka</h3>
+<p>
+  Mengkaji literatur ilmiah, buku referensi rekayasa perangkat lunak, jurnal sistem informasi persediaan, serta dokumen Permenkes No. 43 Tahun 2019 tentang Pusat Kesehatan Masyarakat.
+</p>
+
+<h2>3.3 Metode Pengembangan Perangkat Lunak</h2>
+<h3>3.3.1 Metode Waterfall</h3>
+<p>
+  Penelitian ini menggunakan model Waterfall yang terdiri dari 5 tahapan berurutan:
+</p>
+<ol style="margin-left: 1.25cm;">
+  <li><strong>Analisis Kebutuhan (Requirements Analysis):</strong> Mengidentifikasi data master barang BHP, ambang batas kritis (&le; 5), daftar 20 ruangan/poli penerima, dan 5 kontak WhatsApp dinas penerima alert.</li>
+  <li><strong>Perancangan Sistem (System Design):</strong> Merancang Diagram Konteks, DFD Level 0, DFD Level 1, ERD, dan mock-up antarmuka pengguna.</li>
+  <li><strong>Implementasi (Coding):</strong> Membangun antarmuka dengan React-TypeScript, pengolahan citra barcode dengan `Html5Qrcode`, integrasi WhatsApp URL scheme, dan generator skrip basis data MySQL.</li>
+  <li><strong>Pengujian (Testing):</strong> Pengujian fungsionalitas menggunakan teknik *Black-Box Testing*.</li>
+  <li><strong>Penerapan dan Pemeliharaan (Deployment & Maintenance):</strong> Penerapan aplikasi pada perangkat gudang dan pencadangan basis data berkala.</li>
+</ol>
+
+<h3>3.3.2 Diagram Konteks</h3>
+<p>
+  Diagram Konteks menggambarkan batas aliran data antara sistem SIM-BHP dengan 2 entitas pengguna:
+</p>
+<ol style="margin-left: 1.25cm;">
+  <li><strong>Administrator (Pengurus Barang Pembantu BHP):</strong> Menginput data login, data master barang, penerimaan barang, pengaturan kop laporan resmi, dan pengaturan 5 nomor WhatsApp; serta menerima output Kartu Stok Barang, Laporan Mutasi, dan peringatan stok kritis.</li>
+  <li><strong>Pegawai (Petugas Logistik Gudang):</strong> Menginput data login, pemindaian barcode pengeluaran barang via kamera smartphone, dan input ruangan penerima; serta menerima output sisa stok fisik, kartu stok, dan peringatan stok minimum.</li>
+</ol>
+
+<h3>3.3.3 Data Flow Diagram (DFD) Level 0</h3>
+<p>
+  DFD Level 0 memecah sistem SIM-BHP menjadi 7 proses fungsional:
+</p>
+<ol style="margin-left: 1.25cm;">
+  <li><strong>Proses 1.0 (Login Pengguna):</strong> Autentikasi akun Admin dan Pegawai pada `tb_users`.</li>
+  <li><strong>Proses 2.0 (Master Data BHP & Barcode):</strong> Pengelolaan katalog barang, ambang batas stok minimum, rak penyimpanan, dan cetak label barcode Code 128 pada `tb_barang`.</li>
+  <li><strong>Proses 3.0 (Transaksi Penerimaan Barang):</strong> Pencatatan faktur barang masuk dari distributor dan penambahan stok master pada `tb_penerimaan`.</li>
+  <li><strong>Proses 4.0 (Scan Barcode & Pengeluaran Barang):</strong> Pindai kode barcode via kamera smartphone / scanner USB, validasi stok, pencatatan ruangan penerima pada `tb_pengeluaran`, dan pemotongan stok master secara otomatis.</li>
+  <li><strong>Proses 5.0 (Early Warning WhatsApp Alert):</strong> Deteksi barang kritis (&le; 5 unit) dan penyusunan pesan WhatsApp ke nomor pejabat terpilih.</li>
+  <li><strong>Proses 6.0 (Kartu Stok & Laporan Mutasi):</strong> Penyusunan riwayat mutasi masuk-keluar secara kronologis pada dokumen KARTU STOK BARANG dan Laporan Mutasi Triwulan.</li>
+  <li><strong>Proses 7.0 (Pengaturan Sistem & Database):</strong> Pengaturan teks kop dinas Pemkab Badung, NIP pejabat penandatangan, 5 nomor WhatsApp dinas, dan ekspor file `db_sim_bhp.sql`.</li>
+</ol>
+
+<h3>3.3.11 Entity Relationship Diagram (ERD)</h3>
+<p>
+  Struktur relasional basis data terdiri dari 4 tabel utama:
+</p>
+<ol style="margin-left: 1.25cm;">
+  <li><strong>tb_barang:</strong> Menyimpan `id` (PK), `kode` (Barcode), `nama`, `kategori`, `satuan`, `stok_awal`, `stok_saat_ini`, `stok_minimum`, `harga_satuan`, dan `lokasi_rak`.</li>
+  <li><strong>tb_penerimaan:</strong> Menyimpan `id` (PK), `barang_id` (FK), `no_faktur`, `tanggal`, `jumlah_masuk`, `harga_satuan`, `sumber_dana`, dan `distributor`. Berelasi *Many-to-One* terhadap `tb_barang`.</li>
+  <li><strong>tb_pengeluaran:</strong> Menyimpan `id` (PK), `barang_id` (FK), `no_bukti`, `tanggal`, `jumlah_keluar`, `tujuan_ruangan`, `penerima`, dan `sisa_stok`. Berelasi *Many-to-One* terhadap `tb_barang`.</li>
+  <li><strong>tb_users:</strong> Menyimpan `id` (PK), `username`, `password`, `nama`, `nip`, dan `role` (Admin atau Pegawai).</li>
+</ol>
+
+<h3>3.3.12 Hasil Perancangan Antarmuka Sistem</h3>
+<ol style="margin-left: 1.25cm;">
+  <li><strong>Halaman Login:</strong> Membatasi akses sistem secara ketat hanya untuk akun Administrator (`admin`) dan Pegawai Logistik (`user`).</li>
+  <li><strong>Halaman Dashboard:</strong> Menampilkan kartu ringkasan total persediaan, nilai aset rupiah, mutasi hari ini, dan banner peringatan barang dengan stok &le; 5 unit.</li>
+  <li><strong>Modal Barcode Scanner Kamera HP:</strong> Menampilkan jendela kamera belakang ponsel, deteksi garis barcode secara otomatis, bunyi *beep* konfirmasi, formulir cepat jumlah keluar dan pilihan poli penerima, serta tombol **"Simpan & Kurangi Stok Otomatis"**.</li>
+  <li><strong>Dokumen Cetak KARTU STOK BARANG:</strong> Lembar cetak berstandar kedinasan ber-kop resmi (Logo Pemda Badung di kiri dan Logo Puskesmas di kanan), 5 baris identitas UPTD Puskesmas Petang I, tabel mutasi saldo, serta tanda tangan pengesahan **dr. I Ketut Dwipayana, M.Kes.** dan **I Ketut Buda Antara**.</li>
+  <li><strong>Halaman Pengaturan (Settings):</strong> Formulir konfigurasi 5 nomor WhatsApp dinas, penyuntingan kop laporan kedinasan, ganti kata sandi, dan tombol unduh database `db_sim_bhp.sql`.</li>
+</ol>
+
+<div class="page-break"></div>
+
+<!-- DAFTAR PUSTAKA -->
+<h1>DAFTAR PUSTAKA</h1>
+
+<p class="no-indent" style="padding-left: 1.25cm; text-indent: -1.25cm;">
+  Afifah, S. N., Subarno, A., & Akbarini, N. R. (2023). Implementasi sistem informasi pembangunan daerah (SIPD) untuk menunjang perencanaan pembangunan daerah di Kabupaten Wonosobo. <em>Jurnal Informasi Dan Komunikasi Administrasi Perkantoran (JIKAP)</em>, 7(2), 171–180.
+</p>
+
+<p class="no-indent" style="padding-left: 1.25cm; text-indent: -1.25cm;">
+  Effendy, E., Baiti, N., & Hasanah, P. (2023). Pengambilan Keputusan Sistem Informasi Manajemen Dakwah. <em>Jurnal Pendidikan Dan Konseling (JPDK)</em>, 5(2), 4314–4320.
+</p>
+
+<p class="no-indent" style="padding-left: 1.25cm; text-indent: -1.25cm;">
+  Febrian, V., Ramadhan, M. R., Faisal, M., & Saifudin, A. (2021). Pengujian pada Aplikasi Penggajian Pegawai dengan menggunakan Metode Blackbox. <em>Jurnal Informatika Universitas Pamulang</em>, 5(1), 61–68.
+</p>
+
+<p class="no-indent" style="padding-left: 1.25cm; text-indent: -1.25cm;">
+  Haryanto, B. (2024). Pengenalan Database NoSQL dan Perbandingannya dengan Database Relasional. <em>Jurnal Insan Pembangunan Sistem Informasi Dan Komputer (IPSIKOM)</em>, 12(1), 1–7.
+</p>
+
+<p class="no-indent" style="padding-left: 1.25cm; text-indent: -1.25cm;">
+  Kusrini, & Koniyo, A. (2021). <em>Tuntunan Praktis Membangun Sistem Informasi dengan Pendekatan Terstruktur</em>. Yogyakarta: Andi Offset.
+</p>
+
+<p class="no-indent" style="padding-left: 1.25cm; text-indent: -1.25cm;">
+  Maulana, I., Ginting, N. B., & Purwanto, E. H. (2023). Rancang Bangun Sistem Informasi Pengelolaan Stok Barang berbasis Web pada Perusahaan Busana Muslim. <em>Explore: Jurnal Sistem Informasi Dan Telematika</em>, 14(1), 48–56.
+</p>
+
+<p class="no-indent" style="padding-left: 1.25cm; text-indent: -1.25cm;">
+  Peraturan Menteri Kesehatan Republik Indonesia Nomor 43 Tahun 2019 tentang Pusat Kesehatan Masyarakat. Kementerian Kesehatan Republik Indonesia, Jakarta.
+</p>
+
+<p class="no-indent" style="padding-left: 1.25cm; text-indent: -1.25cm;">
+  Sitanggang, R., Dachi, U. T., & Manurung, I. H. G. (2022). Rancang Bangun Sistem Informasi Penjualan Berbasis Web Menggunakan PHP dan MySQL. <em>Jurnal Tekesnos</em>, 4(1), 84–90.
+</p>
+
+<p class="no-indent" style="padding-left: 1.25cm; text-indent: -1.25cm;">
+  Wahyudi, H., Zaeniah, & Salman. (2021). Rancang Bangun Sistem Informasi Pengelolaan Stok Obat Pada Apotek Karya Husada. <em>Jurnal Teknologi Informasi</em>, 3(1), 22–31.
+</p>
+
+<p class="no-indent" style="padding-left: 1.25cm; text-indent: -1.25cm;">
+  Wijaya, H., & Devitra, J. (2023). Sistem Informasi Manajemen Stok Berbasis Web Pada PT Sumber Rejeki Tirta. <em>Jurnal Manajemen Sistem Informasi</em>, 8(1), 55–68.
+</p>
+
+<p class="no-indent" style="padding-left: 1.25cm; text-indent: -1.25cm;">
+  Wulandari, V., Rullyana, G., & Ardiansah, A. (2021). Karakteristik Kualitas Informasi dalam Sistem Informasi Manajemen. <em>Berkala Ilmu Perpustakaan Dan Informasi</em>, 17(1), 98–111.
+</p>
+
+<div class="page-break"></div>
+
+<!-- LAMPIRAN -->
+<h1>LAMPIRAN</h1>
+
+<h2>Lampiran 1: Dokumentasi Wawancara dan Observasi Lapangan</h2>
+<p>
+  Observasi dan wawancara lapangan dilaksanakan di ruang logistik dan tata usaha UPTD Puskesmas Petang I Kabupaten Badung bersama Pengurus Barang Pembantu BHP (I Ketut Buda Antara) dan Petugas Pengelola Gudang untuk memetakan alur amprahan persediaan barang habis pakai dan standarisasi kop laporan dinas.
+</p>
+
+<h2>Lampiran 2: Struktur Basis Data MySQL (db_sim_bhp.sql)</h2>
+<p>
+  Skrip pembuatan basis data relasional mencakup tabel `tb_barang`, `tb_penerimaan`, `tb_pengeluaran`, `tb_users`, dan tabel data kop kedinasan yang dapat diunduh secara langsung melalui menu **Pengaturan &rarr; Ekspor db_sim_bhp.sql** pada aplikasi SIM-BHP.
+</p>
+
+</body>
+</html>

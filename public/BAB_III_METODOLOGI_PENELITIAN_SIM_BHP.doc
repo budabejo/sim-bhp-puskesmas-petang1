@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
+<head>
+<meta charset="utf-8">
+<title>BAB III METODOLOGI PENELITIAN LENGKAP - SIM-BHP PUSKESMAS PETANG I</title>
+<!--[if gte mso 9]>
+<xml>
+<w:WordDocument>
+<w:View>Print</w:View>
+<w:Zoom>100</w:Zoom>
+<w:DoNotOptimizeForBrowser/>
+</w:WordDocument>
+</xml>
+<![endif]-->
+<style>
+  @page {
+    size: 21.0cm 29.7cm; /* A4 */
+    margin: 4.0cm 3.0cm 3.0cm 4.0cm; /* Standar Skripsi: Kiri 4cm, Atas 4cm, Bawah 3cm, Kanan 3cm */
+    mso-page-orientation: portrait;
+  }
+  body {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 12pt;
+    line-height: 1.5;
+    color: #000000;
+    text-align: justify;
+  }
+  h1 {
+    font-size: 14pt;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    margin-top: 18pt;
+    margin-bottom: 18pt;
+  }
+  h2 {
+    font-size: 12pt;
+    font-weight: bold;
+    margin-top: 14pt;
+    margin-bottom: 6pt;
+  }
+  h3 {
+    font-size: 12pt;
+    font-weight: bold;
+    margin-top: 10pt;
+    margin-bottom: 4pt;
+  }
+  p {
+    margin-top: 0;
+    margin-bottom: 6pt;
+    text-indent: 1.25cm;
+  }
+  p.no-indent {
+    text-indent: 0;
+  }
+  p.center {
+    text-align: center;
+    text-indent: 0;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 8pt;
+    margin-bottom: 12pt;
+    font-size: 11pt;
+  }
+  table, th, td {
+    border: 1px solid #000000;
+  }
+  th {
+    background-color: #f2f2f2;
+    padding: 6pt;
+    text-align: center;
+    font-weight: bold;
+  }
+  td {
+    padding: 5pt 6pt;
+    vertical-align: top;
+  }
+  .box-diagram {
+    border: 1.5pt solid #003366;
+    background-color: #f8fafc;
+    padding: 10pt;
+    margin: 8pt 0 12pt 0;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 9pt;
+    line-height: 1.25;
+    white-space: pre;
+    color: #0f172a;
+  }
+  .box-ui {
+    border: 1.5pt solid #475569;
+    background-color: #ffffff;
+    padding: 8pt 10pt;
+    margin: 8pt 0 12pt 0;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 8.5pt;
+    line-height: 1.2;
+    white-space: pre;
+    color: #1e293b;
+  }
+  .caption {
+    font-size: 11pt;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 6pt;
+    margin-bottom: 8pt;
+    text-indent: 0;
+  }
+  .table-kop {
+    width: 100%;
+    border: none;
+    border-bottom: 3px double #000;
+    margin-bottom: 12pt;
+  }
+  .table-kop td {
+    border: none;
+    padding: 2pt;
+  }
+  .page-break {
+    page-break-before: always;
+  }
+</style>
+</head>
+<body>
+
+<h1>BAB III<br>METODOLOGI PENELITIAN</h1>
+
+<h2>3.1 Tempat dan Waktu Penelitian</h2>
+<p>
+  Penelitian ini dilaksanakan pada UPTD Puskesmas Petang I yang beralamat di Jalan Jahuripan-Petang, Desa Petang, Kecamatan Petang, Kabupaten Badung, Provinsi Bali (Kode Pos 80353). Objek penelitian difokuskan pada unit Pengelolaan Barang Milik Daerah (BMD), khususnya tata kelola persediaan Barang Habis Pakai (BHP) medis, laboratorium, dan non-medis pada ruang logistik farmasi dan tata usaha. Waktu pelaksanaan penelitian dan pengumpulan data lapangan dimulai sejak bulan Mei 2026 hingga September 2026.
+</p>
+
+<h2>3.2 Teknik Pengumpulan Data</h2>
+<p class="no-indent">
+  Untuk memperoleh data yang akurat, relevan, dan komprehensif guna perancangan sistem informasi, penulis menggunakan beberapa teknik pengumpulan data sebagai berikut:
+</p>
+
+<h3>3.2.1 Metode Kualitatif</h3>
+<p>
+  Metode kualitatif dilakukan dengan observasi partisipatif dan wawancara mendalam (<em>in-depth interview</em>) secara langsung kepada pihak pengelola persediaan di UPTD Puskesmas Petang I, yaitu:
+</p>
+<ol style="margin-left: 1.25cm; margin-bottom: 8pt;">
+  <li><strong>Bapak dr. I Ketut Dwipayana, M.Kes.</strong> selaku Kepala UPTD Puskesmas Petang I mengenai kebijakan pengendalian stok persediaan, legalitas tata naskah dinas, dan kebutuhan pengawasan persediaan pimpinan.</li>
+  <li><strong>Bapak I Ketut Buda Antara</strong> selaku Pengurus Barang Pembantu BHP mengenai kendala pencatatan manual pada buku ekspedisi amprahan, format Kartu Stok Barang, alur barang masuk/keluar, serta penetapan ambang batas stok minimum (&le; 5 unit).</li>
+  <li><strong>Petugas Logistik Gudang</strong> mengenai alur kerja harian pengeluaran barang ke poli/unit pelayanan (UGD, Poli Umum, Poli Gigi, Laboratorium, Pustu).</li>
+</ol>
+
+<h3>3.2.2 Dokumentasi</h3>
+<p>
+  Teknik dokumentasi dilakukan dengan mengumpulkan dan menelaah arsip dokumen fisik yang digunakan dalam tata kelola persediaan barang di UPTD Puskesmas Petang I, antara lain:
+</p>
+<ol style="margin-left: 1.25cm; margin-bottom: 8pt;">
+  <li>Lembaran buku register penerimaan barang dari penyedia/distributor pengadaan BLUD dan APBD.</li>
+  <li>Buku ekspedisi amprahan pengeluaran barang ke ruangan dan pustu.</li>
+  <li>Lembaran fisik Kartu Persediaan Barang Habis Pakai (BHP).</li>
+  <li>Format resmi Formulir Laporan Mutasi Barang Triwulan dan Semesteran standar Dinas Kesehatan Kabupaten Badung.</li>
+  <li>Dokumen profil puskesmas, struktur organisasi, dan logo resmi Pemerintah Kabupaten Badung serta logo Puskesmas Kemenkes.</li>
+</ol>
+
+<h3>3.2.3 Studi Pustaka</h3>
+<p>
+  Studi pustaka dilakukan dengan mengkaji berbagai landasan teori dari buku teks rekayasa perangkat lunak, jurnal ilmiah sistem informasi persediaan, serta peraturan perundang-undangan, antara lain Peraturan Menteri Kesehatan RI Nomor 43 Tahun 2019 tentang Pusat Kesehatan Masyarakat dan Peraturan Menteri Dalam Negeri Nomor 19 Tahun 2016 tentang Pedoman Pengelolaan Barang Milik Daerah.
+</p>
+
+<h3>3.2.4 Metode Waterfall</h3>
+<p>
+  Metode pengembangan perangkat lunak yang digunakan dalam penelitian ini adalah metode <em>Waterfall</em> (Classic Life Cycle). Model ini menyediakan pendekatan alur hidup perangkat lunak secara sekuensial (terurut), di mana kemajuan dipandang mengalir secara bertahap dari analisis hingga penerapan:
+</p>
+
+<p class="caption">Gambar 3.1 Tahapan Model Waterfall pada SIM-BHP Puskesmas Petang I</p>
+<div class="box-diagram">
+┌────────────────────────┐
+│ 1. Analisis Kebutuhan  │ ──> Identifikasi masalah amprahan manual, stok kritis &le; 5,
+└───────────┬────────────┘     kebutuhan scan barcode kamera HP & WhatsApp gateway.
+            ▼
+┌────────────────────────┐
+│ 2. Perancangan Sistem  │ ──> Diagram Konteks, DFD Level 0, DFD Level 1, ERD Basis Data,
+└───────────┬────────────┘     serta Mockup Antarmuka Pengguna (UI/UX).
+            ▼
+┌────────────────────────┐
+│ 3. Implementasi        │ ──> Pengkodean aplikasi berbasis Web (React, TypeScript, Tailwind),
+└───────────┬────────────┘     integrasi kamera Html5Qrcode, dan basis data MySQL.
+            ▼
+┌────────────────────────┐
+│ 4. Pengujian Sistem    │ ──> Pengujian Black-Box fungsionalitas potong stok otomatis,
+└───────────┬────────────┘     kamera barcode HP, notifikasi WA, dan cetak dokumen.
+            ▼
+┌────────────────────────┐
+│ 5. Penerapan           │ ──> Pemasangan pada perangkat gudang Puskesmas Petang I,
+└────────────────────────┘     pelatihan staf logistik, dan evaluasi operasional.
+</div>
+
+<ol style="margin-left: 1.25cm; margin-bottom: 10pt;">
+  <li><strong>Analisis Kebutuhan (Requirements Analysis):</strong> Pada tahap ini, penulis menganalisis kebutuhan fungsional dan non-fungsional sistem SIM-BHP. Kebutuhan fungsional meliputi: autentikasi 2 level pengguna (Admin dan Pegawai), pencatatan master barang BHP beserta cetak label barcode Code 128, transaksi penerimaan barang masuk, transaksi pengeluaran barang dengan pemindaian barcode nirkabel via kamera smartphone, sistem peringatan dini (<em>early warning alert</em>) stok minimum (&le; 5 unit) melalui WhatsApp Gateway ke 5 nomor dinas, pencetakan <strong>KARTU STOK BARANG</strong> ber-kop resmi Pemkab Badung, serta ekspor basis data SQL untuk server lokal (XAMPP).</li>
+  <li><strong>Implementasi (Implementation / Coding):</strong> Pada tahap ini, hasil perancangan diterjemahkan ke dalam bahasa pemrograman. Sistem SIM-BHP diimplementasikan berbasis web menggunakan arsitektur <em>Single Page Application</em> (SPA) dengan pustaka <strong>React.js</strong> dan bahasa <strong>TypeScript</strong>, penataan antarmuka menggunakan <strong>Tailwind CSS</strong>, integrasi pustaka pengolahan citra optik <strong>Html5Qrcode</strong> untuk pemindaian barcode kamera belakang smartphone, integrasi skema tautan URL WhatsApp API, serta mesin basis data relasional <strong>MySQL</strong>.</li>
+  <li><strong>Penerapan (Deployment & Integration):</strong> Pada tahap ini, sistem informasi diterapkan langsung pada perangkat komputer dan smartphone petugas logistik di UPTD Puskesmas Petang I. Dilakukan uji coba fungsionalitas menggunakan metode <em>Black-Box Testing</em> bersama staf gudang untuk memastikan fitur potong stok instan, cetak kartu stok resmi, dan pengiriman notifikasi WhatsApp berjalan optimal tanpa galat (<em>zero error</em>).</li>
+</ol>
+
+<h3>3.2.5 Diagram Konteks</h3>
+<p>
+  Diagram Konteks (<em>Context Diagram</em>) merupakan tingkatan pemodelan sistem paling tinggi yang menggambarkan batasan sistem serta seluruh aliran data yang masuk dan keluar antara sistem dengan entitas eksternal. Pada Sistem Informasi Manajemen Barang Habis Pakai (SIM-BHP) UPTD Puskesmas Petang I, entitas eksternal hanya terdiri dari dua pihak utama pengguna sistem, yaitu <strong>Administrator (Pengurus Barang BHP)</strong> di sisi kiri dan <strong>Pegawai (Petugas Gudang Logistik)</strong> di sisi kanan. Adapun pengiriman notifikasi WhatsApp darurat ditujukan langsung ke nomor WhatsApp dinas <strong>Pengurus Barang BHP dan PPTK Barang</strong> saat stok mencapai batas kritis (&le; 5 unit) tanpa menjadikannya sebagai entitas pengguna aplikasi tambahan. Rancangan Diagram Konteks disajikan pada Gambar 3.2.
+</p>
+
+<p class="caption">Gambar 3.2 Diagram Konteks SIM-BHP UPTD Puskesmas Petang I</p>
+<div class="box-diagram">
+┌──────────────────────────┐                                                   ┌──────────────────────────┐
+│      ADMINISTRATOR       │                                                   │         PEGAWAI          │
+│   (Pengurus Barang BHP)  │                                                   │ (Petugas Gudang Logistik)│
+└────────────┬─────────────┘                                                   └────────────┬─────────────┘
+             │                                                                              │
+             │ ── 1. Data login administrator ────────────────────────────────────────────> │
+             │ ── 2. Data master barang BHP ──────────────────────────────────────────────> │
+             │ ── 3. Data penerimaan barang ──────────────────────────────────────────────> │
+             │ ── 4. Pengaturan kop surat & NIP pejabat ──────────────────────────────────> │
+             │ ── 5. Pengaturan nomor WhatsApp penerima alert ────────────────────────────> │
+             │                                                                              │
+             │ <── 1. Validasi login ────────────────────────────────────────────────────── │
+             │ <── 2. Katalog dan barcode barang ────────────────────────────────────────── │
+             │ <── 3. Informasi mutasi stok ─────────────────────────────────────────────── │
+             │ <── 4. Laporan mutasi triwulan/semester ──────────────────────────────────── │
+             │ <── 5. Kartu stok barang resmi ───────────────────────────────────────────── │
+             │ <── 6. Notifikasi stok kritis ────────────────────────────────────────────── │
+             │ <── 7. Cadangan basis data (db_sim_bhp.sql) ──────────────────────────────── │
+             │                                                                              │
+             │                 ┌──────────────────────────────────────────┐                 │
+             │                 │                 SIM-BHP                  │                 │
+             └────────────────>│       UPTD PUSKESMAS PETANG I            │<────────────────┘
+                               │      (Pengelolaan Stok & Laporan)        │
+                               └────────────────────┬─────────────────────┘
+                                                    │
+                                                    │ <── 1. Data login pegawai ────────────┘
+                                                    │ <── 2. Hasil pemindaian barcode ──────┘
+                                                    │ <── 3. Data jumlah pengeluaran barang ┘
+                                                    │ <── 4. Unit/ruangan penerima barang ──┘
+                                                    │
+                                                    │ ──> 1. Validasi login ────────────────┐
+                                                    │ ──> 2. Informasi barang hasil scan ───┤
+                                                    │ ──> 3. Informasi sisa stok terbaru ───┤
+                                                    │ ──> 4. Kartu stok barang ─────────────┘
+                                                    │
+                                                    ▼ (Kondisi Stok &le; 5 Unit)
+                               ┌──────────────────────────────────────────┐
+                               │             WhatsApp Gateway             │
+                               └────────────────────┬─────────────────────┘
+                                                    │
+                                                    ▼
+                               ┌──────────────────────────────────────────┐
+                               │    Pengurus Barang BHP & PPTK Barang     │
+                               │        (Penerima Notifikasi WA)          │
+                               └──────────────────────────────────────────┘
+</div>
+
+<p class="no-indent"><strong>Penjelasan Aliran Data pada Diagram Konteks:</strong></p>
+<ol style="margin-left: 1.25cm; margin-bottom: 8pt;">
+  <li><strong>Aliran Data Administrator (Pengurus Barang BHP) &harr; SIM-BHP:</strong>
+    <br><em>Administrator &rarr; Sistem:</em>
+    <ul style="margin-left: 0.5cm;">
+      <li>Data login administrator (username dan password akun pengurus).</li>
+      <li>Data master barang BHP (nama barang, kategori, satuan, harga beli, lokasi rak fisik, ambang stok aman).</li>
+      <li>Data penerimaan barang (nomor faktur/surat jalan, tanggal terima, kuantitas masuk, rekanan penyedia/distributor).</li>
+      <li>Pengaturan kop surat kedinasan Pemkab Badung dan NIP pejabat (dr. I Ketut Dwipayana, M.Kes. & I Ketut Buda Antara).</li>
+      <li>Pengaturan daftar nomor WhatsApp dinas penerima alert.</li>
+    </ul>
+    <em>Sistem &rarr; Administrator:</em>
+    <ul style="margin-left: 0.5cm;">
+      <li>Validasi login dan inisialisasi sesi administrator.</li>
+      <li>Katalog data barang dan cetak stiker barcode Code 128 siap tempel.</li>
+      <li>Informasi mutasi persediaan barang secara real-time.</li>
+      <li>Laporan rekapitulasi mutasi triwulan dan semesteran resmi ber-kop Pemkab Badung.</li>
+      <li>Dokumen cetak KARTU STOK BARANG resmi ber-tanda tangan basah.</li>
+      <li>Notifikasi visual dan status barang kritis (&le; 5 unit).</li>
+      <li>Berkas cadangan basis data relasional (<code>db_sim_bhp.sql</code>).</li>
+    </ul>
+  </li>
+  <li><strong>Aliran Data Pegawai (Petugas Gudang Logistik) &harr; SIM-BHP:</strong>
+    <br><em>Pegawai &rarr; Sistem:</em>
+    <ul style="margin-left: 0.5cm;">
+      <li>Data login pegawai (username dan password petugas gudang).</li>
+      <li>Hasil pemindaian barcode fisik barang dari kamera smartphone / scanner USB.</li>
+      <li>Data jumlah pengeluaran barang yang diserahkan.</li>
+      <li>Unit/ruangan penerima amprahan (UGD 24 Jam, Poli Umum, Poli Gigi, Lab, Pustu, dll).</li>
+    </ul>
+    <em>Sistem &rarr; Pegawai:</em>
+    <ul style="margin-left: 0.5cm;">
+      <li>Validasi login dan hak akses operasional gudang.</li>
+      <li>Informasi identitas barang hasil pemindaian barcode (nama, spesifikasi, lokasi rak).</li>
+      <li>Informasi sisa stok terbaru yang langsung terpotong secara otomatis.</li>
+      <li>Tampilan kartu stok barang untuk pengecekan fisik.</li>
+    </ul>
+  </li>
+  <li><strong>Notifikasi WhatsApp Stok Minimum:</strong>
+    <br><em>SIM-BHP &rarr; WhatsApp Gateway &rarr; Pengurus Barang BHP dan PPTK Barang:</em>
+    <br>Sistem secara otomatis mendeteksi kondisi apabila kuantitas stok akhir suatu barang menyentuh angka ambang batas minimum (&le; 5 unit). Pesan terstruktur langsung diteruskan ke kontak WhatsApp dinas Pengurus Barang BHP dan Pejabat Pelaksana Teknis Kegiatan (PPTK) Barang guna percepatan pengadaan barang kembali (*re-order*).
+  </li>
+</ol>
+
+<h3>3.2.6 Data Flow Diagram (DFD) Level 0</h3>
+<p>
+  Data Flow Diagram (DFD) Level 0 menguraikan aliran data dari diagram konteks secara metodologis ke dalam 7 proses utama dan 4 penyimpanan data (<em>data store</em>), dengan tetap mempertahankan 2 entitas eksternal (Administrator dan Pegawai) serta menyalurkan notifikasi peringatan ke Pengurus Barang BHP dan PPTK Barang.
+</p>
+
+<p class="caption">Tabel 3.1 Daftar Proses dan Data Store pada DFD Level 0 SIM-BHP</p>
+<table>
+  <tr>
+    <th style="width: 15%;">Kode</th>
+    <th style="width: 35%;">Nama Proses / Data Store</th>
+    <th style="width: 50%;">Fungsi Operasional</th>
+  </tr>
+  <tr>
+    <td class="center"><strong>1.0</strong></td>
+    <td><strong>Login</strong></td>
+    <td>Autentikasi akun pengguna (Admin dan Pegawai).</td>
+  </tr>
+  <tr>
+    <td class="center"><strong>2.0</strong></td>
+    <td><strong>Kelola Master BHP</strong></td>
+    <td>Manajemen katalog barang, lokasi rak, dan cetak label barcode.</td>
+  </tr>
+  <tr>
+    <td class="center"><strong>3.0</strong></td>
+    <td><strong>Transaksi Masuk</strong></td>
+    <td>Pencatatan penerimaan barang dari rekanan dan penambahan stok.</td>
+  </tr>
+  <tr>
+    <td class="center"><strong>4.0</strong></td>
+    <td><strong>Scan Pengeluaran</strong></td>
+    <td>Pemindaian barcode via kamera HP, catat ruangan, dan potong stok.</td>
+  </tr>
+  <tr>
+    <td class="center"><strong>5.0</strong></td>
+    <td><strong>Cek Ambang Batas Stok (&le; 5)</strong></td>
+    <td>Deteksi kondisi stok kritis dan pengiriman pesan WhatsApp.</td>
+  </tr>
+  <tr>
+    <td class="center"><strong>6.0</strong></td>
+    <td><strong>Cetak Laporan &amp; Rekapitulasi</strong></td>
+    <td>Pencetakan Kartu Stok resmi dan Laporan Mutasi Triwulan.</td>
+  </tr>
+  <tr>
+    <td class="center"><strong>7.0</strong></td>
+    <td><strong>Konfigurasi Sistem</strong></td>
+    <td>Pengaturan kop surat Pemkab Badung, NIP, no WA, dan backup SQL.</td>
+  </tr>
+  <tr>
+    <td class="center"><strong>D1</strong></td>
+    <td><strong>tb_user</strong></td>
+    <td>Menyimpan akun pengguna, password, NIP, dan level hak akses.</td>
+  </tr>
+  <tr>
+    <td class="center"><strong>D2</strong></td>
+    <td><strong>tb_barang</strong></td>
+    <td>Menyimpan kode barcode, nama BHP, kategori, satuan, dan saldo stok riil.</td>
+  </tr>
+  <tr>
+    <td class="center"><strong>D3</strong></td>
+    <td><strong>tb_terima</strong></td>
+    <td>Menyimpan riwayat faktur barang masuk dan rekanan penyedia.</td>
+  </tr>
+  <tr>
+    <td class="center"><strong>D4</strong></td>
+    <td><strong>tb_keluar</strong></td>
+    <td>Menyimpan log pengeluaran amprahan barang ke ruangan pelayanan.</td>
+  </tr>
+</table>
+
+<p class="caption">Gambar 3.3 Data Flow Diagram (DFD) Level 0 SIM-BHP Puskesmas Petang I</p>
+<div class="box-diagram">
+┌──────────────────────┐                                                           ┌──────────────────────┐
+│    ADMINISTRATOR     │                                                           │       PEGAWAI        │
+│(Pengurus Barang BHP) │                                                           │(Petugas Logistik Gdg)│
+└──────────┬───────────┘                                                           └──────────┬───────────┘
+           │                                                                                  │
+           │ ── (User & Pass Admin) ──> ┌─────────────────────────┐ <── (User & Pass Pegawai) ┤
+           │ <── (Validasi Admin) ──── │       1.0 LOGIN         │ ──── (Validasi Pegawai) ──>│
+           │                            └────────────┬────────────┘                            │
+           │                                         │                                        │
+           │                                         ▼ (Baca / Tulis Akun)                    │
+           │                                  ┌─────────────┐                                 │
+           │                                  │ D1: tb_user │                                 │
+           │                                  └─────────────┘                                 │
+           │                                                                                  │
+           │ ── (Data Master BHP) ────> ┌─────────────────────────┐                           │
+           │ <── (Katalog & Barcode) ── │  2.0 KELOLA MASTER BHP  │                           │
+           │                            └────────────┬────────────┘                           │
+           │                                         │                                        │
+           │                                         ▼ (Simpan / Update Barang)               │
+           │                                  ┌───────────────┐                               │
+           │                                  │ D2: tb_barang │ ◄─────────────────────────┐   │
+           │                                  └───────┬───────┘                           │   │
+           │                                          │                                   │   │
+           │ ── (Faktur Barang Masuk) > ┌─────────────┴───────────┐                       │   │
+           │ <── (Info Stok Bertambah)─ │   3.0 TRANSAKSI MASUK   │ (Update Stok Masuk)   │   │
+           │                            └─────────────┬───────────┘ ──────────────────────┤   │
+           │                                          │                                   │   │
+           │                                          ▼                                   │   │
+           │                                   ┌──────────────┐                           │   │
+           │                                   │ D3: tb_terima│                           │   │
+           │                                   └──────────────┘                           │   │
+           │                                                                              │   │
+           │                                                            (Hasil Scan & Jml)│   │
+           │                            ┌─────────────────────────┐ <─────────────────────┼───┘
+           │                            │  4.0 SCAN PENGELUARAN   │ ──── (Sisa Stok Baru) ┼──>
+           │                            │  (Kamera HP / Scanner)  │                           │
+           │                            └─────────────┬───────────┘ ──────────────────────┘
+           │                                          │             (Potong Stok Otomatis)
+           │                                          ▼
+           │                                   ┌──────────────┐
+           │                                   │ D4: tb_keluar│
+           │                                   └──────┬───────┘
+           │                                          │
+           │                            ┌─────────────┴───────────┐ (Evaluasi Stok &le; 5 Unit)
+           │                            │  5.0 CEK AMBANG BATAS   │
+           │                            │       STOK (&le; 5)     │
+           │                            └─────────────┬───────────┘
+           │                                          │ (Pemicu Peringatan Darurat)
+           │                                          ▼
+           │                            ┌─────────────────────────┐
+           │ <── (Alert Visual Kritis) ─│    WhatsApp Gateway     │
+           │                            └─────────────┬───────────┘
+           │                                          │ (Pesan Otomatis)
+           │                                          ▼
+           │                            ┌─────────────────────────┐
+           │                            │ Pengurus Barang BHP dan │
+           │                            │       PPTK Barang       │
+           │                            └─────────────────────────┘
+           │
+           │ ── (Pilih Periode / Cetak) > ┌─────────────────────────┐
+           │ <── (Kartu Stok & Laporan) ─ │ 6.0 CETAK LAPORAN &amp;    │ ◄─── (Baca D2, D3, D4)
+           │                              │     REKAPITULASI        │
+           │                              └─────────────────────────┘
+           │
+           │ ── (Atur Kop, NIP, 5 No WA)> ┌─────────────────────────┐
+           │ <── (File db_sim_bhp.sql) ── │ 7.0 KONFIGURASI SISTEM  │ ──> (Ekspor Basis Data MySQL)
+           │                              └─────────────────────────┘
+</div>
+
+<h3>3.2.7 Perancangan DFD Level 1 Proses Login</h3>
+<p>
+  Pada proses 1.0 (Login), pengguna memasukkan username dan password. Sistem memverifikasi kredensial tersebut ke tabel <code>tb_users</code>. Apabila data valid, hak akses diberikan sesuai perannya (Admin atau Pegawai). Apabila data tidak valid, sistem menolak akses.
+</p>
+
+<p class="caption">Gambar 3.4 DFD Level 1 Proses 1.0 Login</p>
+<div class="box-diagram">
+[Pengguna: Admin / Pegawai] ── (Input: Username, Password) ──> ┌───────────────────────────┐
+                                                              │ 1.1 Verifikasi Kredensial │
+                                                              └─────────────┬─────────────┘
+                                                                            │
+                                                                            ▼
+                                                                      ┌───────────┐
+                                                                      │ tb_users  │
+                                                                      └─────┬─────┘
+                                                                            │ (Data Pengguna Valid)
+                                                                            ▼
+[Tampilan Dashboard Sistem] <── (Session Aktif & Hak Akses) ── ┌───────────────────────────┐
+                                                              │ 1.2 Inisialisasi Sesi     │
+                                                              └───────────────────────────┘
+</div>
+
+<h3>3.2.8 Perancangan DFD Level 1 Proses User (Pengguna)</h3>
+<p>
+  Proses pengelolaan pengguna mengatur hak akses operasional. Pada UPTD Puskesmas Petang I, pengguna dikunci secara ketat menjadi 2 tingkatan: Administrator (Pengurus Barang) yang mengendalikan seluruh menu, dan Pegawai (Petugas Logistik) yang berfokus pada operasional scan barcode dan stok fisik. Admin dapat mengelola pembaruan nama, NIP, serta kata sandi akun masing-masing.
+</p>
+
+<h3>3.2.9 Perancangan DFD Level 1 Proses Ruangan (Poli dan Unit Tujuan)</h3>
+<p>
+  Proses data ruangan memetakan seluruh unit kerja di lingkungan Puskesmas Petang I yang berhak mengajukan amprahan persediaan BHP. Ruangan terbagi menjadi unit internal (UGD 24 Jam, Poli Umum, Poli Gigi, Poli KIA/KB, Ruang Bersalin, Laboratorium, Farmasi, Tata Usaha) dan jaringan eksternal (Pustu Pelaga, Pustu Belok Sidan, Pustu Pangsan, Pustu Nungnung).
+</p>
+
+<h3>3.2.10 Perancangan DFD Level 1 Proses Master Data Barang Habis Pakai (BHP)</h3>
+<p>
+  Proses ini mencatat kode barcode unik, nama barang, kategori (Medis/BMHP, Obat, Lab, ATK, Kebersihan), satuan, stok awal, harga beli satuan, lokasi rak di gudang, dan ambang stok kritis (&le; 5 unit) ke tabel <code>tb_barang</code>. Sistem secara otomatis membuat label barcode Code 128 untuk dicetak dan ditempelkan pada fisik kemasan barang.
+</p>
+
+<h3>3.2.11 Perancangan DFD Level 1 Proses Penerimaan Barang (Barang Masuk)</h3>
+<p>
+  Proses ini mencatat barang yang masuk dari penyedia/distributor atau pasokan Dinas Kesehatan berdasarkan Surat Jalan / Faktur. Data disimpan ke tabel <code>tb_penerimaan</code>, dan secara otomatis menambahkan saldo stok berjalan pada tabel <code>tb_barang</code> serta mencatat transaksi debet pada Kartu Stok Barang.
+</p>
+
+<h3>3.2.12 Perancangan DFD Level 1 Proses Pengeluaran Barang via Barcode Scanner</h3>
+<p>
+  Petugas mengaktifkan kamera smartphone untuk memindai stiker barcode fisik barang. Setelah bunyi <em>beep</em> konfirmasi, petugas mengisi jumlah pengeluaran dan memilih ruangan tujuan. Sistem memotong stok fisik pada tabel <code>tb_barang</code> saat itu juga dan mencatat mutasi kredit pada Kartu Stok.
+</p>
+
+<p class="caption">Gambar 3.5 Alur Proses Pengeluaran Barang via Barcode Scanner</p>
+<div class="box-diagram">
+[Kamera HP Petugas] ── (Scan Stiker Barcode) ──> ┌─────────────────────────────┐
+                                                 │ 4.1 Dekode Optik Code 128   │
+                                                 └──────────────┬──────────────┘
+                                                                │ (Kode Terbaca & Audio Beep)
+                                                                ▼
+[Input Form Pengeluaran] ── (Jumlah Keluar, Poli) ─> ┌─────────────────────────────┐
+                                                     │ 4.2 Validasi Saldo Stok     │
+                                                     └──────────────┬──────────────┘
+                                                                    │ (Stok Cukup)
+                                          ┌─────────────────────────┴─────────────────────────┐
+                                          ▼                                                   ▼
+                                  ┌───────────────┐                                   ┌───────────────┐
+                                  │ tb_pengeluaran│ (Catat Transaksi)                 │   tb_barang   │ (Potong Stok)
+                                  └───────────────┘                                   └───────────────┘
+</div>
+
+<h3>3.2.13 Perancangan DFD Level 1 Proses Early Warning Notifikasi WhatsApp Stok Kritis</h3>
+<p>
+  Setiap kali transaksi pengeluaran barang selesai, sistem memeriksa saldo akhir: jika stok &le; 5 unit, sistem otomatis menandai status barang menjadi <strong>Kritis</strong> dan menyiapkan pesan peringatan terenkripsi yang dapat diteruskan ke salah satu dari 5 nomor WhatsApp dinas pimpinan dan pengurus barang.
+</p>
+
+<h3>3.2.14 Perancangan DFD Level 1 Proses Kartu Stok Barang</h3>
+<p>
+  Sistem mengompilasi riwayat transaksi penerimaan dan pengeluaran secara kronologis menjadi lembaran dokumen resmi berjudul <strong>KARTU STOK BARANG</strong> ber-kop ganda Pemkab Badung dan Puskesmas, serta memuat tanda tangan pengesahan dr. I Ketut Dwipayana, M.Kes. dan I Ketut Buda Antara.
+</p>
+
+<h3>3.2.15 Perancangan DFD Level 1 Proses Laporan Rekapitulasi Mutasi Triwulan</h3>
+<p>
+  Proses ini menyusun rekapitulasi persediaan barang secara berkala (Triwulan I s/d IV dan Semesteran) yang memuat saldo awal, total masuk, total keluar, saldo akhir, dan total nilai aset rupiah persediaan untuk keperluan pemeriksaan Dinas Kesehatan dan BPKAD.
+</p>
+
+<h3>3.2.16 Perancangan DFD Level 1 Proses Pengaturan Sistem dan Basis Data (Settings)</h3>
+<p>
+  Proses ini mengelola konfigurasi 5 nomor WhatsApp dinas, teks kop surat resmi Pemkab Badung, kata sandi pengguna, serta tombol ekspor basis data relasional <code>db_sim_bhp.sql</code> untuk server lokal (XAMPP).
+</p>
+
+<h3>3.2.17 Entity Relationship Diagram (ERD)</h3>
+<p>
+  Entity Relationship Diagram (ERD) memodelkan hubungan relasional antar entitas data pada basis data SIM-BHP:
+</p>
+
+<p class="caption">Gambar 3.6 Entity Relationship Diagram (ERD) SIM-BHP Puskesmas Petang I</p>
+<div class="box-diagram">
+┌─────────────────────────┐           1 : N           ┌─────────────────────────┐
+│        tb_barang        │ ────────────────────────< │      tb_penerimaan      │
+├─────────────────────────┤                           ├─────────────────────────┤
+│ PK: id (INT)            │                           │ PK: id (INT)            │
+│ kode (VARCHAR) [Barcode]│                           │ FK: barang_id (INT)     │
+│ nama (VARCHAR)          │                           │ no_faktur (VARCHAR)     │
+│ kategori (VARCHAR)      │                           │ tanggal (DATE)          │
+│ satuan (VARCHAR)        │                           │ jumlah_masuk (INT)      │
+│ stok_awal (INT)         │                           │ harga_satuan (DECIMAL)  │
+│ stok_saat_ini (INT)     │                           │ sumber_dana (VARCHAR)   │
+│ stok_minimum (INT) [<=5]│                           │ distributor (VARCHAR)   │
+│ harga_satuan (DECIMAL)  │                           └─────────────────────────┘
+│ lokasi_rak (VARCHAR)    │           1 : N           ┌─────────────────────────┐
+└─────────────────────────┘ ────────────────────────< │     tb_pengeluaran      │
+             │                                        ├─────────────────────────┤
+             │                                        │ PK: id (INT)            │
+             │ 1 : N                                  │ FK: barang_id (INT)     │
+             │                                        │ no_bukti (VARCHAR)      │
+             ▼                                        │ tanggal (DATE)          │
+┌─────────────────────────┐                           │ jumlah_keluar (INT)     │
+│      tb_kartu_stok      │                           │ tujuan_ruangan (VARCHAR)│
+├─────────────────────────┤                           │ penerima (VARCHAR)      │
+│ PK: id (INT)            │                           │ sisa_stok (INT)         │
+│ FK: barang_id (INT)     │                           └─────────────────────────┘
+│ tanggal (DATE)          │
+│ masuk (INT)             │                           ┌─────────────────────────┐
+│ keluar (INT)            │                           │        tb_users         │
+│ saldo_akhir (INT)       │                           ├─────────────────────────┤
+│ keterangan (VARCHAR)    │                           │ PK: id (INT)            │
+└─────────────────────────┘                           │ username (VARCHAR)      │
+                                                      │ password (VARCHAR)      │
+                                                      │ nama (VARCHAR)          │
+                                                      │ nip (VARCHAR)           │
+                                                      │ role (admin / user)     │
+                                                      └─────────────────────────┘
+</div>
+
+<p class="caption">Tabel 3.1 Struktur Data Relasional Entitas Master Barang (tb_barang)</p>
+<table>
+  <tr>
+    <th style="width: 25%;">Nama Kolom (Field)</th>
+    <th style="width: 20%;">Tipe Data</th>
+    <th style="width: 15%;">Keterangan</th>
+    <th style="width: 40%;">Deskripsi Fungsional</th>
+  </tr>
+  <tr>
+    <td>id</td>
+    <td>INT(11) AUTO_INCREMENT</td>
+    <td>Primary Key</td>
+    <td>Identifikator unik data barang.</td>
+  </tr>
+  <tr>
+    <td>kode</td>
+    <td>VARCHAR(50) UNIQUE</td>
+    <td>Index</td>
+    <td>Kode unik barcode optik (Code 128 / QR).</td>
+  </tr>
+  <tr>
+    <td>nama</td>
+    <td>VARCHAR(255)</td>
+    <td>-</td>
+    <td>Nama lengkap barang persediaan BHP.</td>
+  </tr>
+  <tr>
+    <td>kategori</td>
+    <td>VARCHAR(100)</td>
+    <td>-</td>
+    <td>Medis/BMHP, Obat, Lab, ATK, Kebersihan.</td>
+  </tr>
+  <tr>
+    <td>satuan</td>
+    <td>VARCHAR(50)</td>
+    <td>-</td>
+    <td>Pcs, Box, Botol, Vial, Roll, Pack.</td>
+  </tr>
+  <tr>
+    <td>stok_awal</td>
+    <td>INT(11)</td>
+    <td>-</td>
+    <td>Saldo awal saat pendataan barang.</td>
+  </tr>
+  <tr>
+    <td>stok_saat_ini</td>
+    <td>INT(11)</td>
+    <td>-</td>
+    <td>Saldo riil terkini hasil kalkulasi perpetual.</td>
+  </tr>
+  <tr>
+    <td>stok_minimum</td>
+    <td>INT(11)</td>
+    <td>Default 5</td>
+    <td>Ambang batas picu status kritis (&le; 5 unit).</td>
+  </tr>
+  <tr>
+    <td>harga_satuan</td>
+    <td>DECIMAL(15,2)</td>
+    <td>-</td>
+    <td>Nilai harga beli per unit (Rupiah).</td>
+  </tr>
+  <tr>
+    <td>lokasi_rak</td>
+    <td>VARCHAR(100)</td>
+    <td>-</td>
+    <td>Posisi rak fisik di gudang puskesmas.</td>
+  </tr>
+</table>
+
+<p class="caption">Tabel 3.2 Struktur Data Relasional Entitas Pengeluaran (tb_pengeluaran)</p>
+<table>
+  <tr>
+    <th style="width: 25%;">Nama Kolom (Field)</th>
+    <th style="width: 20%;">Tipe Data</th>
+    <th style="width: 15%;">Keterangan</th>
+    <th style="width: 40%;">Deskripsi Fungsional</th>
+  </tr>
+  <tr>
+    <td>id</td>
+    <td>INT(11) AUTO_INCREMENT</td>
+    <td>Primary Key</td>
+    <td>Identifikator unik transaksi pengeluaran.</td>
+  </tr>
+  <tr>
+    <td>barang_id</td>
+    <td>INT(11)</td>
+    <td>Foreign Key</td>
+    <td>Relasi ke tabel <code>tb_barang(id)</code>.</td>
+  </tr>
+  <tr>
+    <td>no_bukti</td>
+    <td>VARCHAR(50)</td>
+    <td>-</td>
+    <td>Nomor register bukti amprahan pengeluaran.</td>
+  </tr>
+  <tr>
+    <td>tanggal</td>
+    <td>DATE</td>
+    <td>-</td>
+    <td>Tanggal pengeluaran barang.</td>
+  </tr>
+  <tr>
+    <td>jumlah_keluar</td>
+    <td>INT(11)</td>
+    <td>-</td>
+    <td>Kuantitas fisik barang yang diserahkan.</td>
+  </tr>
+  <tr>
+    <td>tujuan_ruangan</td>
+    <td>VARCHAR(100)</td>
+    <td>-</td>
+    <td>Unit/Poli/Pustu penerima amprahan.</td>
+  </tr>
+  <tr>
+    <td>penerima</td>
+    <td>VARCHAR(100)</td>
+    <td>-</td>
+    <td>Nama staf/tenaga medis yang mengambil.</td>
+  </tr>
+  <tr>
+    <td>sisa_stok</td>
+    <td>INT(11)</td>
+    <td>-</td>
+    <td>Saldo sisa stok gudang pasca-transaksi.</td>
+  </tr>
+</table>
+
+<div class="page-break"></div>
+
+<h3>3.2.18 Hasil Perancangan Antarmuka Sistem (User Interface)</h3>
+<p>
+  Tahap perancangan antarmuka pengguna (<em>User Interface Design</em>) menggambarkan rancangan visual dan tata letak operasional dari seluruh antarmuka pada Sistem Informasi Manajemen Persediaan Barang Habis Pakai (SIM-BHP) UPTD Puskesmas Petang I. Seluruh antarmuka mengusung identitas resmi Pemerintah Kabupaten Badung, dilengkapi navigasi peran (Admin & Pegawai), pemindai barcode kamera smartphone, serta tombol peringatan WhatsApp stok minimum. Rincian perancangan antarmuka disajikan sebagai berikut:
+</p>
+
+<!-- 1. HALAMAN LOGIN -->
+<h4>1. Perancangan Antarmuka Halaman Login Pengguna</h4>
+<p>
+  Halaman login dirancang sebagai pintu gerbang otentikasi keamanan sistem dengan latar belakang bernuansa kedinasan (*dark emerald gradient*), memuat <strong>Logo Kabupaten Badung</strong> di sisi kiri dan <strong>Logo Puskesmas Kemenkes</strong> di sisi kanan, identitas UPTD Puskesmas Petang I, kolom *Username*, *Password* (dengan tombol intip sandi), serta tombol masuk. Rancangan antarmuka disajikan pada Gambar 3.7.
+</p>
+<p class="caption">Gambar 3.7 Perancangan Antarmuka Halaman Login SIM-BHP</p>
+<div class="box-ui">
+┌──────────────────────────────────────────────────────────────────────────────┐
+│                    UPTD PUSKESMAS PERSADA PETANG I BADUNG                    │
+├──────────────────────────────────────────────────────────────────────────────┤
+│                                                                              │
+│             ┌─────────────────────────┐   ┌─────────────────────────┐        │
+│             │   [LOGO PEMKAB BADUNG]  │   │  [LOGO PUSKESMAS KEMEN] │        │
+│             └─────────────────────────┘   └─────────────────────────┘        │
+│                                                                              │
+│                        [ UPTD PUSKESMAS PETANG I ]                           │
+│                                  SIM-BHP                                     │
+│          Sistem Informasi Manajemen Persediaan Barang Habis Pakai (BHP)      │
+│                                                                              │
+│     Nama Pengguna (Username) : [ admin / user                      ]         │
+│                                                                              │
+│     Kata Sandi (Password)    : [ ••••••••••••                      ] [👁]    │
+│                                                                              │
+│     Petunjuk Hak Akses :                                                     │
+│     &bull; Administrator : username 'admin' (Pengurus Barang BHP)                  │
+│     &bull; Pegawai Gudang: username 'user'  (Petugas Logistik Gudang)              │
+│                                                                              │
+│                     ┌──────────────────────────────────────┐                 │
+│                     │       [ MASUK KE SISTEM &rarr; ]           │                 │
+│                     └──────────────────────────────────────┘                 │
+│                                                                              │
+│      Dinas Kesehatan Kabupaten Badung &bull; Wilayah Kecamatan Petang, Bali       │
+└──────────────────────────────────────────────────────────────────────────────┘
+</div>
+
+<!-- 2. DASHBOARD UTAMA -->
+<h4>2. Perancangan Antarmuka Halaman Dashboard Utama</h4>
+<p>
+  Halaman Dashboard merupakan beranda utama setelah berhasil login. Bagian atas memuat <strong>Bootstrap Header</strong> kedinasan dengan garis aksen Tri-Datu/Badung Green dan Logo Ganda Resmi. Di bawahnya terdapat 5 kartu metrik utama persediaan, banner darurat stok kritis (&le; 5 unit), navigasi cepat tombol <strong>[Scan Barcode HP]</strong> dan <strong>[Notif WA]</strong>, ringkasan per kategori BHP, serta log 5 transaksi amprahan terakhir. Rancangan antarmuka disajikan pada Gambar 3.8.
+</p>
+<p class="caption">Gambar 3.8 Perancangan Antarmuka Halaman Dashboard Utama SIM-BHP</p>
+<div class="box-ui">
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ [BADUNG] [PUSKESMAS]  SIM-BHP - UPTD PUSKESMAS PETANG I  [Scan HP] [Notif WA]│
+│ [Dashboard] [Data Barang] [Penerimaan] [Pengeluaran] [Kartu Stok] [Laporan]  │
+├──────────────────────────────────────────────────────────────────────────────┤
+│ ┌──────────────────────────────────────────────────────────────────────────┐ │
+│ │ &bull; PERINGATAN DARURAT: 3 Item Barang Habis Pakai Mencapai Batas Kritis (&le;5)│ │
+│ │ Segera lakukan pemesanan ulang untuk menjamin kontinuitas layanan medis! │ │
+│ │ [Spuit Injeksi 3cc: Sisa 2 Box] [Kassa Steril: Sisa 4 Roll] [Kirim WA &rarr;]│ │
+│ └──────────────────────────────────────────────────────────────────────────┘ │
+│                                                                              │
+│ ┌───────────────┐ ┌───────────────┐ ┌───────────────┐ ┌────────────────────┐ │
+│ │NILAI PERSEDIAAN│ │TOTAL ITEM BHP │ │ BARANG MASUK  │ │   BARANG KELUAR    │ │
+│ │Rp 48.750.000  │ │148 Jenis BHP  │ │+1.450 Masuk   │ │-980 Amprahan       │ │
+│ └───────────────┘ └───────────────┘ └───────────────┘ └────────────────────┘ │
+│                                                                              │
+│ REKAPITULASI DISTRIBUSI KE RUANGAN / POLI PELAYANAN:                         │
+│ &bull; Ruang UGD (24 Jam) : 340 Item (35%)      &bull; Ruang Bersalin (VK) : 120 Item  │
+│ &bull; Poli Umum         : 280 Item (28%)      &bull; Jaringan Pustu      : 110 Item  │
+│ &bull; Laboratorium      : 130 Item (13%)      &bull; Poli Gigi           : 90 Item   │
+└──────────────────────────────────────────────────────────────────────────────┘
+</div>
+│ 2. 26/09 09:15 - Poli Umum         : Kassa Steril 16x16 (10 Roll)-[Diserahkan│
+│ 3. 26/09 10:00 - Laboratorium      : Handscoon Lateks M (5 Box) - [Diserahkan│
+└──────────────────────────────────────────────────────────────────────────────┘
+</div>
+
+<!-- 3. MASTER DATA BHP & CETAK LABEL BARCODE -->
+<h4>3. Perancangan Antarmuka Halaman Data Master Barang Habis Pakai (BHP)</h4>
+<p>
+  Halaman ini digunakan oleh Administrator untuk mengelola seluruh katalog data barang persediaan, memantau posisi rak penyimpanan di gudang, menyaring kategori (Medis, Obat, Lab, ATK, Kebersihan), serta mencetak stiker label barcode Code 128. Rancangan antarmuka disajikan pada Gambar 3.9.
+</p>
+<p class="caption">Gambar 3.9 Perancangan Antarmuka Halaman Data Master Barang BHP</p>
+<div class="box-ui">
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ [SIM-BHP]  Dashboard | Master Data | Penerimaan | Pengeluaran | Kartu Stok   │
+├──────────────────────────────────────────────────────────────────────────────┤
+│ DATA MASTER BARANG HABIS PAKAI (BHP)             [+ Tambah BHP] [Cetak Label]│
+│ Cari Barang: [ Ketik Nama / Kode Barcode... ]    Kategori: [ Semua Kategori▼]│
+├──────┬─────────────┬──────────────────────────┬──────────┬──────────┬────────┤
+│ No   │ Kode Barcode│ Nama Barang & Lokasi Rak │ Kategori │ Stok     │ Aksi   │
+├──────┼─────────────┼──────────────────────────┼──────────┼──────────┼────────┤
+│ 1.   │ BHP-MED-001 │ Spuit Injeksi 3cc Terumo │ Medis    │ 85 Box   │ [Edit] │
+│      │ ||||||||||| │ Rak A-1 Farmasi          │ Rp 75.000│ Status:OK│ [Hapus]│
+├──────┼─────────────┼──────────────────────────┼──────────┼──────────┼────────┤
+│ 2.   │ BHP-MED-002 │ Kassa Steril 16x16 Husada│ Medis    │ 4 Roll   │ [Edit] │
+│      │ ||||||||||| │ Rak A-2 Logistik         │ Rp 42.000│ [KRITIS] │ [WA]   │
+├──────┼─────────────┼──────────────────────────┼──────────┼──────────┼────────┤
+│ 3.   │ BHP-LAB-005 │ Reagen Golongan Darah A  │ Laborat  │ 2 Vial   │ [Edit] │
+│      │ ||||||||||| │ Kulkas Reagen Lab        │ Rp 180.00│ [KRITIS] │ [WA]   │
+└──────┴─────────────┴──────────────────────────┴──────────┴──────────┴────────┘
+</div>
+
+<!-- 4. MODAL TAMBAH/EDIT MASTER BARANG -->
+<h4>4. Perancangan Antarmuka Formulir Tambah / Edit Data Barang</h4>
+<p>
+  Formulir modal ini berfungsi untuk menginput barang baru atau memperbarui data barang lama. Parameter meliputi kode barcode, nama, kategori, satuan, harga satuan beli, stok awal, ambang batas stok minimum (&le; 5 unit), dan lokasi rak fisik. Rancangan antarmuka disajikan pada Gambar 3.10.
+</p>
+<p class="caption">Gambar 3.10 Perancangan Antarmuka Formulir Input Data Barang</p>
+<div class="box-ui">
+┌──────────────────────────────────────────────────────────────────────────────┐
+│                     FORMULIR INPUT DATA BARANG HABIS PAKAI                   │
+├──────────────────────────────────────────────────────────────────────────────┤
+│ Kode / Barcode  : [ BHP-MED-001                         ] [Buat Otomatis]    │
+│ Nama Barang     : [ Spuit Injeksi 3cc Terumo                                ]│
+│ Kategori BHP    : [ Bahan Medis Habis Pakai (BMHP)                        ▼ ]│
+│ Sumber Anggaran : [ PENGADAAN BLUD                                        ▼ ]│
+│ Satuan Kemasan  : [ Box (Isi 100 Pcs)                                     ▼ ]│
+│ Harga Satuan Rp : [ 75.000                              ]                    │
+│ Stok Awal       : [ 100                                 ]                    │
+│ Stok Minimum    : [ 5                                   ] (Ambang Kritis)    │
+│ Lokasi Rak Fisik: [ Rak A-1 Farmasi Puskesmas                               ]│
+│                                                                              │
+│            ┌───────────────────────────┐      ┌─────────────────────────┐    │
+│            │        [ BATAL ]          │      │     [ SIMPAN DATA ]     │    │
+│            └───────────────────────────┘      └─────────────────────────┘    │
+└──────────────────────────────────────────────────────────────────────────────┘
+</div>
+
+<!-- 5. PENERIMAAN BARANG -->
+<h4>5. Perancangan Antarmuka Halaman Transaksi Penerimaan Barang (Barang Masuk)</h4>
+<p>
+  Halaman ini digunakan untuk mencatat dan memantau seluruh transaksi barang masuk dari distributor rekanan atau Dinas Kesehatan. Setiap transaksi otomatis menambah kuantitas stok master dan riwayat debet kartu stok. Rancangan antarmuka disajikan pada Gambar 3.11.
+</p>
+<p class="caption">Gambar 3.11 Perancangan Antarmuka Halaman Penerimaan Barang</p>
+<div class="box-ui">
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ DATA TRANSAKSI PENERIMAAN BARANG MASUK             [+ Catat Barang Masuk]    │
+│ Filter: [ Tanggal Mulai s/d Selesai ] [ Kategori: SEMUA ▼ ] [ Cari Faktur.. ]│
+├────┬──────────┬──────────────┬────────────────────────┬─────────┬────────────┤
+│ No │ Tanggal  │ No Faktur    │ Nama Barang & Rekanan  │ Masuk   │ Total (Rp) │
+├────┼──────────┼──────────────┼────────────────────────┼─────────┼────────────┤
+│ 1. │ 20/08/26 │ FAK-BLUD-402 │ Spuit Injeksi 3cc      │ +50 Box │ 3.750.000  │
+│    │          │              │ PT. Kimia Farma Badung │         │            │
+├────┼──────────┼──────────────┼────────────────────────┼─────────┼────────────┤
+│ 2. │ 22/08/26 │ FAK-APBD-118 │ Kassa Steril 16x16     │ +20 Roll│ 840.000    │
+│    │          │              │ CV. Sejahtera Mandiri  │         │            │
+├────┴──────────┴──────────────┴────────────────────────┴─────────┴────────────┤
+│ TOTAL PENERIMAAN MASUK: 70 Unit  &bull;  TOTAL NILAI PENGADAAN: Rp 4.590.000        │
+└──────────────────────────────────────────────────────────────────────────────┘
+</div>
+
+<!-- 6. FORM INPUT PENERIMAAN -->
+<h4>6. Perancangan Antarmuka Formulir Pencatatan Barang Masuk</h4>
+<p>
+  Formulir modal ini digunakan saat barang fisik dari distributor tiba di gudang. Petugas mencatat nomor faktur, tanggal, memilih barang, mengisi kuantitas masuk, harga beli riil, dan nama distributor. Rancangan antarmuka disajikan pada Gambar 3.12.
+</p>
+<p class="caption">Gambar 3.12 Perancangan Antarmuka Formulir Input Barang Masuk</p>
+<div class="box-ui">
+┌──────────────────────────────────────────────────────────────────────────────┐
+│                     CATAT PENERIMAAN BARANG MASUK (FAKTUR)                   │
+├──────────────────────────────────────────────────────────────────────────────┤
+│ No Urut Masuk   : [ BM-2608/782                         ] (Otomatis)         │
+│ Nomor Faktur/SJ : [ FAK-BLUD-402                                            ]│
+│ Tanggal Terima  : [ 2026-08-20                          ]                    │
+│ Sumber Dana     : (•) BLUD Puskesmas        ( ) APBD Kabupaten Badung        │
+│ Pilih Barang    : [ BHP-MED-001 - Spuit Injeksi 3cc Terumo                ▼ ]│
+│ Kuantitas Masuk : [ 50                                  ] Box                │
+│ Harga Satuan Rp : [ 75.000                              ]                    │
+│ Total Nilai Rp  : Rp 3.750.000 (Kalkulasi Otomatis)                          │
+│ Nama Distributor: [ PT. Kimia Farma Trading & Distribution Badung           ]│
+│ Catatan/Keterang: [ Pengadaan Rutin Belanja Bahan Habis Pakai BLUD          ]│
+│                                                                              │
+│            ┌───────────────────────────┐      ┌─────────────────────────┐    │
+│            │        [ BATAL ]          │      │   [ SIMPAN PENERIMAAN ] │    │
+│            └───────────────────────────┘      └─────────────────────────┘    │
+└──────────────────────────────────────────────────────────────────────────────┘
+</div>
+
+<!-- 7. PENGELUARAN BARANG -->
+<h4>7. Perancangan Antarmuka Halaman Transaksi Pengeluaran Barang (Amprahan Ruangan)</h4>
+<p>
+  Halaman ini mencatat riwayat pendistribusian barang ke ruangan pelayanan. Dilengkapi filter tanggal, pencarian nomor bukti amprahan, ruangan peminta, serta rekapitulasi volume pengeluaran. Rancangan antarmuka disajikan pada Gambar 3.13.
+</p>
+<p class="caption">Gambar 3.13 Perancangan Antarmuka Halaman Pengeluaran Barang</p>
+<div class="box-ui">
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ DATA PENGELUARAN BARANG (AMPRAHAN RUANGAN)    [Scan Barcode HP] [+ Pengeluaran│
+│ Filter: [ Periode Bulan ▼ ]  [ Ruangan: Semua Ruangan ▼ ]  [ Cari Bukti... ] │
+├────┬──────────┬──────────────┬────────────────────────┬─────────┬────────────┤
+│ No │ Tanggal  │ No Bukti     │ Barang & Ruangan Tujuan│ Keluar  │ Penerima   │
+├────┼──────────┼──────────────┼────────────────────────┼─────────┼────────────┤
+│ 1. │ 05/08/26 │ EXP-2026-081 │ Spuit Injeksi 3cc      │ 15 Box  │ Ns. Sukerti│
+│    │          │              │ Ruang UGD (24 Jam)     │         │ (UGD)      │
+├────┼──────────┼──────────────┼────────────────────────┼─────────┼────────────┤
+│ 2. │ 12/08/26 │ EXP-2026-094 │ Kassa Steril 16x16     │ 10 Roll │ Ni Md Rai  │
+│    │          │              │ Poli Umum              │         │ (Poli Umum)│
+├────┴──────────┴──────────────┴────────────────────────┴─────────┴────────────┤
+│ TOTAL PENGELUARAN KELUAR: 25 Unit  &bull;  TOTAL AMPRAHAN: 2 Transaksi Terverifikasi │
+└──────────────────────────────────────────────────────────────────────────────┘
+</div>
+
+<!-- 8. FORM INPUT PENGELUARAN MANUAL -->
+<h4>8. Perancangan Antarmuka Formulir Input Pengeluaran Barang</h4>
+<p>
+  Formulir modal ini digunakan jika petugas menginput transaksi amprahan secara manual tanpa melalui kamera pemindai. Sistem langsung memvalidasi saldo berjalan untuk memastikan stok fisik mencukupi. Rancangan antarmuka disajikan pada Gambar 3.14.
+</p>
+<p class="caption">Gambar 3.14 Perancangan Antarmuka Formulir Input Pengeluaran Barang</p>
+<div class="box-ui">
+┌──────────────────────────────────────────────────────────────────────────────┐
+│                    CATAT PENGELUARAN BARANG / AMPRAHAN RUANGAN               │
+├──────────────────────────────────────────────────────────────────────────────┤
+│ No Bukti Keluar : [ EXP-2026-081                        ] (Otomatis)         │
+│ Tanggal Keluar  : [ 2026-08-05                          ]                    │
+│ Pilih Barang    : [ BHP-MED-001 - Spuit Injeksi 3cc Terumo                ▼ ]│
+│ Sisa Stok Riil  : 85 Box (Lokasi: Rak A-1 Farmasi)                           │
+│ Jumlah Keluar   : [ 15                                  ] Box                │
+│ Ruangan Tujuan  : [ Ruang UGD (24 Jam)                                    ▼ ]│
+│ Nama Penerima   : [ Ns. Ni Wayan Sukerti, S.Kep.                            ]│
+│ Keperluan       : [ Kebutuhan tindakan medis kedaruratan UGD 24 Jam         ]│
+│                                                                              │
+│            ┌───────────────────────────┐      ┌─────────────────────────┐    │
+│            │        [ BATAL ]          │      │   [ SIMPAN & POTONG ]   │    │
+│            └───────────────────────────┘      └─────────────────────────┘    │
+└──────────────────────────────────────────────────────────────────────────────┘
+</div>
+
+<!-- 9. MODAL BARCODE SCANNER KAMERA HP -->
+<h4>9. Perancangan Antarmuka Modal Barcode Scanner Kamera Smartphone</h4>
+<p>
+  Modal ini merupakan fitur unggulan operasional di gudang, di mana petugas mengarahkan kamera smartphone ke stiker kemasan fisik barang, sistem membaca kode secara optik (disertai suara <em>beep</em>), dan formulir otomatis terisi. Rancangan antarmuka disajikan pada Gambar 3.15.
+</p>
+<p class="caption">Gambar 3.15 Perancangan Antarmuka Modal Scan Barcode Kamera Smartphone</p>
+<div class="box-ui">
+┌──────────────────────────────────────────────────────────────────────────────┐
+│                    PINDAI BARCODE BARANG (LIVE CAMERA)                       │
+├──────────────────────────────────────────────────────────────────────────────┤
+│                                                                              │
+│                 ┌──────────────────────────────────────────┐                 │
+│                 │       [ AKTIF KAMERA SMARTPHONE ]        │                 │
+│                 │                                          │                 │
+│                 │         ╔══════════════════════╗         │                 │
+│                 │         ║ ── GARIS LASER MERAH ║         │                 │
+│                 │         ║     ||| || ||| |||   ║         │                 │
+│                 │         ╚══════════════════════╝         │                 │
+│                 │  Arahkan kamera ke kode barcode kemasan  │                 │
+│                 └──────────────────────────────────────────┘                 │
+│                                                                              │
+│   BARANG TERDETEKSI : Spuit Injeksi 3cc Terumo (Kode: BHP-MED-001)           │
+│   SISA STOK GUDANG  : 85 Box (Lokasi: Rak A-1 Farmasi)                       │
+│                                                                              │
+│   Jumlah Keluar     : [ 15             ] Box                                 │
+│   Tujuan Ruangan    : [ Ruang UGD (24 Jam)                                ▼ ]│
+│   Nama Penerima     : [ Ns. Ni Wayan Sukerti, S.Kep.                        ]│
+│                                                                              │
+│   ┌──────────────────────────────────────────────────────────────────────┐   │
+│   │               [ SIMPAN & POTONG STOK OTOMATIS ]                      │   │
+│   └──────────────────────────────────────────────────────────────────────┘   │
+└──────────────────────────────────────────────────────────────────────────────┘
+</div>
+
+<!-- 10. KARTU STOK RESMI -->
+<h4>10. Perancangan Antarmuka Lembar Cetak KARTU STOK BARANG Resmi</h4>
+<p>
+  Halaman ini menampilkan kartu persediaan barang resmi ber-kop ganda Pemkab Badung dan Puskesmas Petang I dengan tanda tangan pengesahan pejabat yang sah. Rancangan antarmuka disajikan pada Gambar 3.16.
+</p>
+<p class="caption">Gambar 3.16 Perancangan Antarmuka Dokumen KARTU STOK BARANG</p>
+<div class="box-ui">
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ [LOGO BADUNG]         PEMERINTAH KABUPATEN BADUNG           [LOGO PUSKESMAS] │
+│                             DINAS KESEHATAN                                  │
+│                        UPTD PUSKESMAS PETANG I                               │
+│       Jl. Jahuripan-Petang, Desa Petang, Kecamatan Petang, Badung            │
+│  Telp. 0361 813379, Email: petang1_dikesbadung@yahoo.com, Kode Pos: 80353   │
+╞══════════════════════════════════════════════════════════════════════════════╡
+│                              KARTU STOK BARANG                               │
+│              Sumber Dana: PENGADAAN BLUD &bull; Tahun Anggaran 2026                 │
+├──────────────────────────────────────────────────────────────────────────────┤
+│ Nama Barang : Spuit Injeksi 3cc Terumo            Satuan   : Box (Isi 100)   │
+│ Kode Barcode: BHP-MED-001                         Lokasi   : Rak A-1 Farmasi │
+├────┬──────────┬──────────────┬────────────────────────┬──────┬──────┬────────┤
+│ No │ Tanggal  │ No Bukti     │ Uraian / Ruangan       │ Masuk│Keluar│ Saldo  │
+├────┼──────────┼──────────────┼────────────────────────┼──────┼──────┼────────┤
+│ 1. │ 01/08/26 │ -            │ Saldo Awal Persediaan  │ -    │ -    │ 100 Box│
+│ 2. │ 05/08/26 │ EXP-2026-081 │ Amprahan Ruang UGD     │ -    │ 15   │ 85 Box │
+│ 3. │ 12/08/26 │ EXP-2026-094 │ Amprahan Poli Umum     │ -    │ 10   │ 75 Box │
+│ 4. │ 20/08/26 │ FAK-BLUD-402 │ Pasokan Distributor PT │ +50  │ -    │ 125 Box│
+├────┴──────────┴──────────────┴────────────────────────┴──────┴──────┴────────┤
+│                                                                              │
+│       Mengetahui,                                 Petang, 26 September 2026  │
+│ Kepala UPTD Puskesmas Petang I                  Pengurus Barang Pembantu BHP │
+│                                                                              │
+│                                                                              │
+│   dr. I Ketut Dwipayana, M.Kes.                     I Ketut Buda Antara      │
+│   NIP. 19783112 200712 1 004                     NIP. 19930920 201802 1 003  │
+└──────────────────────────────────────────────────────────────────────────────┘
+</div>
+
+<!-- 11. LAPORAN MUTASI TRIWULAN -->
+<h4>11. Perancangan Antarmuka Laporan Rekapitulasi Mutasi Triwulan</h4>
+<p>
+  Halaman ini menyajikan tabel rekapitulasi mutasi berkala seluruh item persediaan yang memuat stok awal, mutasi masuk, mutasi keluar, sisa saldo akhir, serta nilai rupiah aset persediaan. Rancangan antarmuka disajikan pada Gambar 3.17.
+</p>
+<p class="caption">Gambar 3.17 Perancangan Antarmuka Laporan Mutasi Triwulan BHP</p>
+<div class="box-ui">
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ LAPORAN REKAPITULASI MUTASI BARANG HABIS PAKAI (BHP)         [CETAK LAPORAN] │
+│ Periode: [ Triwulan III (Juli - September 2026) ▼ ]   Kategori: [ Semua  ▼ ] │
+├────┬──────────────┬────────────────────────┬────────┬──────┬──────┬──────────┤
+│ No │ Kode Barcode │ Nama Barang Habis Pakai│ Satuan │ Awal │Masuk │Keluar│Akh│
+├────┼──────────────┼────────────────────────┼────────┼──────┼──────┼──────┼───┤
+│ 1. │ BHP-MED-001  │ Spuit Injeksi 3cc      │ Box    │ 100  │ +50  │ -75  │ 75│
+│ 2. │ BHP-MED-002  │ Kassa Steril 16x16     │ Roll   │ 50   │ +20  │ -66  │ 4 │
+│ 3. │ BHP-MED-003  │ Handscoon Lateks M     │ Box    │ 80   │ +40  │ -90  │ 30│
+├────┴──────────────┴────────────────────────┴────────┴──────┴──────┴──────┴───┤
+│ TOTAL NILAI ASET PERSEDIAAN AKHIR (TRIWULAN III) : Rp 48.750.000             │
+│ Penandatangan: dr. I Ketut Dwipayana, M.Kes. & I Ketut Buda Antara           │
+└──────────────────────────────────────────────────────────────────────────────┘
+</div>
+
+<!-- 12. PENGATURAN SISTEM (SETTINGS) -->
+<h4>12. Perancangan Antarmuka Halaman Pengaturan Sistem (Settings)</h4>
+<p>
+  Halaman Pengaturan digunakan oleh Administrator untuk mengonfigurasi 5 nomor WhatsApp dinas penerima notifikasi otomatis, teks kop resmi kedinasan Pemkab Badung, kata sandi pengguna, serta fitur ekspor basis data SQL. Rancangan antarmuka disajikan pada Gambar 3.18.
+</p>
+<p class="caption">Gambar 3.18 Perancangan Antarmuka Pengaturan Sistem (Settings)</p>
+<div class="box-ui">
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ PUSAT PENGATURAN SISTEM (SETTINGS)                 [Ekspor db_sim_bhp.sql]   │
+├──────────────────────────────────────────────────────────────────────────────┤
+│ [ 5 Nomor WhatsApp Notif ] [ Kop Kedinasan & NIP ] [ Keamanan / Ganti Sandi ]│
+├──────────────────────────────────────────────────────────────────────────────┤
+│ DAFTAR 5 NOMOR WHATSAPP DINAS PENERIMA NOTIFIKASI STOK MINIMUM:              │
+│ 1. Kontak 1 (Kepala Puskesmas) : [ 6281234567890       ] [Aktif]             │
+│ 2. Kontak 2 (Pengurus BHP)     : [ 6281987654321       ] [Aktif]             │
+│ 3. Kontak 3 (Petugas Gudang)   : [ 6285712345678       ] [Aktif]             │
+│ 4. Kontak 4 (Pimpinan BLUD)    : [ 6282134567890       ] [Aktif]             │
+│ 5. Kontak 5 (Kordinator Medis) : [ 6287812345678       ] [Aktif]             │
+│                                                                              │
+│ PENGATURAN IDENTITAS KOP RESMI PEMKAB BADUNG:                                │
+│ Pemerintah : [ PEMERINTAH KABUPATEN BADUNG                                 ] │
+│ Dinas      : [ DINAS KESEHATAN                                             ] │
+│ Puskesmas  : [ UPTD PUSKESMAS PETANG I                                     ] │
+│ Kepala     : [ dr. I Ketut Dwipayana, M.Kes. ] NIP: [ 19783112 200712 1 004] │
+│ Pengurus   : [ I Ketut Buda Antara           ] NIP: [ 19930920 201802 1 003] │
+│                                                                              │
+│ ┌──────────────────────────────────────────────────────────────────────────┐ │
+│ │                  [ SIMPAN SELURUH PENGATURAN SISTEM ]                    │ │
+│ └──────────────────────────────────────────────────────────────────────────┘ │
+└──────────────────────────────────────────────────────────────────────────────┘
+</div>
+
+</body>
+</html>
