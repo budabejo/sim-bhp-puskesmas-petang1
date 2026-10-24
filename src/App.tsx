@@ -21,6 +21,7 @@ import { WhatsAppNotifModal } from './components/WhatsAppNotifModal';
 import { PrintLabelModal } from './components/PrintLabelModal';
 import { LoginView } from './components/LoginView';
 import { SettingsView } from './components/SettingsView';
+import { sendToGoogleAppsScriptWebhook } from './utils/googleSheetsSync';
 
 const STORAGE_KEYS = {
   BARANG: 'sim_bhp_barang_v1',
@@ -183,100 +184,98 @@ export default function App() {
   // Critical stock count (<= 5)
   const criticalStockCount = listBarang.filter(b => b.stokSaatIni <= (b.stokMinimum || 5)).length;
 
+  // Sinkronisasi otomatis: setiap perubahan data lokal langsung dikirim ke Google Sheets
+  const syncCurrentDataToSheets = (
+    barang: Barang[],
+    penerimaan: PenerimaanBarang[],
+    pengeluaran: PengeluaranBarang[]
+  ) => {
+    const webhookUrl = localStorage.getItem('sim_bhp_gas_webhook')?.trim();
+    if (!webhookUrl) return;
+
+    // Jangan mengganggu proses simpan UI jika internet/Sheets sedang tidak tersedia.
+    void sendToGoogleAppsScriptWebhook(webhookUrl, barang, penerimaan, pengeluaran)
+      .then(result => {
+        if (!result.success) console.warn('[SIM-BHP] Sinkronisasi Google Sheets gagal:', result.message);
+      })
+      .catch(error => console.warn('[SIM-BHP] Sinkronisasi Google Sheets gagal:', error));
+  };
+
   // Handlers
   const handleAddBarang = (barang: Barang) => {
-    setListBarang(prev => [barang, ...prev]);
+    const nextBarang = [barang, ...listBarang];
+    setListBarang(nextBarang);
+    syncCurrentDataToSheets(nextBarang, listPenerimaan, listPengeluaran);
   };
 
   const handleUpdateBarang = (barang: Barang) => {
-    setListBarang(prev => prev.map(b => b.id === barang.id ? barang : b));
+    const nextBarang = listBarang.map(b => b.id === barang.id ? barang : b);
+    setListBarang(nextBarang);
+    syncCurrentDataToSheets(nextBarang, listPenerimaan, listPengeluaran);
   };
 
   const handleDeleteBarang = (id: string) => {
-    setListBarang(prev => prev.filter(b => b.id !== id));
-    setListPenerimaan(prev => prev.filter(p => p.barangId !== id));
-    setListPengeluaran(prev => prev.filter(q => q.barangId !== id));
+    const nextBarang = listBarang.filter(b => b.id !== id);
+    const nextPenerimaan = listPenerimaan.filter(p => p.barangId !== id);
+    const nextPengeluaran = listPengeluaran.filter(q => q.barangId !== id);
+    setListBarang(nextBarang);
+    setListPenerimaan(nextPenerimaan);
+    setListPengeluaran(nextPengeluaran);
+    syncCurrentDataToSheets(nextBarang, nextPenerimaan, nextPengeluaran);
   };
 
   const handleAddPenerimaan = (item: PenerimaanBarang) => {
-    setListPenerimaan(prev => [item, ...prev]);
-    setListBarang(prev => prev.map(b => {
-      if (b.id === item.barangId) {
-        return {
-          ...b,
-          stokSaatIni: b.stokSaatIni + item.jumlahMasuk,
-          hargaSatuan: item.hargaSatuan || b.hargaSatuan
-        };
-      }
-      return b;
-    }));
+    const nextPenerimaan = [item, ...listPenerimaan];
+    const nextBarang = listBarang.map(b => b.id === item.barangId ? {
+      ...b,
+      stokSaatIni: b.stokSaatIni + item.jumlahMasuk,
+      hargaSatuan: item.hargaSatuan || b.hargaSatuan
+    } : b);
+    setListPenerimaan(nextPenerimaan);
+    setListBarang(nextBarang);
+    syncCurrentDataToSheets(nextBarang, nextPenerimaan, listPengeluaran);
   };
 
   const handleUpdatePenerimaan = (item: PenerimaanBarang, oldQty: number) => {
     const diff = item.jumlahMasuk - oldQty;
-    setListPenerimaan(prev => prev.map(p => p.id === item.id ? item : p));
-    setListBarang(prev => prev.map(b => {
-      if (b.id === item.barangId) {
-        return {
-          ...b,
-          stokSaatIni: b.stokSaatIni + diff
-        };
-      }
-      return b;
-    }));
+    const nextPenerimaan = listPenerimaan.map(p => p.id === item.id ? item : p);
+    const nextBarang = listBarang.map(b => b.id === item.barangId ? { ...b, stokSaatIni: b.stokSaatIni + diff } : b);
+    setListPenerimaan(nextPenerimaan);
+    setListBarang(nextBarang);
+    syncCurrentDataToSheets(nextBarang, nextPenerimaan, listPengeluaran);
   };
 
   const handleDeletePenerimaan = (id: string, qty: number, barangId: string) => {
-    setListPenerimaan(prev => prev.filter(p => p.id !== id));
-    setListBarang(prev => prev.map(b => {
-      if (b.id === barangId) {
-        return {
-          ...b,
-          stokSaatIni: Math.max(0, b.stokSaatIni - qty)
-        };
-      }
-      return b;
-    }));
+    const nextPenerimaan = listPenerimaan.filter(p => p.id !== id);
+    const nextBarang = listBarang.map(b => b.id === barangId ? { ...b, stokSaatIni: Math.max(0, b.stokSaatIni - qty) } : b);
+    setListPenerimaan(nextPenerimaan);
+    setListBarang(nextBarang);
+    syncCurrentDataToSheets(nextBarang, nextPenerimaan, listPengeluaran);
   };
 
   const handleAddPengeluaran = (item: PengeluaranBarang) => {
-    setListPengeluaran(prev => [item, ...prev]);
-    setListBarang(prev => prev.map(b => {
-      if (b.id === item.barangId) {
-        return {
-          ...b,
-          stokSaatIni: Math.max(0, b.stokSaatIni - item.jumlahKeluar)
-        };
-      }
-      return b;
-    }));
+    const nextPengeluaran = [item, ...listPengeluaran];
+    const nextBarang = listBarang.map(b => b.id === item.barangId ? { ...b, stokSaatIni: Math.max(0, b.stokSaatIni - item.jumlahKeluar) } : b);
+    setListPengeluaran(nextPengeluaran);
+    setListBarang(nextBarang);
+    syncCurrentDataToSheets(nextBarang, listPenerimaan, nextPengeluaran);
   };
 
   const handleUpdatePengeluaran = (item: PengeluaranBarang, oldQty: number) => {
     const diff = item.jumlahKeluar - oldQty;
-    setListPengeluaran(prev => prev.map(q => q.id === item.id ? item : q));
-    setListBarang(prev => prev.map(b => {
-      if (b.id === item.barangId) {
-        return {
-          ...b,
-          stokSaatIni: Math.max(0, b.stokSaatIni - diff)
-        };
-      }
-      return b;
-    }));
+    const nextPengeluaran = listPengeluaran.map(q => q.id === item.id ? item : q);
+    const nextBarang = listBarang.map(b => b.id === item.barangId ? { ...b, stokSaatIni: Math.max(0, b.stokSaatIni - diff) } : b);
+    setListPengeluaran(nextPengeluaran);
+    setListBarang(nextBarang);
+    syncCurrentDataToSheets(nextBarang, listPenerimaan, nextPengeluaran);
   };
 
   const handleDeletePengeluaran = (id: string, qty: number, barangId: string) => {
-    setListPengeluaran(prev => prev.filter(q => q.id !== id));
-    setListBarang(prev => prev.map(b => {
-      if (b.id === barangId) {
-        return {
-          ...b,
-          stokSaatIni: b.stokSaatIni + qty
-        };
-      }
-      return b;
-    }));
+    const nextPengeluaran = listPengeluaran.filter(q => q.id !== id);
+    const nextBarang = listBarang.map(b => b.id === barangId ? { ...b, stokSaatIni: b.stokSaatIni + qty } : b);
+    setListPengeluaran(nextPengeluaran);
+    setListBarang(nextBarang);
+    syncCurrentDataToSheets(nextBarang, listPenerimaan, nextPengeluaran);
   };
 
   // Callback to sync/overwrite all datasets when pulled from Google Sheets

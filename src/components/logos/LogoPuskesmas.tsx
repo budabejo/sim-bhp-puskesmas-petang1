@@ -36,7 +36,7 @@ export const LogoPuskesmas: React.FC<LogoProps> = ({ className = 'w-12 h-12', si
 
   return (
     <img 
-      src="/assets/logo-puskesmas.png" 
+      src={`${import.meta.env.BASE_URL}assets/logo-puskesmas.png`} 
       alt="Logo Resmi Puskesmas" 
       className={`${className} object-contain`}
       style={size ? { width: size, height: size } : undefined}

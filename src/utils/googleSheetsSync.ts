@@ -79,7 +79,7 @@ function doPost(e) {
   try {
     var rawData = e.postData.contents;
     var data = JSON.parse(rawData);
-    var ss = SpreadsheetApp.getActiveSpreadsheet();
+    var ss = SpreadsheetApp.openById("1EjRfRzHEA2Ilgw0xO6cCtZ5j6yfygbwAq9V3zywUhD0");
 
     // 1. Lembar Master BHP
     if (data.barang && Array.isArray(data.barang)) {
@@ -182,7 +182,7 @@ function doPost(e) {
 // Jika baris di Google Sheets dihapus atau diedit, fungsi ini mengembalikan data terbaru ke SIM-BHP
 function doGet(e) {
   try {
-    var ss = SpreadsheetApp.getActiveSpreadsheet();
+    var ss = SpreadsheetApp.openById("1EjRfRzHEA2Ilgw0xO6cCtZ5j6yfygbwAq9V3zywUhD0");
 
     // 1. Membaca Sheet Master_BHP
     var sheetBarang = ss.getSheetByName("Master_BHP");
@@ -351,18 +351,21 @@ export const sendToGoogleAppsScriptWebhook = async (
   };
 
   try {
+    // text/plain adalah CORS simple request, sehingga Google Apps Script menerima POST
+    // tanpa preflight. Respons tetap opaque di browser, jadi Apps Script mengembalikan
+    // status sukses/gagal di sisi server dan error jaringan ditangkap di sini.
     await fetch(webhookUrl, {
       method: 'POST',
-      mode: 'no-cors', // Google Apps Script requires no-cors for simple browser POST
+      mode: 'no-cors',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'text/plain;charset=UTF-8'
       },
       body: JSON.stringify(payload)
     });
 
     return {
       success: true,
-      message: 'Perintah pengiriman berhasil dikirim ke Google Spreadsheet! Data Master BHP, Penerimaan, dan Pengeluaran telah tersimpan di lembar sheet Anda.'
+      message: 'Data Master BHP, Penerimaan, dan Pengeluaran otomatis dikirim ke Google Sheets.'
     };
   } catch (err: any) {
     return {

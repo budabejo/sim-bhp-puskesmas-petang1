@@ -45,7 +45,7 @@ export const LogoBadung: React.FC<LogoProps> = ({ className = 'w-12 h-12', size 
 
   return (
     <img 
-      src="/assets/logo-badung.png" 
+      src={`${import.meta.env.BASE_URL}assets/logo-badung.png`} 
       alt="Lambang Kabupaten Badung" 
       className={`${className} object-contain`}
       style={size ? { width: size, height: size } : undefined}

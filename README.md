@@ -34,3 +34,16 @@ Proyek ini dilisensikan di bawah **MIT License** - lihat file [LICENSE](./LICENS
 
 **Hak Cipta © 2026 budabejo - UPTD Puskesmas Petang I.**
 Semua hak dilindungi undang-undang.
+
+## Sinkronisasi Google Sheets Otomatis
+
+Versi ini sudah dilengkapi sinkronisasi otomatis untuk Master BHP, Penerimaan, dan Pengeluaran.
+Setelah GitHub Pages aktif, lakukan konfigurasi Google Apps Script satu kali:
+
+1. Buka folder `google-apps-script/` dan gunakan `Code.gs`.
+2. Tempel kode ke Google Sheets -> Ekstensi -> Apps Script.
+3. Deploy sebagai Web app, `Execute as: Me`, akses `Anyone`.
+4. Salin URL `/exec` ke menu **Pengaturan -> Google Sheets & Hosting -> URL Webhook Google Apps Script** pada aplikasi.
+5. Klik **Simpan URL**.
+
+Sesudah itu, tombol Simpan/Tambah/Edit/Hapus pada data Master BHP, Penerimaan, dan Pengeluaran akan otomatis menyinkronkan seluruh data ke tiga sheet.

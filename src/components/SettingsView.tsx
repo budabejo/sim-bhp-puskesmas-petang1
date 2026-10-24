@@ -112,7 +112,9 @@ export const SettingsView: React.FC<Props> = ({
 
   // Google Sheets Webhook State
   const [gasWebhookUrl, setGasWebhookUrl] = useState<string>(() => {
-    return localStorage.getItem('sim_bhp_gas_webhook') || '';
+    const saved = localStorage.getItem('sim_bhp_gas_webhook');
+    const configured = import.meta.env.VITE_GOOGLE_APPS_SCRIPT_URL || '';
+    return saved || configured;
   });
   const [isSyncingSheets, setIsSyncingSheets] = useState(false);
   const [isPullingSheets, setIsPullingSheets] = useState(false);
