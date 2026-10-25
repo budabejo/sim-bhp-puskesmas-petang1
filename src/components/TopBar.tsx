@@ -4,7 +4,11 @@ import {
   Menu, 
   Scan, 
   Bell,
-  LogOut
+  LogOut,
+  Cloud,
+  CloudOff,
+  RefreshCw,
+  CheckCircle2
 } from 'lucide-react';
 import { formatTanggalWaktuLengkap } from '../utils/formatters';
 import { UserProfile } from '../types';
@@ -14,6 +18,9 @@ import { LogoPuskesmas } from './logos/LogoPuskesmas';
 interface Props {
   currentUser: UserProfile;
   criticalStockCount: number;
+  cloudSyncStatus: 'idle' | 'syncing' | 'synced' | 'not_configured' | 'error';
+  lastSyncTime?: string;
+  onOpenCloudSync: () => void;
   onOpenScanModal: () => void;
   onOpenWhatsAppModal: () => void;
   onToggleMobileSidebar: () => void;
@@ -23,6 +30,9 @@ interface Props {
 export const TopBar: React.FC<Props> = ({
   currentUser,
   criticalStockCount,
+  cloudSyncStatus,
+  lastSyncTime,
+  onOpenCloudSync,
   onOpenScanModal,
   onOpenWhatsAppModal,
   onToggleMobileSidebar,
@@ -86,9 +96,56 @@ export const TopBar: React.FC<Props> = ({
           </div>
         </div>
 
-        {/* Right Controls: Scan HP, Notif WA, Profil Admin + Waktu, & Tombol Logout */}
-        <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+        {/* Right Controls: Cloud Sync, Scan HP, Notif WA, Profil Admin + Waktu, & Tombol Logout */}
+        <div className="flex items-center gap-1.5 sm:gap-2.5 shrink-0">
           
+          {/* Cloud Sync Status Indicator & Shortcut */}
+          <button
+            onClick={onOpenCloudSync}
+            className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl border text-xs font-bold transition-all shadow-xs active:scale-95 cursor-pointer ${
+              cloudSyncStatus === 'syncing'
+                ? 'bg-blue-50 border-blue-300 text-blue-700 animate-pulse'
+                : cloudSyncStatus === 'synced'
+                ? 'bg-emerald-50 border-emerald-300 text-emerald-800 hover:bg-emerald-100'
+                : cloudSyncStatus === 'error'
+                ? 'bg-rose-50 border-rose-300 text-rose-700 hover:bg-rose-100'
+                : 'bg-amber-50 border-amber-300 text-amber-800 hover:bg-amber-100 ring-2 ring-amber-300/60 animate-bounce sm:animate-none'
+            }`}
+            title={
+              cloudSyncStatus === 'synced'
+                ? `Terhubung ke Google Spreadsheet (Terakhir sinkron: ${lastSyncTime || 'Baru saja'})`
+                : cloudSyncStatus === 'syncing'
+                ? 'Sedang menyinkronkan data ke Google Drive Spreadsheet...'
+                : cloudSyncStatus === 'error'
+                ? 'Gagal menyinkronkan data ke Google Sheets. Klik untuk cek URL Webhook.'
+                : 'Google Spreadsheet belum terhubung di HP ini. Klik untuk hubungkan!'
+            }
+          >
+            {cloudSyncStatus === 'syncing' ? (
+              <RefreshCw className="w-3.5 h-3.5 text-blue-600 animate-spin" />
+            ) : cloudSyncStatus === 'synced' ? (
+              <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+            ) : cloudSyncStatus === 'error' ? (
+              <CloudOff className="w-3.5 h-3.5 text-rose-600" />
+            ) : (
+              <CloudOff className="w-3.5 h-3.5 text-amber-600" />
+            )}
+            <span className="hidden sm:inline text-[11px]">
+              {cloudSyncStatus === 'syncing'
+                ? 'Menyimpan ke Sheets...'
+                : cloudSyncStatus === 'synced'
+                ? 'Google Sheets Aktif'
+                : cloudSyncStatus === 'error'
+                ? 'Sheets Eror'
+                : 'Hubungkan Sheets'}
+            </span>
+            {cloudSyncStatus === 'not_configured' && (
+              <span className="sm:hidden text-[10px] font-black text-amber-900 bg-amber-200/80 px-1 rounded">
+                Sheets
+              </span>
+            )}
+          </button>
+
           {/* Scan Shortcut Button */}
           {!isKapusk && (
             <button

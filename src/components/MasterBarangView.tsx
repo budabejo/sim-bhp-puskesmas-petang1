@@ -287,8 +287,29 @@ export const MasterBarangView: React.FC<Props> = ({
             <tbody className="divide-y divide-slate-100">
               {filtered.length === 0 ? (
                 <tr>
-                  <td colSpan={11} className="py-12 text-center text-slate-400">
-                    Tidak ditemukan data barang yang sesuai kriteria pencarian.
+                  <td colSpan={11} className="py-12 text-center">
+                    <div className="flex flex-col items-center justify-center space-y-2">
+                      <div className="w-12 h-12 rounded-2xl bg-slate-100 flex items-center justify-center text-slate-400">
+                        <Boxes className="w-6 h-6" />
+                      </div>
+                      <div className="text-slate-700 font-bold text-sm">
+                        {listBarang.length === 0 ? 'Data Master BHP Masih Kosong' : 'Tidak ditemukan data barang yang sesuai'}
+                      </div>
+                      <p className="text-xs text-slate-400 max-w-sm">
+                        {listBarang.length === 0 
+                          ? 'Mulai input data inventaris fisik Anda dari awal atau tarik data dari Google Sheets di Pengaturan.'
+                          : 'Coba ubah kata kunci pencarian atau bersihkan filter kategori.'}
+                      </p>
+                      {listBarang.length === 0 && (
+                        <button
+                          type="button"
+                          onClick={() => handleOpenAdd()}
+                          className="mt-2 px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl shadow-xs transition-all active:scale-95 cursor-pointer"
+                        >
+                          + Tambah Barang Pertama
+                        </button>
+                      )}
+                    </div>
                   </td>
                 </tr>
               ) : (

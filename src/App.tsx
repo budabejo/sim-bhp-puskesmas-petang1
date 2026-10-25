@@ -21,7 +21,8 @@ import { WhatsAppNotifModal } from './components/WhatsAppNotifModal';
 import { PrintLabelModal } from './components/PrintLabelModal';
 import { LoginView } from './components/LoginView';
 import { SettingsView } from './components/SettingsView';
-import { sendToGoogleAppsScriptWebhook } from './utils/googleSheetsSync';
+import { CloudSyncModal } from './components/CloudSyncModal';
+import { isGoogleSheetsConnected, sendToGoogleAppsScriptWebhook, pullDataFromGoogleSheets } from './utils/googleSheetsSync';
 
 const STORAGE_KEYS = {
   BARANG: 'sim_bhp_barang_v1',
@@ -34,31 +35,31 @@ const STORAGE_KEYS = {
 };
 
 export default function App() {
-  // Persistent State
+  // Persistent State (Defaults to empty array for fresh start or pulls from Google Sheets)
   const [listBarang, setListBarang] = useState<Barang[]>(() => {
     try {
       const saved = localStorage.getItem(STORAGE_KEYS.BARANG);
-      return saved ? JSON.parse(saved) : INITIAL_BARANG;
+      return saved !== null ? JSON.parse(saved) : [];
     } catch {
-      return INITIAL_BARANG;
+      return [];
     }
   });
 
   const [listPenerimaan, setListPenerimaan] = useState<PenerimaanBarang[]>(() => {
     try {
       const saved = localStorage.getItem(STORAGE_KEYS.PENERIMAAN);
-      return saved ? JSON.parse(saved) : INITIAL_PENERIMAAN;
+      return saved !== null ? JSON.parse(saved) : [];
     } catch {
-      return INITIAL_PENERIMAAN;
+      return [];
     }
   });
 
   const [listPengeluaran, setListPengeluaran] = useState<PengeluaranBarang[]>(() => {
     try {
       const saved = localStorage.getItem(STORAGE_KEYS.PENGELUARAN);
-      return saved ? JSON.parse(saved) : INITIAL_PENGELUARAN;
+      return saved !== null ? JSON.parse(saved) : [];
     } catch {
-      return INITIAL_PENGELUARAN;
+      return [];
     }
   });
 
@@ -159,6 +160,15 @@ export default function App() {
   const [isWhatsAppModalOpen, setIsWhatsAppModalOpen] = useState(false);
   const [printLabelTarget, setPrintLabelTarget] = useState<Barang | null>(null);
   const [preSelectedBarangForPengeluaran, setPreSelectedBarangForPengeluaran] = useState<Barang | null>(null);
+  const [isCloudSyncModalOpen, setIsCloudSyncModalOpen] = useState(false);
+  const [isBannerDismissed, setIsBannerDismissed] = useState(false);
+
+  // Cloud Sync Status State
+  const [cloudSyncStatus, setCloudSyncStatus] = useState<'idle' | 'syncing' | 'synced' | 'not_configured' | 'error'>(() => {
+    return isGoogleSheetsConnected() ? 'synced' : 'not_configured';
+  });
+  const [lastSyncTime, setLastSyncTime] = useState<string>('');
+  const isDataMountedRef = React.useRef(false);
 
   // Sync to LocalStorage
   useEffect(() => {
@@ -173,6 +183,37 @@ export default function App() {
     localStorage.setItem(STORAGE_KEYS.PENGELUARAN, JSON.stringify(listPengeluaran));
   }, [listPengeluaran]);
 
+  // Otomatis Simpan (Auto-Sync) ke Google Drive Spreadsheet saat ada data baru/berubah
+  useEffect(() => {
+    if (!isDataMountedRef.current) {
+      isDataMountedRef.current = true;
+      return;
+    }
+
+    if (!isGoogleSheetsConnected()) {
+      setCloudSyncStatus('not_configured');
+      return;
+    }
+
+    setCloudSyncStatus('syncing');
+    const timer = setTimeout(async () => {
+      try {
+        const res = await sendToGoogleAppsScriptWebhook('', listBarang, listPenerimaan, listPengeluaran);
+        if (res.success) {
+          setCloudSyncStatus('synced');
+          const time = new Date().toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' });
+          setLastSyncTime(time);
+        } else {
+          setCloudSyncStatus('error');
+        }
+      } catch {
+        setCloudSyncStatus('error');
+      }
+    }, 1200);
+
+    return () => clearTimeout(timer);
+  }, [listBarang, listPenerimaan, listPengeluaran]);
+
   useEffect(() => {
     localStorage.setItem(STORAGE_KEYS.KOP, JSON.stringify(kop));
   }, [kop]);
@@ -184,98 +225,100 @@ export default function App() {
   // Critical stock count (<= 5)
   const criticalStockCount = listBarang.filter(b => b.stokSaatIni <= (b.stokMinimum || 5)).length;
 
-  // Sinkronisasi otomatis: setiap perubahan data lokal langsung dikirim ke Google Sheets
-  const syncCurrentDataToSheets = (
-    barang: Barang[],
-    penerimaan: PenerimaanBarang[],
-    pengeluaran: PengeluaranBarang[]
-  ) => {
-    const webhookUrl = localStorage.getItem('sim_bhp_gas_webhook')?.trim();
-    if (!webhookUrl) return;
-
-    // Jangan mengganggu proses simpan UI jika internet/Sheets sedang tidak tersedia.
-    void sendToGoogleAppsScriptWebhook(webhookUrl, barang, penerimaan, pengeluaran)
-      .then(result => {
-        if (!result.success) console.warn('[SIM-BHP] Sinkronisasi Google Sheets gagal:', result.message);
-      })
-      .catch(error => console.warn('[SIM-BHP] Sinkronisasi Google Sheets gagal:', error));
-  };
-
   // Handlers
   const handleAddBarang = (barang: Barang) => {
-    const nextBarang = [barang, ...listBarang];
-    setListBarang(nextBarang);
-    syncCurrentDataToSheets(nextBarang, listPenerimaan, listPengeluaran);
+    setListBarang(prev => [barang, ...prev]);
   };
 
   const handleUpdateBarang = (barang: Barang) => {
-    const nextBarang = listBarang.map(b => b.id === barang.id ? barang : b);
-    setListBarang(nextBarang);
-    syncCurrentDataToSheets(nextBarang, listPenerimaan, listPengeluaran);
+    setListBarang(prev => prev.map(b => b.id === barang.id ? barang : b));
   };
 
   const handleDeleteBarang = (id: string) => {
-    const nextBarang = listBarang.filter(b => b.id !== id);
-    const nextPenerimaan = listPenerimaan.filter(p => p.barangId !== id);
-    const nextPengeluaran = listPengeluaran.filter(q => q.barangId !== id);
-    setListBarang(nextBarang);
-    setListPenerimaan(nextPenerimaan);
-    setListPengeluaran(nextPengeluaran);
-    syncCurrentDataToSheets(nextBarang, nextPenerimaan, nextPengeluaran);
+    setListBarang(prev => prev.filter(b => b.id !== id));
+    setListPenerimaan(prev => prev.filter(p => p.barangId !== id));
+    setListPengeluaran(prev => prev.filter(q => q.barangId !== id));
   };
 
   const handleAddPenerimaan = (item: PenerimaanBarang) => {
-    const nextPenerimaan = [item, ...listPenerimaan];
-    const nextBarang = listBarang.map(b => b.id === item.barangId ? {
-      ...b,
-      stokSaatIni: b.stokSaatIni + item.jumlahMasuk,
-      hargaSatuan: item.hargaSatuan || b.hargaSatuan
-    } : b);
-    setListPenerimaan(nextPenerimaan);
-    setListBarang(nextBarang);
-    syncCurrentDataToSheets(nextBarang, nextPenerimaan, listPengeluaran);
+    setListPenerimaan(prev => [item, ...prev]);
+    setListBarang(prev => prev.map(b => {
+      if (b.id === item.barangId) {
+        return {
+          ...b,
+          stokSaatIni: b.stokSaatIni + item.jumlahMasuk,
+          hargaSatuan: item.hargaSatuan || b.hargaSatuan
+        };
+      }
+      return b;
+    }));
   };
 
   const handleUpdatePenerimaan = (item: PenerimaanBarang, oldQty: number) => {
     const diff = item.jumlahMasuk - oldQty;
-    const nextPenerimaan = listPenerimaan.map(p => p.id === item.id ? item : p);
-    const nextBarang = listBarang.map(b => b.id === item.barangId ? { ...b, stokSaatIni: b.stokSaatIni + diff } : b);
-    setListPenerimaan(nextPenerimaan);
-    setListBarang(nextBarang);
-    syncCurrentDataToSheets(nextBarang, nextPenerimaan, listPengeluaran);
+    setListPenerimaan(prev => prev.map(p => p.id === item.id ? item : p));
+    setListBarang(prev => prev.map(b => {
+      if (b.id === item.barangId) {
+        return {
+          ...b,
+          stokSaatIni: b.stokSaatIni + diff
+        };
+      }
+      return b;
+    }));
   };
 
   const handleDeletePenerimaan = (id: string, qty: number, barangId: string) => {
-    const nextPenerimaan = listPenerimaan.filter(p => p.id !== id);
-    const nextBarang = listBarang.map(b => b.id === barangId ? { ...b, stokSaatIni: Math.max(0, b.stokSaatIni - qty) } : b);
-    setListPenerimaan(nextPenerimaan);
-    setListBarang(nextBarang);
-    syncCurrentDataToSheets(nextBarang, nextPenerimaan, listPengeluaran);
+    setListPenerimaan(prev => prev.filter(p => p.id !== id));
+    setListBarang(prev => prev.map(b => {
+      if (b.id === barangId) {
+        return {
+          ...b,
+          stokSaatIni: Math.max(0, b.stokSaatIni - qty)
+        };
+      }
+      return b;
+    }));
   };
 
   const handleAddPengeluaran = (item: PengeluaranBarang) => {
-    const nextPengeluaran = [item, ...listPengeluaran];
-    const nextBarang = listBarang.map(b => b.id === item.barangId ? { ...b, stokSaatIni: Math.max(0, b.stokSaatIni - item.jumlahKeluar) } : b);
-    setListPengeluaran(nextPengeluaran);
-    setListBarang(nextBarang);
-    syncCurrentDataToSheets(nextBarang, listPenerimaan, nextPengeluaran);
+    setListPengeluaran(prev => [item, ...prev]);
+    setListBarang(prev => prev.map(b => {
+      if (b.id === item.barangId) {
+        return {
+          ...b,
+          stokSaatIni: Math.max(0, b.stokSaatIni - item.jumlahKeluar)
+        };
+      }
+      return b;
+    }));
   };
 
   const handleUpdatePengeluaran = (item: PengeluaranBarang, oldQty: number) => {
     const diff = item.jumlahKeluar - oldQty;
-    const nextPengeluaran = listPengeluaran.map(q => q.id === item.id ? item : q);
-    const nextBarang = listBarang.map(b => b.id === item.barangId ? { ...b, stokSaatIni: Math.max(0, b.stokSaatIni - diff) } : b);
-    setListPengeluaran(nextPengeluaran);
-    setListBarang(nextBarang);
-    syncCurrentDataToSheets(nextBarang, listPenerimaan, nextPengeluaran);
+    setListPengeluaran(prev => prev.map(q => q.id === item.id ? item : q));
+    setListBarang(prev => prev.map(b => {
+      if (b.id === item.barangId) {
+        return {
+          ...b,
+          stokSaatIni: Math.max(0, b.stokSaatIni - diff)
+        };
+      }
+      return b;
+    }));
   };
 
   const handleDeletePengeluaran = (id: string, qty: number, barangId: string) => {
-    const nextPengeluaran = listPengeluaran.filter(q => q.id !== id);
-    const nextBarang = listBarang.map(b => b.id === barangId ? { ...b, stokSaatIni: b.stokSaatIni + qty } : b);
-    setListPengeluaran(nextPengeluaran);
-    setListBarang(nextBarang);
-    syncCurrentDataToSheets(nextBarang, listPenerimaan, nextPengeluaran);
+    setListPengeluaran(prev => prev.filter(q => q.id !== id));
+    setListBarang(prev => prev.map(b => {
+      if (b.id === barangId) {
+        return {
+          ...b,
+          stokSaatIni: b.stokSaatIni + qty
+        };
+      }
+      return b;
+    }));
   };
 
   // Callback to sync/overwrite all datasets when pulled from Google Sheets
@@ -297,14 +340,12 @@ export default function App() {
     const isAutoSync = localStorage.getItem('sim_bhp_auto_sync_sheets') === 'true';
     const webhookUrl = localStorage.getItem('sim_bhp_gas_webhook');
     if (isAutoSync && webhookUrl && webhookUrl.startsWith('https://script.google.com/')) {
-      import('./utils/googleSheetsSync').then(({ pullDataFromGoogleSheets }) => {
-        pullDataFromGoogleSheets(webhookUrl).then((res) => {
-          if (res.success && res.data) {
-            handleUpdateAllDataFromSheets(res.data.barang, res.data.penerimaan, res.data.pengeluaran);
-          }
-        }).catch((err) => {
-          console.warn('Auto-sync sheets on startup error:', err);
-        });
+      pullDataFromGoogleSheets(webhookUrl).then((res) => {
+        if (res.success && res.data) {
+          handleUpdateAllDataFromSheets(res.data.barang, res.data.penerimaan, res.data.pengeluaran);
+        }
+      }).catch((err) => {
+        console.warn('Auto-sync sheets on startup error:', err);
       });
     }
   }, []);
@@ -384,11 +425,41 @@ export default function App() {
         <TopBar
           currentUser={currentUser}
           criticalStockCount={criticalStockCount}
+          cloudSyncStatus={cloudSyncStatus}
+          lastSyncTime={lastSyncTime}
+          onOpenCloudSync={() => setIsCloudSyncModalOpen(true)}
           onOpenScanModal={() => setIsScanModalOpen(true)}
           onOpenWhatsAppModal={() => setIsWhatsAppModalOpen(true)}
           onToggleMobileSidebar={() => setMobileSidebarOpen(!mobileSidebarOpen)}
           onLogout={handleLogout}
         />
+
+        {/* Banner Alert jika HP belum terhubung ke Google Sheets */}
+        {cloudSyncStatus === 'not_configured' && !isBannerDismissed && (
+          <div className="bg-gradient-to-r from-amber-600 to-amber-700 text-white px-4 py-2.5 shadow-sm text-xs flex flex-wrap items-center justify-between gap-2 no-print border-b border-amber-800">
+            <div className="flex items-center gap-2">
+              <span className="p-1 rounded-lg bg-black/20 shrink-0 text-sm">☁️</span>
+              <span className="leading-snug">
+                <strong>Google Drive Spreadsheet Belum Terhubung di HP Ini:</strong> Data yang baru saja Anda input tersimpan di memori HP. Hubungkan URL Webhook sekali agar otomatis tersinkron ke Google Spreadsheet.
+              </span>
+            </div>
+            <div className="flex items-center gap-2 shrink-0">
+              <button
+                onClick={() => setIsCloudSyncModalOpen(true)}
+                className="px-3 py-1 bg-white text-amber-900 rounded-lg font-black text-xs hover:bg-amber-50 active:scale-95 shadow transition-all cursor-pointer"
+              >
+                Hubungkan Sekarang
+              </button>
+              <button
+                onClick={() => setIsBannerDismissed(true)}
+                className="text-white/80 hover:text-white px-2 py-1 text-xs cursor-pointer"
+                title="Tutup Pesan"
+              >
+                ✕
+              </button>
+            </div>
+          </div>
+        )}
 
         {/* Content Area */}
         <main className="flex-1 px-4 sm:px-6 lg:px-8 py-6 max-w-7xl w-full mx-auto">
@@ -534,6 +605,19 @@ export default function App() {
         barang={printLabelTarget}
         allBarang={listBarang}
         kop={kop}
+      />
+
+      <CloudSyncModal
+        isOpen={isCloudSyncModalOpen}
+        onClose={() => setIsCloudSyncModalOpen(false)}
+        listBarang={listBarang}
+        listPenerimaan={listPenerimaan}
+        listPengeluaran={listPengeluaran}
+        onUpdateAllData={handleUpdateAllDataFromSheets}
+        onSyncSuccess={() => {
+          setCloudSyncStatus('synced');
+          setLastSyncTime(new Date().toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' }));
+        }}
       />
 
     </div>

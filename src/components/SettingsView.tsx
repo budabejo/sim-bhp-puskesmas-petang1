@@ -28,7 +28,8 @@ import {
   ArrowUpToLine,
   Trash2,
   HelpCircle,
-  Sparkles
+  Sparkles,
+  Image as ImageIcon
 } from 'lucide-react';
 import { Barang, KopPuskesmas, PenerimaanBarang, PengeluaranBarang, UserProfile } from '../types';
 import { generateMySQLDump } from '../utils/sqlExporter';
@@ -40,6 +41,8 @@ import {
   sendToGoogleAppsScriptWebhook,
   pullDataFromGoogleSheets
 } from '../utils/googleSheetsSync';
+import { LogoBadung } from './logos/LogoBadung';
+import { LogoPuskesmas } from './logos/LogoPuskesmas';
 
 interface Props {
   currentUser: UserProfile;
@@ -112,9 +115,7 @@ export const SettingsView: React.FC<Props> = ({
 
   // Google Sheets Webhook State
   const [gasWebhookUrl, setGasWebhookUrl] = useState<string>(() => {
-    const saved = localStorage.getItem('sim_bhp_gas_webhook');
-    const configured = import.meta.env.VITE_GOOGLE_APPS_SCRIPT_URL || '';
-    return saved || configured;
+    return localStorage.getItem('sim_bhp_gas_webhook') || '';
   });
   const [isSyncingSheets, setIsSyncingSheets] = useState(false);
   const [isPullingSheets, setIsPullingSheets] = useState(false);
@@ -296,6 +297,82 @@ export const SettingsView: React.FC<Props> = ({
       onUpdateAllData(result.data.barang, result.data.penerimaan, result.data.pengeluaran);
       setTimeout(() => setSyncStatusMsg(null), 8000);
     }
+  };
+
+  // Custom Logo State & Handlers
+  const [customLogoBadung, setCustomLogoBadung] = useState<string | null>(() => {
+    return localStorage.getItem('sim_bhp_custom_logo_badung');
+  });
+  const [customLogoPuskesmas, setCustomLogoPuskesmas] = useState<string | null>(() => {
+    return localStorage.getItem('sim_bhp_custom_logo_puskesmas');
+  });
+
+  const handleUploadLogoBadung = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        const base64 = reader.result as string;
+        localStorage.setItem('sim_bhp_custom_logo_badung', base64);
+        setCustomLogoBadung(base64);
+        window.dispatchEvent(new Event('storage'));
+        alert('Logo Pemkab Badung kustom berhasil disimpan!');
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const handleResetLogoBadung = () => {
+    localStorage.removeItem('sim_bhp_custom_logo_badung');
+    setCustomLogoBadung(null);
+    window.dispatchEvent(new Event('storage'));
+    alert('Logo Pemkab Badung telah dikembalikan ke logo resmi asli bawaan sistem!');
+  };
+
+  const handleUploadLogoPuskesmas = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        const base64 = reader.result as string;
+        localStorage.setItem('sim_bhp_custom_logo_puskesmas', base64);
+        setCustomLogoPuskesmas(base64);
+        window.dispatchEvent(new Event('storage'));
+        alert('Logo Puskesmas kustom berhasil disimpan!');
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const handleResetLogoPuskesmas = () => {
+    localStorage.removeItem('sim_bhp_custom_logo_puskesmas');
+    setCustomLogoPuskesmas(null);
+    window.dispatchEvent(new Event('storage'));
+    alert('Logo Puskesmas telah dikembalikan ke logo resmi Kemenkes asli!');
+  };
+
+  // Clear all data (mulai dari nol / kosongkan data)
+  const [showClearConfirm, setShowClearConfirm] = useState(false);
+  const [clearSheetsAlso, setClearSheetsAlso] = useState(true);
+
+  const handleClearAllData = async () => {
+    setShowClearConfirm(false);
+    if (onUpdateAllData) {
+      onUpdateAllData([], [], []);
+    }
+    localStorage.setItem('sim_bhp_barang_v1', '[]');
+    localStorage.setItem('sim_bhp_penerimaan_v1', '[]');
+    localStorage.setItem('sim_bhp_pengeluaran_v1', '[]');
+
+    if (clearSheetsAlso && gasWebhookUrl.trim()) {
+      await sendToGoogleAppsScriptWebhook(gasWebhookUrl.trim(), [], [], [], 'clearAll');
+    }
+
+    setSyncStatusMsg({
+      type: 'success',
+      text: 'Semua data barang, penerimaan, dan pengeluaran berhasil dikosongkan (0 data). Anda kini dapat mulai menginput dari awal!'
+    });
+    alert('Seluruh data di SIM-BHP berhasil dikosongkan! Dashboard dan Master BHP kini bersih (0 data) siap diinput mulai dari awal.');
   };
 
   const copyToClipboard = (text: string, key: string) => {
@@ -648,6 +725,91 @@ DB_PASSWORD=`;
 
           <form onSubmit={handleSaveKop} className="space-y-4">
             
+            {/* Logo Pemkab Badung & Logo Puskesmas Manager */}
+            <div className="p-4 rounded-2xl bg-gradient-to-r from-slate-50 via-emerald-50/40 to-slate-50 border border-emerald-200/80 space-y-3">
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-bold text-slate-800 uppercase tracking-wide flex items-center gap-1.5">
+                  <ImageIcon className="w-4 h-4 text-emerald-600" />
+                  <span>Logo Resmi Lambang Pemkab Badung & Puskesmas Kemenkes</span>
+                </span>
+                <span className="text-[10px] text-emerald-800 bg-emerald-100 font-bold px-2 py-0.5 rounded border border-emerald-200">
+                  Identik & Terbaca di GitHub / Hosting
+                </span>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-1">
+                {/* Card 1: Logo Pemkab Badung */}
+                <div className="p-3.5 bg-white rounded-xl border border-slate-200 shadow-xs flex items-center gap-4">
+                  <div className="w-16 h-16 rounded-xl bg-slate-50 border border-slate-200 p-1 flex items-center justify-center shrink-0">
+                    <LogoBadung className="w-14 h-14" />
+                  </div>
+                  <div className="flex-1 min-w-0 space-y-1.5">
+                    <div className="text-xs font-black text-slate-900">
+                      Logo Pemkab Badung
+                    </div>
+                    <p className="text-[10px] text-slate-500">
+                      {customLogoBadung ? 'Menggunakan logo unggahan kustom' : 'Menggunakan logo resmi asli (Çūra Dharma Rakşaka)'}
+                    </p>
+                    <div className="flex items-center gap-2">
+                      <label className="px-2.5 py-1 bg-emerald-600 hover:bg-emerald-700 text-white text-[11px] font-bold rounded-lg cursor-pointer transition-all active:scale-95 shadow-xs">
+                        <span>Ganti / Upload Logo</span>
+                        <input
+                          type="file"
+                          accept="image/*"
+                          onChange={handleUploadLogoBadung}
+                          className="hidden"
+                        />
+                      </label>
+                      {customLogoBadung && (
+                        <button
+                          type="button"
+                          onClick={handleResetLogoBadung}
+                          className="px-2 py-1 text-[11px] font-semibold text-slate-600 hover:text-red-600 hover:bg-red-50 rounded-lg border border-slate-200 transition-colors cursor-pointer"
+                        >
+                          Reset Asli
+                        </button>
+                      )}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Card 2: Logo Puskesmas */}
+                <div className="p-3.5 bg-white rounded-xl border border-slate-200 shadow-xs flex items-center gap-4">
+                  <div className="w-16 h-16 rounded-xl bg-slate-50 border border-slate-200 p-1 flex items-center justify-center shrink-0">
+                    <LogoPuskesmas className="w-14 h-14" />
+                  </div>
+                  <div className="flex-1 min-w-0 space-y-1.5">
+                    <div className="text-xs font-black text-slate-900">
+                      Logo Puskesmas Kemenkes
+                    </div>
+                    <p className="text-[10px] text-slate-500">
+                      {customLogoPuskesmas ? 'Menggunakan logo unggahan kustom' : 'Menggunakan lambang resmi palang hijau Kemenkes RI'}
+                    </p>
+                    <div className="flex items-center gap-2">
+                      <label className="px-2.5 py-1 bg-emerald-600 hover:bg-emerald-700 text-white text-[11px] font-bold rounded-lg cursor-pointer transition-all active:scale-95 shadow-xs">
+                        <span>Ganti / Upload Logo</span>
+                        <input
+                          type="file"
+                          accept="image/*"
+                          onChange={handleUploadLogoPuskesmas}
+                          className="hidden"
+                        />
+                      </label>
+                      {customLogoPuskesmas && (
+                        <button
+                          type="button"
+                          onClick={handleResetLogoPuskesmas}
+                          className="px-2 py-1 text-[11px] font-semibold text-slate-600 hover:text-red-600 hover:bg-red-50 rounded-lg border border-slate-200 transition-colors cursor-pointer"
+                        >
+                          Reset Asli
+                        </button>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             {/* 5-Baris Kop Laporan */}
             <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
               <div className="text-xs font-bold text-slate-800 uppercase tracking-wide">
@@ -1205,6 +1367,99 @@ DB_PASSWORD=`;
                     >
                       <RefreshCw className="w-3.5 h-3.5" />
                       <span>Ya, Tarik & Perbarui Sekarang</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* 1.5. ZONA PEMBERSIHAN DATA: KOSONGKAN SELURUH DATA PREVIEW (MULAI DARI NOL) */}
+          <div className="bg-red-50/90 rounded-2xl p-6 border-2 border-red-200/90 shadow-sm space-y-4">
+            <div className="flex flex-wrap items-center justify-between gap-4 pb-3 border-b border-red-200/60">
+              <div className="flex items-center gap-3">
+                <div className="w-11 h-11 rounded-xl bg-red-100 text-red-700 flex items-center justify-center font-black">
+                  <Trash2 className="w-6 h-6 text-red-600" />
+                </div>
+                <div>
+                  <h3 className="text-base font-black text-red-950">
+                    Kosongkan Seluruh Data SIM-BHP (Mulai Dari Nol / Clean Reset)
+                  </h3>
+                  <p className="text-xs text-red-700">
+                    Hapus seluruh data barang di preview dan browser agar Anda dapat menginput barang asli dari awal atau menarik data murni dari Google Sheets.
+                  </p>
+                </div>
+              </div>
+
+              <button
+                type="button"
+                onClick={() => setShowClearConfirm(true)}
+                className="px-5 py-2.5 bg-red-600 hover:bg-red-700 active:scale-95 text-white font-bold text-xs rounded-xl shadow-md transition-all cursor-pointer flex items-center gap-2"
+              >
+                <Trash2 className="w-4 h-4" />
+                <span>Kosongkan Seluruh Data Sekarang</span>
+              </button>
+            </div>
+
+            <div className="flex flex-wrap items-center justify-between gap-4 text-xs text-red-900 bg-white/70 p-3.5 rounded-xl border border-red-200">
+              <div className="space-y-0.5">
+                <div className="font-bold">Status Data Saat Ini:</div>
+                <div className="text-slate-600 flex items-center gap-3">
+                  <span>Barang: <strong>{listBarang.length} item</strong></span>
+                  <span>•</span>
+                  <span>Penerimaan: <strong>{listPenerimaan.length} transaksi</strong></span>
+                  <span>•</span>
+                  <span>Pengeluaran: <strong>{listPengeluaran.length} transaksi</strong></span>
+                </div>
+              </div>
+              <p className="text-[11px] text-red-600 max-w-md">
+                Cocok dilakukan sebelum mulai menginput inventaris fisik riil Puskesmas atau setelah spreadsheet di Google Drive Anda kosongkan.
+              </p>
+            </div>
+
+            {/* Modal Konfirmasi Kosongkan Data */}
+            {showClearConfirm && (
+              <div className="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-xs flex items-center justify-center p-4">
+                <div className="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-red-300 space-y-4 animate-in fade-in zoom-in-95 text-slate-800">
+                  <div className="w-12 h-12 rounded-2xl bg-red-100 text-red-700 flex items-center justify-center">
+                    <Trash2 className="w-6 h-6 text-red-600" />
+                  </div>
+                  <div>
+                    <h4 className="text-base font-black text-red-950">
+                      Yakin Ingin Mengosongkan Seluruh Data?
+                    </h4>
+                    <p className="text-xs text-slate-600 mt-1 leading-relaxed">
+                      Tindakan ini akan menghapus <strong>seluruh {listBarang.length} data Master BHP</strong>, 
+                      <strong> {listPenerimaan.length} data penerimaan</strong>, dan 
+                      <strong> {listPengeluaran.length} data pengeluaran</strong> di aplikasi SIM-BHP.
+                    </p>
+                    {gasWebhookUrl.trim() && (
+                      <label className="mt-3 p-2.5 rounded-xl bg-amber-50 border border-amber-200 flex items-center gap-2 cursor-pointer text-xs font-bold text-amber-950 select-none">
+                        <input
+                          type="checkbox"
+                          checked={clearSheetsAlso}
+                          onChange={(e) => setClearSheetsAlso(e.target.checked)}
+                          className="w-4 h-4 rounded text-red-600 focus:ring-red-500"
+                        />
+                        <span>Kosongkan juga seluruh baris data di Google Spreadsheet</span>
+                      </label>
+                    )}
+                  </div>
+                  <div className="flex items-center justify-end gap-2 pt-2 border-t border-slate-100">
+                    <button
+                      type="button"
+                      onClick={() => setShowClearConfirm(false)}
+                      className="px-4 py-2 text-xs font-bold text-slate-600 hover:bg-slate-100 rounded-xl transition-all cursor-pointer"
+                    >
+                      Batal
+                    </button>
+                    <button
+                      type="button"
+                      onClick={handleClearAllData}
+                      className="px-5 py-2 text-xs font-black bg-red-600 hover:bg-red-700 text-white rounded-xl shadow-md transition-all cursor-pointer flex items-center gap-1.5"
+                    >
+                      <Trash2 className="w-3.5 h-3.5" />
+                      <span>Ya, Kosongkan Semuanya (Mulai Dari Nol)</span>
                     </button>
                   </div>
                 </div>

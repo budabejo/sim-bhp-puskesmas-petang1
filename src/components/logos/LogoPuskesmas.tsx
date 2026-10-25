@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { LOGO_PUSKESMAS_BASE64 } from '../../assets/logoData';
 
 interface LogoProps {
   className?: string;
@@ -6,7 +7,45 @@ interface LogoProps {
 }
 
 export const LogoPuskesmas: React.FC<LogoProps> = ({ className = 'w-12 h-12', size }) => {
+  const [customLogo, setCustomLogo] = useState<string | null>(() => {
+    try {
+      return typeof window !== 'undefined' ? localStorage.getItem('sim_bhp_custom_logo_puskesmas') : null;
+    } catch {
+      return null;
+    }
+  });
+
+  const [imgSrc, setImgSrc] = useState<string>(customLogo || LOGO_PUSKESMAS_BASE64);
   const [hasError, setHasError] = useState(false);
+
+  useEffect(() => {
+    const checkCustomLogo = () => {
+      try {
+        const saved = localStorage.getItem('sim_bhp_custom_logo_puskesmas');
+        if (saved && saved !== customLogo) {
+          setCustomLogo(saved);
+          setImgSrc(saved);
+          setHasError(false);
+        }
+      } catch {
+        // ignore
+      }
+    };
+    window.addEventListener('storage', checkCustomLogo);
+    return () => window.removeEventListener('storage', checkCustomLogo);
+  }, [customLogo]);
+
+  const handleError = () => {
+    if (imgSrc === customLogo) {
+      setImgSrc(LOGO_PUSKESMAS_BASE64);
+    } else if (imgSrc === LOGO_PUSKESMAS_BASE64) {
+      setImgSrc('./assets/logo-puskesmas.png');
+    } else if (imgSrc === './assets/logo-puskesmas.png') {
+      setImgSrc('/assets/logo-puskesmas.png');
+    } else {
+      setHasError(true);
+    }
+  };
 
   if (hasError) {
     return (
@@ -36,11 +75,11 @@ export const LogoPuskesmas: React.FC<LogoProps> = ({ className = 'w-12 h-12', si
 
   return (
     <img 
-      src={`${import.meta.env.BASE_URL}assets/logo-puskesmas.png`} 
+      src={imgSrc} 
       alt="Logo Resmi Puskesmas" 
       className={`${className} object-contain`}
       style={size ? { width: size, height: size } : undefined}
-      onError={() => setHasError(true)}
+      onError={handleError}
       loading="eager"
     />
   );

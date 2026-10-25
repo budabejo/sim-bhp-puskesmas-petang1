@@ -107,7 +107,7 @@ export const PengeluaranView: React.FC<Props> = ({
       setFormStokAwal(target.stokSaatIni);
     }
     setFormJumlahKeluar(1);
-    setFormTujuanRuangan(DAFTAR_RUANGAN[0]);
+    setFormTujuanRuangan('');
     setFormPenerima('');
     setFormKeterangan('Kebutuhan operasional harian pelayanan');
     setIsModalOpen(true);
@@ -649,21 +649,30 @@ _Sistem Informasi Manajemen BHP BLUD_`
                   </div>
                 </div>
 
-                {/* Tujuan Ruangan */}
+                {/* Tujuan Ruangan (Ketik Manual / Bebas Sesuai Permintaan) */}
                 <div className="sm:col-span-2">
-                  <label className="block text-xs font-bold text-slate-700 mb-1">
-                    Keterangan Barang Dikeluarkan Kemana (Poli / Ruangan) <span className="text-red-500">*</span>
-                  </label>
-                  <select
+                  <div className="flex items-center justify-between mb-1">
+                    <label className="block text-xs font-bold text-slate-700">
+                      Keterangan Ruang / Poli Penerima (Ketik Manual) <span className="text-red-500">*</span>
+                    </label>
+                    <span className="text-[10px] text-emerald-700 font-semibold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                      Ketik bebas tanpa database kaku
+                    </span>
+                  </div>
+                  <input
+                    type="text"
+                    list="ruangan-suggestions"
                     value={formTujuanRuangan}
                     onChange={(e) => setFormTujuanRuangan(e.target.value)}
-                    className="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:outline-none font-semibold text-emerald-950"
+                    placeholder="Ketik manual ruangan penerima (misal: Poli Umum, UGD, Lab, Pustu Pelaga, dll)..."
+                    className="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:outline-none font-semibold text-emerald-950 placeholder:text-slate-400 placeholder:font-normal"
                     required
-                  >
+                  />
+                  <datalist id="ruangan-suggestions">
                     {DAFTAR_RUANGAN.map(r => (
-                      <option key={r} value={r}>{r}</option>
+                      <option key={r} value={r} />
                     ))}
-                  </select>
+                  </datalist>
                 </div>
 
                 {/* Penerima / Penanggung Jawab Ruangan */}

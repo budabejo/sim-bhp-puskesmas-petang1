@@ -113,6 +113,37 @@ export const DashboardView: React.FC<Props> = ({
   return (
     <div className="space-y-6 pb-12 animate-in fade-in duration-300">
       
+      {/* Empty State Banner (Clean Reset / Fresh Start) */}
+      {totalItems === 0 && (
+        <div className="bg-gradient-to-r from-emerald-900 via-teal-900 to-slate-900 text-white rounded-2xl p-5 shadow-lg border border-emerald-500/30 flex flex-wrap items-center justify-between gap-4 animate-in fade-in">
+          <div className="flex items-center gap-3">
+            <div className="w-12 h-12 rounded-xl bg-emerald-500/20 text-emerald-300 flex items-center justify-center shrink-0 border border-emerald-500/40">
+              <Boxes className="w-6 h-6" />
+            </div>
+            <div>
+              <h3 className="text-base font-black tracking-tight">Database SIM-BHP Bersih (0 Barang)</h3>
+              <p className="text-xs text-slate-300">
+                Data di preview telah dikosongkan. Anda dapat mulai menginput inventaris barang baru secara mandiri atau menarik data dari Google Spreadsheet.
+              </p>
+            </div>
+          </div>
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => onNavigate('pengaturan')}
+              className="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold rounded-xl shadow-md transition-all active:scale-95 cursor-pointer"
+            >
+              Tarik Data dari Google Sheets
+            </button>
+            <button
+              onClick={() => onNavigate('master')}
+              className="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-emerald-300 text-xs font-bold rounded-xl border border-slate-700 transition-all active:scale-95 cursor-pointer"
+            >
+              + Input Barang Baru
+            </button>
+          </div>
+        </div>
+      )}
+
       {/* 1. TOP 5 METRIC KPI CARDS WITH 3D VIBRANT FLOATING ICON BADGES (GLANCE DASHBOARD STYLE) */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
         
