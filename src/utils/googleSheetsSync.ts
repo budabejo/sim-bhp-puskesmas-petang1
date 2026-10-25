@@ -5,16 +5,32 @@ export const SPREADSHEET_URL = `https://docs.google.com/spreadsheets/d/${SPREADS
 
 /**
  * URL Webhook Google Apps Script bawaan (default).
- * Jika diisi, semua perangkat (HP, Laptop, PC, Penguji) otomatis tersambung tanpa perlu input ulang di browser HP.
+ * Jika Anda mengisi URL Webhook Apps Script Anda di sini sebelum build/push ke GitHub,
+ * semua perangkat (HP, Laptop, PC, Penguji) otomatis tersambung tanpa perlu input ulang atau setting apapun!
  */
 export const DEFAULT_GAS_WEBHOOK_URL = '';
 
 /**
- * Mengambil URL Webhook yang aktif: mengutamakan yang tersimpan di LocalStorage HP/Laptop,
- * jika belum ada, menggunakan DEFAULT_GAS_WEBHOOK_URL.
+ * Mengambil URL Webhook yang aktif:
+ * 1. Mengutamakan query string URL: ?gas=... atau ?webhook=... (sehingga cukup bagikan 1 link lengkap)
+ * 2. Mengutamakan yang tersimpan di LocalStorage HP/Laptop
+ * 3. Fallback ke DEFAULT_GAS_WEBHOOK_URL
  */
 export const getEffectiveWebhookUrl = (): string => {
   try {
+    // 1. Cek parameter URL (?gas=... atau ?webhook=...)
+    if (typeof window !== 'undefined' && window.location.search) {
+      const params = new URLSearchParams(window.location.search);
+      const urlParam = params.get('gas') || params.get('webhook');
+      if (urlParam && urlParam.trim().startsWith('https://script.google.com/')) {
+        const decoded = decodeURIComponent(urlParam.trim());
+        localStorage.setItem('sim_bhp_gas_webhook', decoded);
+        localStorage.setItem('sim_bhp_auto_sync_sheets', 'true');
+        return decoded;
+      }
+    }
+
+    // 2. Cek LocalStorage
     const saved = typeof window !== 'undefined' ? localStorage.getItem('sim_bhp_gas_webhook') : null;
     if (saved && saved.trim().startsWith('https://script.google.com/')) {
       return saved.trim();
@@ -31,6 +47,20 @@ export const getEffectiveWebhookUrl = (): string => {
 export const isGoogleSheetsConnected = (): boolean => {
   const url = getEffectiveWebhookUrl();
   return Boolean(url && url.startsWith('https://script.google.com/'));
+};
+
+/**
+ * Membuat link siap pakai yang bisa langsung dibagikan ke WhatsApp / perangkat lain.
+ * Setiap orang yang membuka link ini langsung terhubung otomatis ke spreadsheet tanpa setting lagi!
+ */
+export const generateShareableLink = (customWebhook?: string): string => {
+  if (typeof window === 'undefined') return '';
+  const webhook = (customWebhook && customWebhook.trim()) || getEffectiveWebhookUrl();
+  const baseUrl = window.location.origin + window.location.pathname;
+  if (webhook && webhook.startsWith('https://script.google.com/')) {
+    return `${baseUrl}?gas=${encodeURIComponent(webhook)}`;
+  }
+  return baseUrl;
 };
 
 /**
@@ -110,41 +140,75 @@ export const GOOGLE_APPS_SCRIPT_CODE = `/**
  */
 
 // ============================================================================
-// KONFIGURASI WHATSAPP OTOMATIS (FONNTE / WA GATEWAY)
+// KONFIGURASI WHATSAPP OTOMATIS (PILIHAN 1: META CLOUD API RESMI WA)
 // ============================================================================
-// Masukkan Token Fonnte (dapat diperoleh gratis di https://fonnte.com):
-var WA_GATEWAY_TOKEN = "MASUKKAN_TOKEN_FONNTE_DISINI"; 
-// Nomor default Pengurus Barang / KTU jika tidak ditentukan dari web:
-var WA_DEFAULT_PHONE = "6281234567890"; 
+// Dapatkan Phone Number ID & Token gratis dari portal https://developers.facebook.com:
+var META_PHONE_NUMBER_ID = "MASUKKAN_PHONE_NUMBER_ID_META"; // Contoh: "109823471928374"
+var META_ACCESS_TOKEN = "MASUKKAN_ACCESS_TOKEN_META";       // Permanent Token Meta
+var WA_DEFAULT_PHONE = "6281234567890";                    // Nomor WA Pengurus Barang / Admin
 
-// Fungsi Pembantu: Mengirim pesan WhatsApp via Gateway secara background
+// OPSI ALTERNATIF (PILIHAN 2: FONNTE GATEWAY / WA GATEWAY LAIN)
+var WA_GATEWAY_TOKEN = "MASUKKAN_TOKEN_FONNTE_DISINI"; 
+
+// Fungsi Pembantu: Mengirim pesan WhatsApp via Meta Cloud API Resmi atau Gateway
 function kirimPesanWhatsAppOtomatis(pesan, nomorTujuan) {
-  if (!WA_GATEWAY_TOKEN || WA_GATEWAY_TOKEN === "MASUKKAN_TOKEN_FONNTE_DISINI") {
-    Logger.log("Token WhatsApp Gateway belum diatur. Pesan: " + pesan);
-    return false;
+  var target = (nomorTujuan || WA_DEFAULT_PHONE).toString().replace(/\\D/g, "");
+
+  // 1. Prioritaskan Pengiriman via WhatsApp Cloud API Resmi Meta
+  if (META_PHONE_NUMBER_ID && META_PHONE_NUMBER_ID !== "MASUKKAN_PHONE_NUMBER_ID_META" &&
+      META_ACCESS_TOKEN && META_ACCESS_TOKEN !== "MASUKKAN_ACCESS_TOKEN_META") {
+    try {
+      var metaUrl = "https://graph.facebook.com/v19.0/" + META_PHONE_NUMBER_ID + "/messages";
+      var metaPayload = {
+        messaging_product: "whatsapp",
+        recipient_type: "individual",
+        to: target,
+        type: "text",
+        text: { preview_url: false, body: pesan }
+      };
+      var metaOptions = {
+        method: "post",
+        contentType: "application/json",
+        headers: {
+          "Authorization": "Bearer " + META_ACCESS_TOKEN
+        },
+        payload: JSON.stringify(metaPayload),
+        muteHttpExceptions: true
+      };
+      var metaResp = UrlFetchApp.fetch(metaUrl, metaOptions);
+      Logger.log("Meta Cloud API Resp: " + metaResp.getContentText());
+      return true;
+    } catch (metaErr) {
+      Logger.log("Error Meta Cloud API: " + metaErr.toString());
+    }
   }
-  try {
-    var target = (nomorTujuan || WA_DEFAULT_PHONE).toString().replace(/\\D/g, "");
-    var payload = {
-      target: target,
-      message: pesan,
-      countryCode: "62"
-    };
-    var options = {
-      method: "post",
-      headers: {
-        "Authorization": WA_GATEWAY_TOKEN
-      },
-      payload: payload,
-      muteHttpExceptions: true
-    };
-    var resp = UrlFetchApp.fetch("https://api.fonnte.com/send", options);
-    Logger.log("Respons WhatsApp API: " + resp.getContentText());
-    return true;
-  } catch (err) {
-    Logger.log("Error kirim WA: " + err.toString());
-    return false;
+
+  // 2. Opsi Cadangan jika menggunakan Fonnte
+  if (WA_GATEWAY_TOKEN && WA_GATEWAY_TOKEN !== "MASUKKAN_TOKEN_FONNTE_DISINI") {
+    try {
+      var fonntePayload = {
+        target: target,
+        message: pesan,
+        countryCode: "62"
+      };
+      var fonnteOptions = {
+        method: "post",
+        headers: {
+          "Authorization": WA_GATEWAY_TOKEN
+        },
+        payload: fonntePayload,
+        muteHttpExceptions: true
+      };
+      var fonnteResp = UrlFetchApp.fetch("https://api.fonnte.com/send", fonnteOptions);
+      Logger.log("Fonnte API Resp: " + fonnteResp.getContentText());
+      return true;
+    } catch (fonnteErr) {
+      Logger.log("Error Fonnte: " + fonnteErr.toString());
+    }
   }
+
+  Logger.log("Koneksi WhatsApp belum dikonfigurasi. Pesan: " + pesan);
+  return false;
 }
 
 // 1. FUNGSI POST: MENYIMPAN / MENGOSONGKAN / NOTIFIKASI WA DARI SIM-BHP

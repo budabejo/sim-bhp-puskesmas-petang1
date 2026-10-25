@@ -39,7 +39,8 @@ import {
   downloadForGoogleSheets, 
   GOOGLE_APPS_SCRIPT_CODE, 
   sendToGoogleAppsScriptWebhook,
-  pullDataFromGoogleSheets
+  pullDataFromGoogleSheets,
+  generateShareableLink
 } from '../utils/googleSheetsSync';
 import { LogoBadung } from './logos/LogoBadung';
 import { LogoPuskesmas } from './logos/LogoPuskesmas';
@@ -125,6 +126,44 @@ export const SettingsView: React.FC<Props> = ({
   });
   const [syncStatusMsg, setSyncStatusMsg] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
   const [showGasScript, setShowGasScript] = useState(false);
+
+  // Meta WhatsApp Cloud API State
+  const [metaPhoneId, setMetaPhoneId] = useState<string>(() => {
+    return localStorage.getItem('sim_bhp_meta_phone_id') || '';
+  });
+  const [metaToken, setMetaToken] = useState<string>(() => {
+    return localStorage.getItem('sim_bhp_meta_token') || '';
+  });
+  const [metaSaved, setMetaSaved] = useState(false);
+
+  const handleSaveMetaCredentials = (e: React.FormEvent) => {
+    e.preventDefault();
+    localStorage.setItem('sim_bhp_meta_phone_id', metaPhoneId.trim());
+    localStorage.setItem('sim_bhp_meta_token', metaToken.trim());
+    setMetaSaved(true);
+    setTimeout(() => setMetaSaved(false), 3000);
+  };
+
+  const dynamicAppsScriptCode = React.useMemo(() => {
+    let code = GOOGLE_APPS_SCRIPT_CODE;
+    const phoneIdVal = metaPhoneId.trim() || 'MASUKKAN_PHONE_NUMBER_ID_META';
+    const tokenVal = metaToken.trim() || 'MASUKKAN_ACCESS_TOKEN_META';
+    const targetWa = (whatsAppList[0] || kop.nomorWhatsAppNotif || '6281234567890').replace(/\D/g, '');
+
+    code = code.replace(
+      'var META_PHONE_NUMBER_ID = "MASUKKAN_PHONE_NUMBER_ID_META";',
+      `var META_PHONE_NUMBER_ID = "${phoneIdVal}";`
+    );
+    code = code.replace(
+      'var META_ACCESS_TOKEN = "MASUKKAN_ACCESS_TOKEN_META";',
+      `var META_ACCESS_TOKEN = "${tokenVal}";`
+    );
+    code = code.replace(
+      'var WA_DEFAULT_PHONE = "6281234567890";',
+      `var WA_DEFAULT_PHONE = "${targetWa}";`
+    );
+    return code;
+  }, [metaPhoneId, metaToken, whatsAppList, kop.nomorWhatsAppNotif]);
 
   // SQL Exporter State
   const [copiedKey, setCopiedKey] = useState<string | null>(null);
@@ -699,6 +738,86 @@ DB_PASSWORD=`;
               </button>
             </div>
           </form>
+
+          {/* SEKSI META WHATSAPP CLOUD API RESMI */}
+          <div className="mt-8 pt-6 border-t border-slate-200 space-y-4">
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center font-black">
+                  <ShieldCheck className="w-5 h-5 text-blue-700" />
+                </div>
+                <div>
+                  <h4 className="text-sm font-black text-slate-900">
+                    WhatsApp Cloud API Resmi dari Meta (Bawaan WhatsApp)
+                  </h4>
+                  <p className="text-[11px] text-slate-500">
+                    100% Resmi langsung dari Meta, anti-blokir, dan gratis 1.000 notifikasi/bulan tanpa perantara pihak ketiga.
+                  </p>
+                </div>
+              </div>
+
+              {metaSaved && (
+                <span className="text-xs font-bold px-3 py-1 bg-emerald-100 text-emerald-800 rounded-lg border border-emerald-300 flex items-center gap-1.5 animate-in fade-in">
+                  <Check className="w-3.5 h-3.5 text-emerald-700" />
+                  <span>Kredensial Meta Disimpan!</span>
+                </span>
+              )}
+            </div>
+
+            <form onSubmit={handleSaveMetaCredentials} className="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-3">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-xs font-bold text-slate-700 mb-1">
+                    Meta Phone Number ID
+                  </label>
+                  <input
+                    type="text"
+                    value={metaPhoneId}
+                    onChange={(e) => setMetaPhoneId(e.target.value)}
+                    placeholder="Contoh: 109823471928374 (Dari Meta Developers)"
+                    className="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs font-mono bg-white text-slate-900 focus:border-emerald-600 focus:ring-2 focus:ring-emerald-500/20"
+                  />
+                  <p className="text-[10px] text-slate-500 mt-1">Diambil dari menu WhatsApp &gt; API Setup di developers.facebook.com</p>
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold text-slate-700 mb-1">
+                    Meta Access Token
+                  </label>
+                  <input
+                    type="text"
+                    value={metaToken}
+                    onChange={(e) => setMetaToken(e.target.value)}
+                    placeholder="Contoh: EAAGm0PX4ZC... (Token Meta)"
+                    className="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs font-mono bg-white text-slate-900 focus:border-emerald-600 focus:ring-2 focus:ring-emerald-500/20"
+                  />
+                  <p className="text-[10px] text-slate-500 mt-1">Temporary Token (24 jam) atau Permanent System User Token Meta</p>
+                </div>
+              </div>
+
+              <div className="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-slate-200/80">
+                <button
+                  type="submit"
+                  className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs rounded-xl shadow-xs active:scale-95 transition-all cursor-pointer flex items-center gap-1.5"
+                >
+                  <Save className="w-4 h-4" />
+                  <span>Simpan Kredensial Meta</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => {
+                    copyToClipboard(dynamicAppsScriptCode, 'gas_code_meta');
+                    alert('✅ Kode Google Apps Script lengkap berhasil disalin!\n\nKode ini sudah otomatis menyertakan Phone Number ID dan Token Meta Anda. Silakan buka Google Spreadsheet > Ekstensi > Apps Script > Timpa seluruh kodenya > klik Terapkan (Deploy).');
+                  }}
+                  className="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-xl shadow-xs active:scale-95 transition-all cursor-pointer flex items-center gap-1.5"
+                >
+                  <Copy className="w-4 h-4" />
+                  <span>{copiedKey === 'gas_code_meta' ? 'Kode Tersalin!' : 'Salin Kode Apps Script Lengkap (Otomatis Terisi)'}</span>
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
       )}
 
@@ -1229,6 +1348,33 @@ DB_PASSWORD=`;
                 </button>
               </div>
 
+              {/* Box Bagikan Link Siap Pakai 1x Klik untuk Semua Perangkat */}
+              <div className="p-4 rounded-xl bg-gradient-to-r from-emerald-950 via-teal-950 to-slate-950 border border-emerald-500/40 space-y-2.5">
+                <div className="flex flex-wrap items-center justify-between gap-2">
+                  <div className="flex items-center gap-2">
+                    <Sparkles className="w-4 h-4 text-amber-300 shrink-0" />
+                    <span className="text-xs font-black text-emerald-300">
+                      Link Web Siap Pakai (1x Klik Langsung Terhubung di Semua HP, PC & Laptop Lain)
+                    </span>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      const shareLink = generateShareableLink(gasWebhookUrl);
+                      copyToClipboard(shareLink, 'share_link');
+                      alert('✅ Link web siap pakai berhasil disalin!\n\nLink ini sudah otomatis membawa kunci database Google Spreadsheet Anda. Bagikan link ini ke WhatsApp, dosen penguji, atau buka di HP/laptop lain. Begitu dibuka, sistem langsung otomatis menampilkan data terbaru tanpa perlu setting atau copy script lagi!');
+                    }}
+                    className="px-3.5 py-1.5 bg-amber-400 hover:bg-amber-300 active:scale-95 text-slate-950 font-black text-xs rounded-lg shadow flex items-center gap-1.5 cursor-pointer transition-all"
+                  >
+                    {copiedKey === 'share_link' ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
+                    <span>{copiedKey === 'share_link' ? 'Link Tersalin!' : 'Salin Link Siap Pakai'}</span>
+                  </button>
+                </div>
+                <p className="text-[11px] text-slate-300 leading-relaxed">
+                  <strong>Trik Praktis:</strong> Cukup salin link siap pakai ini dan bagikan via WhatsApp. Siapa pun yang membukanya di HP atau komputer lain akan <strong>otomatis langsung membuka sistem yang terhubung ke Google Sheets Anda</strong> (tidak perlu setting ulang atau copy-paste Apps Script lagi di perangkat mereka)!
+                </p>
+              </div>
+
               {/* Dua Tombol Aksi Sinkronisasi */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pt-1">
                 {/* Tombol 1: Kirim ke Google Sheets */}
@@ -1320,15 +1466,15 @@ DB_PASSWORD=`;
                       Langkah Pembaruan: Buka Google Sheets &gt; Ekstensi &gt; Apps Script &gt; Timpa seluruh kode lama dengan ini &gt; Klik Terapkan &gt; Penerapan Baru:
                     </span>
                     <button
-                      onClick={() => copyToClipboard(GOOGLE_APPS_SCRIPT_CODE, 'gas_code')}
+                      onClick={() => copyToClipboard(dynamicAppsScriptCode, 'gas_code')}
                       className="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-slate-950 text-xs font-extrabold rounded-lg flex items-center gap-1.5 cursor-pointer shadow shrink-0"
                     >
                       {copiedKey === 'gas_code' ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
-                      <span>{copiedKey === 'gas_code' ? 'Kode Tersalin!' : 'Salin Seluruh Kode'}</span>
+                      <span>{copiedKey === 'gas_code' ? 'Kode Tersalin!' : 'Salin Seluruh Kode Apps Script'}</span>
                     </button>
                   </div>
                   <pre className="max-h-60 overflow-y-auto p-3 bg-slate-900 text-emerald-300 font-mono text-[11px] rounded-lg border border-slate-800 leading-relaxed">
-                    {GOOGLE_APPS_SCRIPT_CODE}
+                    {dynamicAppsScriptCode}
                   </pre>
                 </div>
               )}

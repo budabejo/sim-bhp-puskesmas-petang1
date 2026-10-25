@@ -22,7 +22,12 @@ import { PrintLabelModal } from './components/PrintLabelModal';
 import { LoginView } from './components/LoginView';
 import { SettingsView } from './components/SettingsView';
 import { CloudSyncModal } from './components/CloudSyncModal';
-import { isGoogleSheetsConnected, sendToGoogleAppsScriptWebhook, pullDataFromGoogleSheets } from './utils/googleSheetsSync';
+import { 
+  isGoogleSheetsConnected, 
+  sendToGoogleAppsScriptWebhook, 
+  pullDataFromGoogleSheets,
+  getEffectiveWebhookUrl 
+} from './utils/googleSheetsSync';
 
 const STORAGE_KEYS = {
   BARANG: 'sim_bhp_barang_v1',
@@ -335,19 +340,31 @@ export default function App() {
     localStorage.setItem(STORAGE_KEYS.PENGELUARAN, JSON.stringify(newPengeluaran));
   };
 
-  // Optional auto-sync on page load if user enabled it
+  // Auto-sync on page load & when user returns to this tab (window focus)
   useEffect(() => {
-    const isAutoSync = localStorage.getItem('sim_bhp_auto_sync_sheets') === 'true';
-    const webhookUrl = localStorage.getItem('sim_bhp_gas_webhook');
-    if (isAutoSync && webhookUrl && webhookUrl.startsWith('https://script.google.com/')) {
-      pullDataFromGoogleSheets(webhookUrl).then((res) => {
-        if (res.success && res.data) {
-          handleUpdateAllDataFromSheets(res.data.barang, res.data.penerimaan, res.data.pengeluaran);
-        }
-      }).catch((err) => {
-        console.warn('Auto-sync sheets on startup error:', err);
-      });
-    }
+    const doSync = () => {
+      const webhookUrl = getEffectiveWebhookUrl();
+      const autoSyncSetting = localStorage.getItem('sim_bhp_auto_sync_sheets');
+      // Enabled by default unless user explicitly turned it off ('false')
+      const isAutoSync = autoSyncSetting !== 'false';
+
+      if (isAutoSync && webhookUrl && webhookUrl.startsWith('https://script.google.com/')) {
+        pullDataFromGoogleSheets(webhookUrl).then((res) => {
+          if (res.success && res.data) {
+            handleUpdateAllDataFromSheets(res.data.barang, res.data.penerimaan, res.data.pengeluaran);
+          }
+        }).catch((err) => {
+          console.warn('Auto-sync sheets error:', err);
+        });
+      }
+    };
+
+    // 1. Sinkronisasi saat web pertama kali dibuka
+    doSync();
+
+    // 2. Sinkronisasi otomatis saat user kembali ke tab web ini setelah menghapus/mengedit baris di Google Sheets
+    window.addEventListener('focus', doSync);
+    return () => window.removeEventListener('focus', doSync);
   }, []);
 
   const handleSelectBarangFromScan = (scannedBarang: Barang) => {

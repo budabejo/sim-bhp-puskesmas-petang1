@@ -18,7 +18,8 @@ import {
   getEffectiveWebhookUrl, 
   isGoogleSheetsConnected,
   sendToGoogleAppsScriptWebhook,
-  pullDataFromGoogleSheets
+  pullDataFromGoogleSheets,
+  generateShareableLink
 } from '../utils/googleSheetsSync';
 import { Barang, PenerimaanBarang, PengeluaranBarang } from '../types';
 
@@ -264,6 +265,29 @@ export const CloudSyncModal: React.FC<Props> = ({
                 title="Hapus data preview agar bersih untuk input dari awal"
               >
                 <span>Kosongkan Preview</span>
+              </button>
+            </div>
+
+            {/* Tombol Bagikan Link Siap Pakai Otomatis */}
+            <div className="p-3 bg-gradient-to-r from-emerald-950 to-teal-950 rounded-xl border border-emerald-500/40 flex items-center justify-between gap-2">
+              <div className="min-w-0">
+                <span className="text-[11px] font-bold text-emerald-300 block truncate">
+                  Bagikan ke HP / Komputer Penguji Lain
+                </span>
+                <span className="text-[10px] text-slate-400 block truncate">
+                  Langsung terhubung otomatis ke spreadsheet tanpa setting ulang
+                </span>
+              </div>
+              <button
+                type="button"
+                onClick={() => {
+                  const shareUrl = generateShareableLink(webhookUrl);
+                  navigator.clipboard.writeText(shareUrl);
+                  alert('✅ Link web siap pakai berhasil disalin!\n\nKirim link ini ke WhatsApp untuk dibuka di HP atau laptop penguji. Sistem langsung otomatis menampilkan data terbaru tanpa perlu setting atau copy script lagi!');
+                }}
+                className="px-3 py-1.5 bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-xs rounded-lg shadow shrink-0 active:scale-95 transition-all cursor-pointer"
+              >
+                Salin Link Siap Pakai
               </button>
             </div>
           </div>
